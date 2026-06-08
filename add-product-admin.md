@@ -3,9 +3,9 @@ layout: libdoc_page.liquid
 title: Admin Page — Add Products with Supabase
 description: A beginner-friendly admin page to add products with image upload to Supabase
 eleventyNavigation:
-  key: Add Product (Admin)
-  parent: Product Listing
-  order: 1
+    key: Add Product (Admin)
+    parent: Product Listing
+    order: 1
 ---
 
 ## Simplified Guide: Admin Add Product Page with Supabase + Next.js + Tailwind
@@ -18,21 +18,19 @@ An admin page where you can type a product title, set a price, pick an image, an
 
 ---
 
-### Step 1 — Add INSERT policy for authenticated users
+### Step 1 — Add INSERT policy
 
 Run this in **Supabase SQL Editor** (you may have skipped this earlier):
 
 ```sql
-create policy "Authenticated insert"
+create policy "Public insert"
   on public.products
   for insert
-  to authenticated
   with check (true);
 
-create policy "Authenticated upload images"
+create policy "Public upload images"
   on storage.objects
   for insert
-  to authenticated
   with check (bucket_id = 'product-images');
 ```
 
@@ -62,11 +60,18 @@ export default function AdminPage() {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [imageFile, setImageFile] = useState<File | null>(null);
+    const [preview, setPreview] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{
         type: "success" | "error";
         text: string;
     } | null>(null);
+
+    function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0] ?? null;
+        setImageFile(file);
+        setPreview(file ? URL.createObjectURL(file) : null);
+    }
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -79,7 +84,7 @@ export default function AdminPage() {
         setMessage(null);
 
         try {
-            // 1. Upload image to storage bucket
+            // 1. Upload image
             const fileExt = imageFile.name.split(".").pop();
             const filePath = `products/${Date.now()}.${fileExt}`;
 
@@ -90,7 +95,7 @@ export default function AdminPage() {
             if (uploadError)
                 throw new Error(`Image upload failed: ${uploadError.message}`);
 
-            // 2. Insert product row into the table
+            // 2. Insert product row
             const { error: insertError } = await supabase
                 .from("products")
                 .insert({
@@ -102,10 +107,11 @@ export default function AdminPage() {
             if (insertError)
                 throw new Error(`Product save failed: ${insertError.message}`);
 
-            // 3. Reset form on success
+            // 3. Reset
             setTitle("");
             setPrice("");
             setImageFile(null);
+            setPreview(null);
             (document.getElementById("image-input") as HTMLInputElement).value =
                 "";
             setMessage({
@@ -120,86 +126,120 @@ export default function AdminPage() {
     }
 
     return (
-        <main className="min-h-screen bg-gray-50 flex items-start justify-center p-8">
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm w-full max-w-md p-8">
-                <h1 className="text-2xl font-bold text-gray-800 mb-6">
+        <main className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-start justify-center p-8">
+            <div className="w-full max-w-md">
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
                     Add Product
                 </h1>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                    {/* Title */}
-                    <div className="flex flex-col gap-1">
-                        <label className="text-sm font-medium text-gray-700">
-                            Product Title
-                        </label>
-                        <input
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            placeholder="e.g. Running Shoes"
-                            className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-
-                    {/* Price */}
-                    <div className="flex flex-col gap-1">
-                        <label className="text-sm font-medium text-gray-700">
-                            Price (USD)
-                        </label>
-                        <input
-                            type="number"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            placeholder="e.g. 49.99"
-                            min="0"
-                            step="0.01"
-                            className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-
-                    {/* Image Upload */}
-                    <div className="flex flex-col gap-1">
-                        <label className="text-sm font-medium text-gray-700">
-                            Product Image
-                        </label>
-                        <input
-                            id="image-input"
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) =>
-                                setImageFile(e.target.files?.[0] ?? null)
-                            }
-                            className="border border-gray-300 rounded-lg px-4 py-2 text-sm text-gray-500 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700"
-                        />
-                    </div>
-
-                    {/* Image Preview */}
-                    {imageFile && (
-                        <img
-                            src={URL.createObjectURL(imageFile)}
-                            alt="Preview"
-                            className="w-full h-48 object-cover rounded-lg border border-gray-200"
-                        />
-                    )}
-
-                    {/* Feedback Message */}
-                    {message && (
-                        <p
-                            className={`text-sm font-medium ${message.type === "success" ? "text-green-600" : "text-red-500"}`}
-                        >
-                            {message.text}
-                        </p>
-                    )}
-
-                    {/* Submit */}
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-semibold py-2 rounded-lg transition-colors"
+                <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="flex flex-col gap-6"
                     >
-                        {loading ? "Adding..." : "Add Product"}
-                    </button>
-                </form>
+                        {/* Title */}
+                        <div className="flex flex-col gap-2">
+                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Product Title
+                            </label>
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                placeholder="e.g. Running Shoes"
+                                className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                            />
+                        </div>
+
+                        {/* Price */}
+                        <div className="flex flex-col gap-2">
+                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Price (USD)
+                            </label>
+                            <input
+                                type="number"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                placeholder="e.g. 49.99"
+                                min="0"
+                                step="0.01"
+                                className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                            />
+                        </div>
+
+                        {/* Image Upload */}
+                        <div className="flex flex-col gap-2">
+                            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Product Image
+                            </label>
+
+                            {/* Preview */}
+                            {preview ? (
+                                <div className="relative rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 h-48">
+                                    <img
+                                        src={preview}
+                                        alt="Preview"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setPreview(null);
+                                            setImageFile(null);
+                                        }}
+                                        className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white text-xs px-2 py-1 rounded-md transition-colors"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                            ) : (
+                                <label
+                                    htmlFor="image-input"
+                                    className="flex flex-col items-center justify-center h-48 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 transition-colors bg-gray-50 dark:bg-gray-800/50"
+                                >
+                                    <span className="text-3xl mb-2">🖼️</span>
+                                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                                        Click to upload image
+                                    </span>
+                                    <span className="text-xs text-gray-400 dark:text-gray-600 mt-1">
+                                        PNG, JPG, WEBP
+                                    </span>
+                                </label>
+                            )}
+
+                            <input
+                                id="image-input"
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                className="hidden"
+                            />
+                        </div>
+
+                        {/* Message */}
+                        {message && (
+                            <div
+                                className={`rounded-lg px-4 py-3 text-sm font-medium ${
+                                    message.type === "success"
+                                        ? "bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800"
+                                        : "bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800"
+                                }`}
+                            >
+                                {message.type === "success" ? "✓ " : "✕ "}
+                                {message.text}
+                            </div>
+                        )}
+
+                        {/* Submit */}
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:opacity-50 text-white font-semibold py-2.5 rounded-lg transition-colors text-sm"
+                        >
+                            {loading ? "Uploading..." : "Add Product"}
+                        </button>
+                    </form>
+                </div>
             </div>
         </main>
     );

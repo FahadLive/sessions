@@ -31,18 +31,25 @@ create table public.products (
   created_at timestamptz default now()
 );
 
--- Allow anyone to read
+-- RLS
 alter table public.products enable row level security;
-create policy "Public read" on public.products for select using (true);
 
--- Create image storage bucket
+-- Allow anyone to read AND write (no auth needed)
+create policy "Public read"   on public.products for select using (true);
+create policy "Public insert" on public.products for insert with check (true);
+
+-- Storage bucket
 insert into storage.buckets (id, name, public)
 values ('product-images', 'product-images', true);
 
--- Allow anyone to view images
+-- Allow anyone to read AND upload images
 create policy "Public read images"
   on storage.objects for select
   using (bucket_id = 'product-images');
+
+create policy "Public upload images"
+  on storage.objects for insert
+  with check (bucket_id = 'product-images');
 
 -- Add some test products
 insert into public.products (title, price, image_path) values
@@ -73,7 +80,6 @@ export default async function ProductsPage() {
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore);
 
-    // Fetch products from the table
     const { data: products, error } = await supabase
         .from("products")
         .select("id, title, price, image_path")
@@ -81,19 +87,22 @@ export default async function ProductsPage() {
 
     if (error) {
         return (
-            <p className="p-8 text-red-500">
-                Failed to load products: {error.message}
-            </p>
+            <main className="min-h-screen bg-white dark:bg-gray-950 p-8">
+                <p className="text-red-500">
+                    Failed to load products: {error.message}
+                </p>
+            </main>
         );
     }
 
     return (
-        <main className="p-8">
-            <h1 className="text-2xl font-bold mb-6">Products</h1>
+        <main className="min-h-screen bg-gray-50 dark:bg-gray-950 p-8">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+                Products
+            </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products?.map((product) => {
-                    // Resolve the public image URL from the bucket
                     const { data: imgData } = supabase.storage
                         .from("product-images")
                         .getPublicUrl(product.image_path);
@@ -101,18 +110,20 @@ export default async function ProductsPage() {
                     return (
                         <div
                             key={product.id}
-                            className="rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
+                            className="group rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl dark:hover:shadow-black/40 transition-all duration-200"
                         >
-                            <img
-                                src={imgData.publicUrl}
-                                alt={product.title}
-                                className="w-full h-52 object-cover"
-                            />
+                            <div className="overflow-hidden bg-gray-100 dark:bg-gray-800">
+                                <img
+                                    src={imgData.publicUrl}
+                                    alt={product.title}
+                                    className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
                             <div className="p-4">
-                                <h2 className="font-semibold text-gray-800">
+                                <h2 className="font-semibold text-gray-900 dark:text-white truncate">
                                     {product.title}
                                 </h2>
-                                <p className="text-green-600 font-bold mt-1">
+                                <p className="text-emerald-600 dark:text-emerald-400 font-bold mt-1">
                                     ${Number(product.price).toFixed(2)}
                                 </p>
                             </div>
