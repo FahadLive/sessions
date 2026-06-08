@@ -140,10 +140,10 @@ main > *:not(pre) code {
 main > pre {
     background-color: var(--ita-colors-primary-200);
     border-color: var(--ita-colors-primary-300);
-    box-shadow: inset 0.3em 0.3em 2em #0B427C44;
+    box-shadow: inset 0.3em 0.3em 2em #26233a44;
 }
 main > pre > code::before {
-    border-bottom-color: #385267;
+    border-bottom-color: #6e6a86;
 }
 /* TABLES */
 main table thead th {

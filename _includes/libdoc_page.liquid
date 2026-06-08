@@ -89,16 +89,10 @@
             {%- endfor %}
         }
         const libdocConfig = {
-            htmlBasePathPrefix: `{{ libdocConfig.htmlBasePathPrefix }}`,
-            blogTitle: `{{ libdocConfig.blogTitle }}`,
-            blogDescription: `{{ libdocConfig.blogDescription }}`,
-            displayTagsListLink: {{ libdocConfig.displayTagsListLink }}
+            htmlBasePathPrefix: `{{ libdocConfig.htmlBasePathPrefix }}`
         }
         const libdocSystem = {
-            searchIndexUrl: `{{ '/core/assets/js/search_index.json' | url }}`,
-            fuzzyIndexUrl: `{{ '/core/assets/js/fuzzy_index.json' | url }}`,
-            productionUrl: `{{ libdocSystem.productionUrl }}`,
-            blogPostsCount: `{{ collections.post.size }}`
+            productionUrl: `{{ libdocSystem.productionUrl }}`
         }
     </script>
 </head>
@@ -123,13 +117,7 @@
                         <span class="icon-house fs-6"></span>
                         <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.homepageShort[pageLang] }}</span>
                     </a>
-                    {% if libdocConfig.searchEnabled %}
-                        <a  href="/search/"
-                            class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | td-none ta-center | c-primary-900 b-0 brad-3">
-                            <span class="icon-magnifying-glass fs-6"></span>
-                            <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.search[pageLang] }}</span>
-                        </a>
-                    {% endif %}
+
                     <button type="button"
                         id="sd_floating_toc_toggle_btn"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
@@ -195,37 +183,7 @@
                             </a>
                         {% endif %}
                     </li>
-                    {% if libdocConfig.searchEnabled %}
-                        <li class="pos-relative z-1" d-none="xs,sm">
-                            <form action="/search/"
-                                class="d-flex fd-column | pos-relative | pl-5 pr-5 | search_form | auto-search-wrapper">
-                                <label for="searchInput"
-                                    class="pos-absolute z-2 | ml-5 t-tY-50 | fvs-wght-400 fs-1 tt-uppercase | c-neutral-900 bc-neutral-100">
-                                    {{ libdocMessages.search[pageLang] }}
-                                </label>
-                                <input  id="searchInput"
-                                        type="search"
-                                        name="search"
-                                        autocomplete="off"
-                                        class="pos-relative z-1 | pl-5 pr-5 pt-4 pb-4 | fs-3 | c-neutral-900 bc-neutral-100 brad-4 bwidth-1 bstyle-dashed bcolor-neutral-500"
-                                        placeholder="{{ libdocMessages.searchPlaceholder[pageLang] }}"
-                                        value="">
-                                <div class="pos-relative z-1 | d-flex ai-center | pos-absolute top-0 right-0 | h-100 mr-5">
-                                    <button type="button"
-                                        class="pos-relative | p-4 pr-7 | fs-3 | c-neutral-900 bc-neutral-100 c-neutral-900 b-0 cur-pointer | search_form__clear_btn"
-                                        title="{{ libdocMessages.searchClear[pageLang] }}"
-                                        hidden>
-                                        <span class="icon-x | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></span>
-                                    </button>
-                                    <button type="submit"
-                                        class="pos-relative | h-100 p-0 ar-square | fs-5 | brad-4 bc-primary-500 c-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-100 cur-pointer"
-                                        title="{{ libdocMessages.searchSubmit[pageLang] }}">
-                                        <span class="icon-magnifying-glass | pos-absolute top-50 left-50 t-tY-50 t-tX-50"></span>
-                                    </button>
-                                </div>
-                            </form>
-                        </li>
-                    {% endif %}
+
                     {% if libdocConfig.customLinks.size > 0 %}
                         <li id="custom_links"
                             class="d-flex ai-center rgap-1 | pos-relative | pb-3 pl-5 o-auto">
@@ -244,29 +202,9 @@
                     {% endif %}
                 </menu>
                 
-                {% if collections.post.size > 0 %}
-                    <a  href="/{{ libdocConfig.blogSlug }}/"
-                        id="nav_primary_blog_link"
-                        {% if pageUrlSplit[1] == libdocConfig.blogSlug %}
-                            aria-current="page"
-                        {% endif %}
-                        class="d-flex ai-center | pt-5 pb-5 | fvs-wght-500 fs-4 td-none lsp-2 | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
-                        {% comment %} <span class="icon-tag-simple | c-primary-500"></span> {% endcomment %}
-                        {{ libdocConfig.blogTitle }}
-                    </a>
-                {% endif %}
 
-                {% if collections.myTags.size > 0 and libdocConfig.displayTagsListLink %}
-                    <a  href="/tags/"
-                        id="nav_primary_blog_link"
-                        {% if pageUrlSplit[1] == 'tags'%}
-                            aria-current="page"
-                        {% endif %}
-                        class="d-flex ai-center | pt-5 pb-5 | fvs-wght-500 fs-4 td-none lsp-2 | c-neutral-900 bbwidth-1 bbstyle-dashed bcolor-neutral-500 cur-pointer">
-                        {% comment %} <span class="icon-tag-simple | c-primary-500"></span> {% endcomment %}
-                        {{ libdocMessages.tagsList[pageLang] }}
-                    </a>
-                {% endif %}
+
+
 
                 <div id="nav_primary"
                     class="pos-relative | fg-1 o-auto">
@@ -333,59 +271,7 @@
                 {% else %}
                     <div class="pt-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
                 {% endif %}
-                {% if page.url != '/search/' %}
-                    {% if tags.size > 0 %}
-                        <nav class="d-flex gap-2 fw-wrap | pl-5 pt-3 pb-5 | blwidth-1 blstyle-dashed bcolor-neutral-500">
-                            {% for tagName in tags %}
-                                {% if tagName != 'post' %}
-                                    <a  href="/tags/{{ tagName }}/"
-                                        class="
-                                        d-flex ai-center gap-1
-                                        pl-2 pr-3 pt-1 pb-1
-                                        fs-2 lsp-2 td-none
-                                        bc-primary-200 bwidth-1 bstyle-solid bcolor-primary-400 brad-1 bradtl-3 bradbl-3">
-                                        <span class="icon-tag-simple"></span>
-                                        <span class="page_tag">{{ tagName }}</span>
-                                    </a>
-                                {% endif %}
-                            {% endfor %}
-                        </nav>
-                    {% endif %}
-                    <div class="d-flex ai-center | m-0 | blwidth-1 blstyle-dashed bcolor-neutral-500">
-                        <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
-                        {% if date != false %}
-                            <p  class="d-flex ai-center gap-2 | m-0 pr-2 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-neutral-700 bc-primary-100"
-                                fs-2="xs">
-                                <span class="icon-calendar-dots fs-6"></span>
-                                <time ws-nowrap="sm,md">
-                                    {% assign dateString = page.date | dateString %}
-                                    {% if dateString == "1111-11-11" %}
-                                        {{ libdocMessages.lastModified[pageLang] }}
-                                        {{ page.inputPath | gitLastModifiedDate }}
-                                    {% else %}
-                                        {{ date | datePrefixText }}
-                                        {{ dateString }}
-                                    {% endif %}
-                                </time>
-                            </p>
-                        {% endif %}
-                        <div class="pl-5 w-100 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
-                        {% if author != false and pageAuthor != false %}
-                            <div class="d-flex ai-center gap-3">
-                                <div class="pos-relative | p-5 | brad-4 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500">
-                                    <div class="icon-user | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-6"></div>
-                                </div>
-                                <p  class="d-flex fd-column | m-0 | fvs-wght-400 fs-3 lsp-3 lh-3 | c-neutral-700 bc-primary-100"
-                                    fs-2="xs"
-                                    ws-nowrap="sm,md">
-                                    {{ pageAuthor }}
-                                </p>
-                            </div>
-                        {% else %}
-                            <div class="pt-5 pb-5"></div>
-                        {% endif %}
-                    </div>
-                {% endif %}
+
                 {% if tocMarkup != '' %}
                     <details id="toc_main" open>
                         <summary class="d-flex ai-center | pt-5 pb-5 | fvs-wght-500 fs-3 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0 cur-pointer">
@@ -420,28 +306,20 @@
                     {% endif %}
                     <div class="w-100" d-none="sm,md"></div>
                     <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" w-100="sm,md"></div>
-                    <a  href="https://github.com/ita-design-system/eleventy-libdoc"
+                    <a  href="https://justfahad.me"
                         target="_blank"
                         class="d-flex ai-center gap-2 | pl-2 pr-2 | fvs-wght-400 fs-2 lsp-3 lh-3 td-none ws-nowrap">
-                        11ty LibDoc {{ libdocUtils.version }}
+                        justfahad.me
                     </a>
                 </nav>
             </footer>
         </main>
     </div>
     
-    <script src="/core/assets/js/sandbox.js"></script>
     <script src="/core/assets/js/hljs/highlight.min.js"></script>
     {% for hljsLang in libdocConfig.hljsLanguages %}
         <script src="/core/assets/js/hljs/languages/{{ hljsLang }}.min.js"></script>
     {% endfor %}
     <script src="/core/assets/js/ui.js"></script>
-    {% if libdocConfig.searchEnabled %}
-        <link rel="stylesheet" href="/core/assets/css/autocomplete.css">
-        <script src="/core/assets/js/autocomplete.min.js"></script>
-        <script src="/core/assets/js/fuse.js"></script>
-        <script src="/core/assets/js/fuzzy.js"></script>
-        <script src="/core/assets/js/hotkeys.min.js"></script>
-    {% endif  %}
 </body>
 </html>

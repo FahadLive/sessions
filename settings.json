@@ -1,32 +1,16 @@
 {
-    "siteTitle": "My Project Title",
-    "siteDescription": "This is the description of my project title",
-    "author": "John Doe",
+    "siteTitle": "Sessions",
+    "siteDescription": "Sessions is a website dedicated to share snippets for my sessions",
+    "author": "Mohammed Fahad",
     "faviconUrl": "/assets/myfavicon.png",
-    "blogTitle": "Blog",
-    "blogDescription": "Here is the description of the blog part",
-    "productionUrl": "https://eleventy-libdoc.netlify.app",
     "customLinks": [
         {
-            "url": "/feed.xml",
-            "text": "Atom feed"
+            "url": "https://justfahad.me",
+            "text": "About Me"
         },
         {
-            "url": "https://github.com/ita-design-system/eleventy-libdoc",
+            "url": "https://github.com/FahadLive",
             "text": "GitHub"
-        },
-        {
-            "url": "#",
-            "text": "Bluesky"
-        },
-        {
-            "url": "#",
-            "text": "LinkedIn"
-        },
-        {
-            "url": "#",
-            "text": "CodePen"
         }
-    ],
-    "editThisPageRootUrl": "https://github.com/ita-design-system/eleventy-libdoc/blob/main"
+    ]
 }

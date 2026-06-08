@@ -3,7 +3,6 @@ import eleventyNavigationPlugin             from "@11ty/eleventy-navigation";
 import { InputPathToUrlTransformPlugin }    from "@11ty/eleventy";
 import { eleventyImageTransformPlugin }     from "@11ty/eleventy-img";
 import { EleventyHtmlBasePlugin }           from "@11ty/eleventy";
-import pluginRss                            from "@11ty/eleventy-plugin-rss";
 // END 11TY imports
 
 // START LibDoc imports
@@ -17,7 +16,6 @@ export default function(eleventyConfig) {
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     eleventyConfig.addPlugin(eleventyImageTransformPlugin, libdocFunctions.pluginsParameters.eleventyImageTransform());
-    eleventyConfig.addPlugin(pluginRss);
     // END PLUGINS
 
     // START FILTERS
@@ -32,8 +30,6 @@ export default function(eleventyConfig) {
     // END FILTERS
 
     // START COLLECTIONS
-    eleventyConfig.addCollection("myTags", libdocFunctions.collections.myTags);
-    eleventyConfig.addCollection("postsByDateDescending", libdocFunctions.collections.postsByDateDescending);
     // END COLLECTIONS
 
     // START SHORTCODES
@@ -43,12 +39,9 @@ export default function(eleventyConfig) {
     eleventyConfig.addShortcode("icons", libdocFunctions.shortcodes.icons);
     eleventyConfig.addShortcode("icon", libdocFunctions.shortcodes.icon);
     eleventyConfig.addShortcode("iconCard", libdocFunctions.shortcodes.iconCard);
-    eleventyConfig.addPairedShortcode("sandbox", libdocFunctions.shortcodes.sandbox);
-    eleventyConfig.addPairedShortcode("sandboxFile", libdocFunctions.shortcodes.sandboxFile);
     // END SHORTCODES
 
     // START FILE COPY
-	eleventyConfig.addPassthroughCopy("sandboxes");
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("core/assets");
     eleventyConfig.addPassthroughCopy("favicon.png");

@@ -183,35 +183,6 @@ export default {
         }
     },
     collections: {
-        myTags: function(collectionsApi) {
-            const allData = collectionsApi.getAll();
-            let unsortedTagsCount = {};
-            allData.forEach(function(item) {
-                if (typeof item.data.tags == 'object') {
-                    item.data.tags.forEach(function(tag) {
-                        if (tag !== 'post') {
-                            if (unsortedTagsCount[tag] === undefined) {
-                                unsortedTagsCount[tag] = 1
-                            } else {
-                                unsortedTagsCount[tag]++
-                            }
-                        }
-                    })
-                }
-            });
-            let sortedObject = Object.fromEntries(
-                Object.entries(unsortedTagsCount).sort(([, a], [, b]) => b - a)
-            );
-            return Object.entries(sortedObject);
-        },
-        postsByDateDescending: function(collectionsApi) {
-            return collectionsApi.getFilteredByTag("post").sort(function (a, b) {
-                //return a.date - b.date; // sort by date - ascending
-                return b.date - a.date; // sort by date - descending
-                //return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
-                //return b.inputPath.localeCompare(a.inputPath); // sort by path - descending
-            });
-        }
     },
     shortcodes: {
         alert: async function(content, type, title) {
@@ -312,44 +283,5 @@ export default {
             markup += '</ul></aside>';
             return markup;
         },
-        sandbox: async function(content, sandboxTitle) {
-            const   code = libdocUtils.HTMLEncode(content.replace(/[\n\r]/, '')),
-                    title = typeof sandboxTitle == `string` ? sandboxTitle : libdocMessages.sandbox[libdocConfig.lang],
-                    iframeAttribute = `srcdoc="${code}"`,
-                    enableSwitchId = libdocUtils.generateRandomId(),
-                    iframeCommands = `<header class="d-flex jc-space-between | pl-5" style="height: 58px">
-                            <div class="d-flex ai-center | fvs-wght-400 fs-3 | c-neutral-500">
-                                srcdoc
-                            </div>
-                        </header>`;
-            return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code, enableSwitchId});
-        },
-        sandboxFile: async function(content, permalink, sandboxTitle) {
-            const   code = libdocUtils.HTMLEncode(content),
-                    iframeAttribute = `src="${permalink}"`,
-                    title = typeof sandboxTitle == `string` ? sandboxTitle : libdocMessages.sandbox[libdocConfig.lang],
-                    enableSwitchId = libdocUtils.generateRandomId(),
-                    iframeCommands = `<header class="d-flex jc-space-between gap-5 | pl-5 pr-5" style="height: 58px">
-                            <a  href="${permalink}"
-                                target="_blank"
-                                title="${libdocMessages.openInANewTab[libdocConfig.lang]}"
-                                class="d-flex ai-center gap-1 | p-0 | fvs-wght-400 fs-2 tt-uppercase td-none | sandbox__permalink"
-                                fs-2="xs">
-                                <span class="fvs-wght-400">${libdocMessages.open[libdocConfig.lang]}</span>
-                                <span class="icon-arrow-square-out"></span>
-                            </a>
-                            <div class="d-flex gap-7">
-                                <button type="button"
-                                    class="d-flex ai-center | p-0 | fvs-wght-400 fs-2 tt-uppercase | bc-0 b-0 cur-pointer | sandbox__reload">
-                                    <span class="o-hidden | to-ellipsis ws-nowrap">${libdocMessages.reload[libdocConfig.lang]}</span>
-                                </button>
-                                <button type="button"
-                                    class="d-flex ai-center | p-0 | fvs-wght-400 fs-2 tt-uppercase | bc-0 b-0 cur-pointer | sandbox__copy_url">
-                                    <span class="o-hidden | to-ellipsis ws-nowrap">${libdocMessages.copyURL[libdocConfig.lang]}</span>
-                                </button>
-                            </div>
-                        </header>`;
-            return libdocUtils.templates.sandbox({iframeAttribute, iframeCommands, title, code, enableSwitchId});
-        }
     }
 }

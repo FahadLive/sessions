@@ -1,45 +1,46 @@
 @media not print {
     :root {
-        --ita-colors-neutral-900: #EEE;
-        --ita-colors-neutral-800: #BBB;
-        --ita-colors-neutral-700: #999;
-        --ita-colors-neutral-600: #787878;
-        --ita-colors-neutral-500: #4F4F4F;
-        --ita-colors-neutral-400: #3A3A3A;
-        --ita-colors-neutral-300: #252525;
-        --ita-colors-neutral-200: #121212;
-        --ita-colors-neutral-100: #000000;
-        --ita-colors-primary-900: #d2e5f1;
-        --ita-colors-primary-800: #b9e1f9;
-        --ita-colors-primary-700: #8dcaef;
-        --ita-colors-primary-600: #55b6f4;
-        --ita-colors-primary-500: #009afa;
-        --ita-colors-primary-400: #025081;
-        --ita-colors-primary-300: #023a5c;
-        --ita-colors-primary-200: #0a1924;
-        --ita-colors-primary-100: #070f13;
-        --ita-colors-success-900: #daffc5;
-        --ita-colors-success-500: #5cab33;
-        --ita-colors-success-100: #1a1d18;
-        --ita-colors-warning-900: #ffe4bc;
-        --ita-colors-warning-500: #EBA232;
-        --ita-colors-warning-100: #231d13;
-        --ita-colors-danger-900: #ffd1d1;
-        --ita-colors-danger-500: #DF3528;
-        --ita-colors-danger-100: #251312;
+        --ita-colors-neutral-900: #e0def4;
+        --ita-colors-neutral-800: #b8b5d0;
+        --ita-colors-neutral-700: #908caa;
+        --ita-colors-neutral-600: #7f7b97;
+        --ita-colors-neutral-500: #6e6a86;
+        --ita-colors-neutral-400: #312d48;
+        --ita-colors-neutral-300: #26233a;
+        --ita-colors-neutral-200: #1f1d2e;
+        --ita-colors-neutral-100: #191724;
+        --ita-colors-primary-900: #f3ecfa;
+        --ita-colors-primary-800: #e8dff5;
+        --ita-colors-primary-700: #dcccf1;
+        --ita-colors-primary-600: #d0baec;
+        --ita-colors-primary-500: #c4a7e7;
+        --ita-colors-primary-400: #4e3f78;
+        --ita-colors-primary-300: #332a58;
+        --ita-colors-primary-200: #231e3e;
+        --ita-colors-primary-100: #1c1830;
+        --ita-colors-success-900: #cde6ea;
+        --ita-colors-success-500: #9ccfd8;
+        --ita-colors-success-100: #192328;
+        --ita-colors-warning-900: #fbe0b9;
+        --ita-colors-warning-500: #f6c177;
+        --ita-colors-warning-100: #252016;
+        --ita-colors-danger-900: #f3b7c6;
+        --ita-colors-danger-500: #eb6f92;
+        --ita-colors-danger-100: #251a1f;
         --libdoc-image-background-color: var(--libdoc-image-background-color-dark-mode) !important;
-        --libdoc-soft-shadow: 0px 0px 10px rgba(0,0,0,1);
+        --libdoc-soft-shadow: 0px 0px 10px rgba(0,0,0,0.5);
         --libdoc-long-shadow: 0px 0px 10px 0px var(--ita-colors-neutral-100), 5px 5px 10px 0px var(--ita-colors-primary-100), -5px 5px 10px 0px var(--ita-colors-primary-100), -5px -5px 10px 0px var(--ita-colors-primary-100), 5px -5px 10px 0px var(--ita-colors-primary-100);
         --libdoc-long-shadow-alt: 
             5px 5px 10px 0px var(--ita-colors-primary-100),
             10px 10px 40px 0px var(--ita-colors-primary-500),
+            20px 20px 40px 0px var(--ita-colors-primary-300),
             -20px 20px 40px 0px var(--ita-colors-primary-300),
             -20px -20px 40px 0px var(--ita-colors-primary-300),
             20px -20px 40px 0px var(--ita-colors-primary-300),
-            5px 5px 10px 0px var(--ita-colors-primary-300),
-            -5px 5px 10px 0px var(--ita-colors-primary-300),
-            -5px -5px 10px 0px var(--ita-colors-primary-300),
-            5px -5px 10px 0px var(--ita-colors-primary-300)
+            5px 5px 10px 0px var(--ita-colors-primary-100),
+            -5px 5px 10px 0px var(--ita-colors-primary-100),
+            -5px -5px 10px 0px var(--ita-colors-primary-100),
+            5px -5px 10px 0px var(--ita-colors-primary-100)
     }
     html {
         background-color: var(--ita-colors-neutral-200);
@@ -170,32 +171,32 @@
 /* PRINT */
 @media print {
     :root {
-        --ita-colors-neutral-100: #FFFFFF !important;
-        --ita-colors-neutral-200: #F6F6F6 !important;
-        --ita-colors-neutral-300: #EEEEEE !important;
-        --ita-colors-neutral-400: #E5E5E5 !important;
-        --ita-colors-neutral-500: #BFBFBF !important;
-        --ita-colors-neutral-600: #999999 !important;
-        --ita-colors-neutral-700: #444444 !important;
-        --ita-colors-neutral-800: #252525 !important;
-        --ita-colors-neutral-900: #000000 !important;
-        --ita-colors-primary-100: #fafcff !important;
-        --ita-colors-primary-200: #daeafb !important;
-        --ita-colors-primary-300: #a5d0fd !important;
-        --ita-colors-primary-400: #5dabfe !important;
-        --ita-colors-primary-500: #0165d0 !important;
-        --ita-colors-primary-600: #0156b2 !important;
-        --ita-colors-primary-700: #03458c !important;
-        --ita-colors-primary-800: #02366f !important;
-        --ita-colors-primary-900: #01254b !important;
-        --ita-colors-success-100: #f2fbec !important;
-        --ita-colors-success-500: #5cab33 !important;
-        --ita-colors-success-900: #2b650c !important;
-        --ita-colors-warning-100: #fff7eb !important;
-        --ita-colors-warning-500: #EBA232 !important;
-        --ita-colors-warning-900: #87560b !important;
-        --ita-colors-danger-100: #fef3f3 !important;
-        --ita-colors-danger-500: #DF3528 !important;
-        --ita-colors-danger-900: #760e06 !important;
+        --ita-colors-neutral-100: #faf4ed !important;
+        --ita-colors-neutral-200: #fffaf3 !important;
+        --ita-colors-neutral-300: #f2e9de !important;
+        --ita-colors-neutral-400: #e2dad0 !important;
+        --ita-colors-neutral-500: #9893a5 !important;
+        --ita-colors-neutral-600: #8b86a0 !important;
+        --ita-colors-neutral-700: #797593 !important;
+        --ita-colors-neutral-800: #655d82 !important;
+        --ita-colors-neutral-900: #575279 !important;
+        --ita-colors-primary-100: #f5f0fa !important;
+        --ita-colors-primary-200: #ece3f5 !important;
+        --ita-colors-primary-300: #ddd0eb !important;
+        --ita-colors-primary-400: #bda8d4 !important;
+        --ita-colors-primary-500: #907aa9 !important;
+        --ita-colors-primary-600: #7a6493 !important;
+        --ita-colors-primary-700: #685284 !important;
+        --ita-colors-primary-800: #544172 !important;
+        --ita-colors-primary-900: #42315e !important;
+        --ita-colors-success-100: #ebf4f2 !important;
+        --ita-colors-success-500: #56949f !important;
+        --ita-colors-success-900: #2b5d66 !important;
+        --ita-colors-warning-100: #fcf0e1 !important;
+        --ita-colors-warning-500: #ea9d34 !important;
+        --ita-colors-warning-900: #8e601d !important;
+        --ita-colors-danger-100: #f7e4e8 !important;
+        --ita-colors-danger-500: #b4365a !important;
+        --ita-colors-danger-900: #751f3b !important;
     }
 }
