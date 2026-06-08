@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f3f4f6"/>
+  <path d="M120 180 Q100 120 140 100 Q160 90 180 110 Q200 90 220 100 Q260 120 240 180 Z" fill="#6b7280" opacity="0.3"/>
+  <path d="M100 180 Q90 130 130 110 Q150 100 170 120 Q190 100 210 110 Q250 130 230 180 Z" fill="#4b5563" opacity="0.4"/>
+  <path d="M110 190 L220 190 L210 210 L120 210 Z" fill="#9ca3af" opacity="0.5"/>
+  <line x1="160" y1="110" x2="160" y2="190" stroke="#d1d5db" stroke-width="2"/>
+  <line x1="180" y1="110" x2="180" y2="190" stroke="#d1d5db" stroke-width="2"/>
+  <text x="200" y="260" font-family="system-ui,sans-serif" font-size="14" fill="#9ca3af" text-anchor="middle">Running Shoes</text>
+</svg>
