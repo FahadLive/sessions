@@ -4,8 +4,8 @@ title: Sample Product Images
 description: Download these sample product images for the Supabase tutorial
 eleventyNavigation:
   key: Sample Images
-  parent: Product Listing
-  order: 2
+  parent: E-commerce App
+  order: 4
 ---
 
 ## Sample Product Images

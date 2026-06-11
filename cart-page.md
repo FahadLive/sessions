@@ -3,9 +3,9 @@ layout: libdoc_page.liquid
 title: Cart - useState and context for Cart Management
 description: Add a fully functional shopping cart to your Next.js + Supabase storefront.
 eleventyNavigation:
-    key: Build cart
-    parent: Add Product (Admin)
-    order: 1
+    key: Build Cart
+    parent: E-commerce App
+    order: 3
 ---
 
 # Cart: useState for Cart Management

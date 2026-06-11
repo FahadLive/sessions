@@ -321,6 +321,13 @@ const libdocUi = {
             libdocUi.updateFTOCBtns();
             libdocUi.updateGTTBtns();
         },
+        _navPrimaryLinkClick: function(evt) {
+            var screenSize = libdocUi.getCurrentScreenSizeName();
+            if (screenSize === 'xs' || screenSize === 'sm') {
+                libdocUi.el.navPrimaryCheckbox.checked = false;
+                libdocUi.handlers._navPrimaryCheckboxChange();
+            }
+        },
         _searchSubmit: function(evt) {
             const elInput = evt.target.querySelector('input');
             if (elInput !== null) {
@@ -961,6 +968,9 @@ const libdocUi = {
         libdocUi.addExternalLinkIconIntoMainContent();
         libdocUi.updateCustomLinks();
         libdocUi.el.navPrimaryCheckbox.addEventListener('change', libdocUi.handlers._navPrimaryCheckboxChange);
+        libdocUi.el.navPrimary.querySelectorAll('a').forEach(function(el) {
+            el.addEventListener('click', libdocUi.handlers._navPrimaryLinkClick);
+        });
         window.addEventListener('resize', libdocUi.handlers._windowResize);
         window.addEventListener('load', libdocUi.handlers._windowLoad);
         libdocUi.el.navPrimary.addEventListener('scroll', libdocUi.handlers._scrollNavPrimary);

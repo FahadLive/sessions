@@ -4,8 +4,8 @@ title: Admin Page — Add Products with Supabase
 description: A beginner-friendly admin page to add products with image upload to Supabase
 eleventyNavigation:
     key: Add Product (Admin)
-    parent: Product Listing
-    order: 1
+    parent: E-commerce App
+    order: 2
 ---
 
 ## Simplified Guide: Admin Add Product Page with Supabase + Next.js + Tailwind

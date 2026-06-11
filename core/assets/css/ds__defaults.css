@@ -55,6 +55,26 @@ input[type="search"]::-webkit-search-results-decoration {
     content: '\e910';
 }
 
+/* MOBILE SIDEBAR OVERLAY */
+@media (max-width: 959px) {
+    body:has(#nav_primary_checkbox:checked) {
+        overflow: hidden;
+    }
+    #nav_small_devices:has(#nav_primary_checkbox:checked) ~ #nav_primary_container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 999 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+        overflow-y: auto !important;
+    }
+}
+
 /* SMOOTH PAGE TRANSITION (CHROME AND SAFARI ONLY) */
 @view-transition {
     navigation: auto;

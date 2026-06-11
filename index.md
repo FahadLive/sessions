@@ -1,9 +1,9 @@
 ---
 layout: libdoc_page.liquid
-title: Building Product Listing with Supabase
-description: A comprehensive guide to building a product card component with Supabase integration
+title: E-commerce App — Building with Supabase + Next.js
+description: A comprehensive guide series for building an e-commerce app with Supabase and Next.js
 eleventyNavigation:
-    key: Product Listing
+    key: E-commerce App
     order: 1
 ---
 
