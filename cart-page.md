@@ -46,8 +46,7 @@ Create `context/CartContext.tsx`. This is the single source of truth for cart st
 
 ```tsx
 "use client";
-
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 export type CartItem = {
     id: string;
@@ -69,8 +68,22 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | null>(null);
 
+const CART_STORAGE_KEY = "cart_items";
+
 export function CartProvider({ children }: { children: ReactNode }) {
-    const [items, setItems] = useState<CartItem[]>([]);
+    const [items, setItems] = useState<CartItem[]>(() => {
+        if (typeof window === "undefined") return [];
+        try {
+            const stored = localStorage.getItem(CART_STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        } catch {
+            return [];
+        }
+    });
+
+    useEffect(() => {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+    }, [items]);
 
     function addToCart(product: Omit<CartItem, "quantity">) {
         setItems((prev) => {
