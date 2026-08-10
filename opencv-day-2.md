@@ -18,11 +18,11 @@ Today we build **directly on the Day 1 code**. Same imports, same `HandLandmarke
 
 Today's only new idea: **a canvas is a second, invisible image that remembers every line drawn.** Each frame, combine "what the camera sees" with "what's on the canvas" so a drawing doesn't disappear the instant the hand moves.
 
-## Step 4 — Add a canvas
+## Step 4 (continued from Day 1) — Add a canvas
 
 Start from your Day 1 program and add a canvas. Replace the whole contents of `main.py`:
 
-```python
+```py
 import cv2
 import mediapipe as mp
 import numpy as np
@@ -133,7 +133,7 @@ Before scrolling on, try it yourself: **how would you tell the computer the fing
 
 Replace the `if result.hand_landmarks:` block with:
 
-```python
+```py
         if result.hand_landmarks:
             hand = result.hand_landmarks[0]
 
@@ -175,7 +175,7 @@ Replace the `if result.hand_landmarks:` block with:
 
 This block uses `prev_x, prev_y` — but they're not defined yet! Add them right after `canvas = np.zeros_like(frame)`:
 
-```python
+```py
 prev_x, prev_y = 0, 0
 ```
 
@@ -187,7 +187,7 @@ Run it. Point your finger up and move it around — you're drawing in the air. L
 
 Replace the keyboard check near the bottom of the loop (the `if cv2.waitKey(1) & 0xFF == ord('q'):` block) with:
 
-```python
+```py
         key = cv2.waitKey(1) & 0xFF
 
         # Q → quit
@@ -203,34 +203,11 @@ Replace the keyboard check near the bottom of the loop (the `if cv2.waitKey(1) &
 
 Use the rest of this time for free practice — initials, a smiley, whatever. Most common issue: canvas size mismatch if the webcam resolution changes mid-run — restart with `uv run main.py` to fix it.
 
----
-
-## 🏆 Competition: "Air Pencil Draw-Off"
-
-Low-stakes and fast. Two quick rounds, whole class watches on a shared screen.
-
-1. **Round 1 — Speed Star (60 sec):** draw a 5-pointed star in the air, as clean as possible, before time runs out. `c` restarts (costs time). Class votes on the best star by cheer or show of hands.
-2. **Round 2 — Sign Your Name (45 sec):** draw a first name legibly, once, no restarts. Most readable name wins.
-
-**Scoring:**
-
-| Criteria                        | Points |
-| ------------------------------- | ------ |
-| Recognizable shape / legible    | 2      |
-| Finished within time            | 1      |
-| Smooth lines (not shaky/broken) | 1      |
-
-Total out of 4 per round; add both rounds for a winner.
-
-**Style bonus:** finished both rounds early? Change the line color (`(255, 0, 255)` → any BGR tuple) or thickness (the `6` in `cv2.line`) for a "style bonus."
-
----
-
 ## Full reference solution
 
 If you fell behind or want to check your work, here's the complete final program:
 
-```python
+```py
 import cv2
 import mediapipe as mp
 import numpy as np

@@ -107,7 +107,7 @@ If you see `hand_landmarker.task` in the list (about 7.5 MB), you're set.
 
 Put this in `main.py` and run it:
 
-```python
+```py
 import cv2
 import mediapipe as mp
 import numpy
