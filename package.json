@@ -1,21 +1,21 @@
 {
-  "name": "eleventy-libdoc",
-  "version": "0.14.9",
-  "description": "An Eleventy starter project to craft slick and responsive documentation",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^6.0.1",
-    "@11ty/eleventy-navigation": "^0.3.5",
-    "@11ty/eleventy-plugin-rss": "^2.0.4",
-    "sharp": "^0.33.5"
-  },
-  "packageManager": "pnpm@10.33.1+sha512.05ba3c1d5d1c18f68df06470d74055e62d41fc110a0c660db1b2dfb2785327f04cf0f68345d4609bc52089e7fa0343c31593b2f9594e2c5d5da426230acc9820"
+    "name": "eleventy-libdoc",
+    "version": "0.14.9",
+    "description": "An Eleventy starter project to craft slick and responsive documentation",
+    "main": "index.js",
+    "scripts": {
+        "dev": "npx @11ty/eleventy --serve"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "dependencies": {
+        "@11ty/eleventy": "^3.0.0",
+        "@11ty/eleventy-img": "^6.0.1",
+        "@11ty/eleventy-navigation": "^0.3.5",
+        "@11ty/eleventy-plugin-rss": "^2.0.4",
+        "sharp": "^0.33.5"
+    },
+    "packageManager": "pnpm@10.33.1+sha512.05ba3c1d5d1c18f68df06470d74055e62d41fc110a0c660db1b2dfb2785327f04cf0f68345d4609bc52089e7fa0343c31593b2f9594e2c5d5da426230acc9820"
 }
