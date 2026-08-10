@@ -1,7 +1,8 @@
 {
-    "siteTitle": "Sessions",
-    "siteDescription": "Sessions is a website dedicated to share snippets for my sessions",
+    "siteTitle": "Guides",
+    "siteDescription": "Guides is a website dedicated to share snippets for my sessions",
     "author": "Mohammed Fahad",
+    "ogImageUrl": "/assets/opengraph.jpg",
     "faviconUrl": "/assets/myfavicon.png",
     "customLinks": [
         {
