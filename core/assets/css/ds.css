@@ -1,33 +1,34 @@
 
 :root {
   /* BRiCSS CSS variables start with --ita- */
-  --ita-colors-neutral-100: #faf4ed;
-  --ita-colors-neutral-200: #fffaf3;
-  --ita-colors-neutral-300: #f2e9de;
-  --ita-colors-neutral-400: #e2dad0;
-  --ita-colors-neutral-500: #9893a5;
-  --ita-colors-neutral-600: #8b86a0;
-  --ita-colors-neutral-700: #797593;
-  --ita-colors-neutral-800: #655d82;
-  --ita-colors-neutral-900: #575279;
-  --ita-colors-primary-100: #f5f0fa;
-  --ita-colors-primary-200: #ece3f5;
-  --ita-colors-primary-300: #ddd0eb;
-  --ita-colors-primary-400: #bda8d4;
-  --ita-colors-primary-500: #907aa9;
-  --ita-colors-primary-600: #7a6493;
-  --ita-colors-primary-700: #685284;
-  --ita-colors-primary-800: #544172;
-  --ita-colors-primary-900: #42315e;
-  --ita-colors-success-100: #ebf4f2;
-  --ita-colors-success-500: #56949f;
-  --ita-colors-success-900: #2b5d66;
-  --ita-colors-warning-100: #fcf0e1;
-  --ita-colors-warning-500: #ea9d34;
-  --ita-colors-warning-900: #8e601d;
-  --ita-colors-danger-100: #f7e4e8;
-  --ita-colors-danger-500: #b4365a;
-  --ita-colors-danger-900: #751f3b;
+  /* justfahad.me theme: warm cream paper, terracotta accent, near-black ink */
+  --ita-colors-neutral-100: #fdfbf7;
+  --ita-colors-neutral-200: #f7f2e9;
+  --ita-colors-neutral-300: #efe9dd;
+  --ita-colors-neutral-400: #e3d9c7;
+  --ita-colors-neutral-500: #c0b4a0;
+  --ita-colors-neutral-600: #8f8572;
+  --ita-colors-neutral-700: #6f6759;
+  --ita-colors-neutral-800: #4d473c;
+  --ita-colors-neutral-900: #302b23;
+  --ita-colors-primary-100: #faf7f0;
+  --ita-colors-primary-200: #f3ede2;
+  --ita-colors-primary-300: #e6dfd2;
+  --ita-colors-primary-400: #e0cfc0;
+  --ita-colors-primary-500: #b5544a;
+  --ita-colors-primary-600: #9d453c;
+  --ita-colors-primary-700: #84392f;
+  --ita-colors-primary-800: #682c24;
+  --ita-colors-primary-900: #111111;
+  --ita-colors-success-100: #eef0e4;
+  --ita-colors-success-500: #6b8256;
+  --ita-colors-success-900: #46522f;
+  --ita-colors-warning-100: #faf0dc;
+  --ita-colors-warning-500: #cd9c4f;
+  --ita-colors-warning-900: #8a6330;
+  --ita-colors-danger-100: #f9e4e1;
+  --ita-colors-danger-500: #c53b42;
+  --ita-colors-danger-900: #7e2027;
   --ita-fontSizes-1: 10px;
   --ita-fontSizes-2: 12px;
   --ita-fontSizes-3: 14px;
@@ -887,42 +888,20 @@
 .fvs-slant-on {
   --dsg-slnt: -15;
 }
-.fvs-wght-300 {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-wght-400 {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-wght-500 {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-wght-600 {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
+.fvs-wght-300,
+.fvs-wght-400,
+.fvs-wght-500,
+.fvs-wght-600,
 .fvs-wght-700 {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
+  font-weight: var(--dsg-wght, 300);
 }
-.fvs-mono-off {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-mono-on {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-casual-off {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-casual-on {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-cursive-off {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-cursive-on {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
-.fvs-slant-off {
-  font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
-}
+.fvs-mono-off,
+.fvs-mono-on,
+.fvs-casual-off,
+.fvs-casual-on,
+.fvs-cursive-off,
+.fvs-cursive-on,
+.fvs-slant-off,
 .fvs-slant-on {
   font-variation-settings: "wght" var(--dsg-wght, 300), "MONO" var(--dsg-MONO, 0), "CASL" var(--dsg-CASL, 0), "CRSV" var(--dsg-CRSV, 0), "slnt" var(--dsg-slnt, 0);
 }

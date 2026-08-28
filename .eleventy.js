@@ -30,6 +30,19 @@ export default function(eleventyConfig) {
     // END FILTERS
 
     // START COLLECTIONS
+    eleventyConfig.addCollection("series", function(collectionApi) {
+        return collectionApi.getAll()
+            .filter(function(item) {
+                return item.data.eleventyNavigation
+                    && item.data.eleventyNavigation.key
+                    && !item.data.eleventyNavigation.parent;
+            })
+            .sort(function(a, b) {
+                const aOrder = a.data.eleventyNavigation.order ?? 0;
+                const bOrder = b.data.eleventyNavigation.order ?? 0;
+                return aOrder - bOrder;
+            });
+    });
     // END COLLECTIONS
 
     // START SHORTCODES

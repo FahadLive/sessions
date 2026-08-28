@@ -4,37 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }}</title>
-    {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> {% endcomment %}
 
     <meta itemprop="name" content="{{ pageTitle }}">
     <meta name="description" itemprop="description" content="{{ pageDescription }}">
     <meta name="application-name" content="{{ pageTitle }}">
     <meta name="author" content="{{ pageAuthor }}">
     <link rel="icon" type="image/png" href="{{ libdocConfig.faviconUrl }}">
-    
+
     <!-- Microsoft -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-starturl" content="{{ page.url }}">
     <meta name="msapplication-tooltip" content="{{ pageTitle }}">
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ page.url }}">
     <meta property="og:title" content="{{ pageTitle }}">
     <meta property="og:description" content="{{ pageDescription }}">
     <meta property="og:image" content="{{ pageOgImageUrl }}">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ pageTitle }}">
     <meta name="twitter:description" content="{{ pageDescription }}">
     <meta name="twitter:url" content="{{ page.url }}">
     <meta name="twitter:image" content="{{ pageOgImageUrl }}">
-    
+
     <!-- iOS -->
     <meta name="apple-mobile-web-app-title" content="{{ pageTitle }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    
+
     <!-- Android -->
     <meta name="mobile-web-app-capable" content="yes">
 
@@ -50,14 +49,11 @@
             size-adjust: 103%;
         }
         html, body {
-            font-family: Satoshi, fallbackFont, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+            font-family: fallbackFont, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
             font-display: swap;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-        }
         pre, code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-family: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
         }
     </style>
     <link rel="stylesheet" href="/core/assets/css/fonts.css">
@@ -76,11 +72,6 @@
             --ita-widths-content: {{ libdocSystem.widthContent }}px;
             --ita-widths-main-container-max: calc(2 * var(--ita-widths-content) + var(--ita-widths-sidebar));
         }
-        {% if libdocConfig.roundedImagesCorners %}
-            main img {
-                border-radius: 9px;
-            }
-        {% endif %}
     </style>
     <noscript>
         <link rel="stylesheet" href="/core/assets/css/noscript.css">
@@ -121,13 +112,6 @@
                         <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.homepageShort[pageLang] }}</span>
                     </a>
 
-                    <button type="button"
-                        id="sd_floating_toc_toggle_btn"
-                        class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
-                        disabled>
-                        <span class="icon-list-dashes fs-6"></span>
-                        <span class="fvs-wght-400 fs-1 tt-uppercase">{{ libdocMessages.tableOfContentAbbr[pageLang] }}</span>
-                    </button>
                     <button type="button"
                         id="sd_gtt_btn"
                         class="d-flex fd-column jc-center ai-center gap-1 | pl-2 pr-2 | ta-center | cur-pointer c-primary-900 bc-neutral-100 b-0 brad-3"
@@ -204,10 +188,6 @@
                         </li>
                     {% endif %}
                 </menu>
-                
-
-
-
 
                 <div id="nav_primary"
                     class="pos-relative | fg-1 o-auto">
@@ -259,67 +239,63 @@
                         </menu>
                     </details>
                 </nav>
-                <h1 class="mt-3 mb-0 | lsp-5 fvs-wght-700 tws-balance {% if pageTitle == page.inputPath %}wb-break-work{% endif %}"
+            </header>
+
+            <section class="d-flex fd-column ai-center | w-100 mt-9 mb-9 | ta-center" aria-label="Welcome">
+                <h1 class="mt-6 mb-0 | lsp-5 fvs-wght-700 tws-balance | c-neutral-900"
                     fs-10="md"
                     fs-9="xs,sm">
-                    {{ pageTitle }}
+                    {{ libdocConfig.siteTitle }}
                 </h1>
-                {% if pageDescription != '' %}
-                    <p class="d-flex ai-center fw-wrap gap-2 | pt-5 pl-5 pb-5 m-0 | fvs-wght-400 tws-balance fs-7 lsp-3 lh-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"
-                        pt-3="xs"
-                        pb-3="xs"
-                        fs-6="sm"
-                        fs-5="xs">
-                        {{ pageDescription }}
+                {% if libdocConfig.siteDescription != '' %}
+                    <p class="mt-5 mb-0 | fvs-wght-400 tws-balance | c-neutral-700"
+                        fs-7="md"
+                        fs-6="xs,sm">
+                        {{ libdocConfig.siteDescription }}
                     </p>
-                {% else %}
-                    <div class="pt-5 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
                 {% endif %}
+                <div class="d-flex fw-wrap jc-center gap-3 | mt-9">
+                    <a href="#guides" class="btn btn-primary">Browse the guides</a>
+                </div>
+            </section>
 
-                {% if tocMarkup != '' %}
-                    <details id="toc_main" open>
-                        <summary class="d-flex ai-center | pt-5 pb-5 | fvs-wght-500 fs-3 | bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0 cur-pointer">
-                            <span class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></span>
-                            <span class="d-flex ai-center gap-1 | lsp-2">
-                                <span class="icon-minus-circle | fs-6 | c-primary-500"></span>
-                                <span class="icon-plus-circle | fs-6 | c-primary-500"></span>
-                                {{ libdocMessages.tableOfContent[pageLang] }}
-                            </span>
-                        </summary>
-                        {{ tocMarkup }}
-                    </details>
-                {% endif %}
-            </header>
-            <noscript>
-                {% assign noscriptAlert = libdocMessages.noscriptAlert[pageLang] %}
-                {% alert noscriptAlert %}
-            </noscript>
-            {{ content | cleanup | autoids }}
+            <section id="guides" class="d-flex fd-column | w-100 mb-11" aria-label="Guides">
+                <h2 class="mt-0 mb-7 | fvs-wght-700 lsp-4 | c-neutral-900" fs-9="md" fs-8="xs,sm">
+                    Guides
+                </h2>
+                <div class="d-flex fw-wrap | rgap-7">
+                    {% for series in collections.series %}
+                        <div class="w-4t | w-100--xs w-100--sm">
+                            <a href="{{ series.url }}" class="td-none">
+                                <div class="d-flex fd-column | p-7 h-100 | brad-3 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 | __hover-1 __soft-shadow">
+                                    <h3 class="mt-0 mb-4 | fvs-wght-700 lsp-3 lh-5 tws-balance | c-primary-900" fs-5="md" fs-4="xs,sm">
+                                        {{ series.data.title }}
+                                    </h3>
+                                    {% if series.data.description %}
+                                        <p class="m-0 | fvs-wght-400 fs-3 lh-5 | c-neutral-700">
+                                            {{ series.data.description }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+
             <footer class="minh-100vh">
                 <div class="pt-11 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
-                <nav class="d-flex ai-center rgap-7 | blwidth-1 blstyle-dashed bcolor-neutral-500"
-                    fw-wrap="xs">
-                    <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
-                    {% if editThisPageRootUrl.size > 0 %}
-                        <a  href="{{ editThisPageUrl }}"
-                            target="_blank"
-                            class="btn btn-primary-light">
-                            <span class="icon-pencil-simple"></span>
-                            {{ libdocMessages.editThisPage[libdocConfig.lang] }}
-                        </a>
-                    {% endif %}
-                    <div class="w-100" d-none="sm,md"></div>
-                    <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" w-100="sm,md"></div>
+                <nav class="w-100 | pl-5 | blwidth-1 blstyle-dashed bcolor-neutral-500">
                     <a  href="https://justfahad.me"
                         target="_blank"
-                        class="d-flex ai-center gap-2 | pl-2 pr-2 | fvs-wght-400 fs-2 lsp-3 lh-3 td-none ws-nowrap">
+                        class="d-inline-flex ai-center gap-2 | pt-5 pb-5 | fvs-wght-400 fs-2 lsp-3 lh-3 td-none ws-nowrap">
                         justfahad.me
                     </a>
                 </nav>
             </footer>
         </main>
     </div>
-    
+
     <script src="/core/assets/js/hljs/highlight.min.js"></script>
     {% for hljsLang in libdocConfig.hljsLanguages %}
         <script src="/core/assets/js/hljs/languages/{{ hljsLang }}.min.js"></script>

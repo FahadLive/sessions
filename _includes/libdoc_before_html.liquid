@@ -54,6 +54,24 @@
 {%- assign tag_replacement = '<' | append: libdocSystem.navigationOptions.listElement | append: ' class="d-flex fd-column fg-1 order-1 | m-0 pl-5 o-hidden | ls-none">' -%}
 {%- assign eleventyNavigationMenu = eleventyNavigationMenu | replace: tag_to_replace, tag_replacement -%}
 
+{% comment %} Home navigation link {% endcomment %}
+{%- assign homeUrl = libdocConfig.htmlBasePathPrefix | append: '/' -%}
+{%- if page.url == '/' -%}
+    {%- assign homeActive = ' aria-current="page"' -%}
+{%- else -%}
+    {%- assign homeActive = '' -%}
+{%- endif -%}
+{%- capture homeNavLink -%}
+<ol class="d-flex fd-column | m-0 pl-0 pt-3 pb-0 | ls-none">
+    <li class="d-flex fw-wrap ai-center">
+        <a href="{{ homeUrl }}"{{ homeActive }} class="d-flex ai-center gap-1 | pos-relative | w-100 pt-2 pb-2 | td-none lh-5 | c-neutral-900 nav_primary__anchor">
+            <span class="icon-house | fs-4 | c-primary-600"></span>
+            <span>{{ libdocMessages.homepageShort[pageLang] }}</span>
+        </a>
+    </li>
+</ol>
+{%- endcapture -%}
+
 {% comment %} header margin {% endcomment %}
 {%- assign headerMargin = 'mb-7' -%}
 

@@ -1,20 +1,23 @@
 :root {
     --libdoc-container-width: var(--ita-widths-content);
-    --libdoc-font-family: "Recursive", "fallbackFont";
+    --libdoc-font-family: "Satoshi", "fallbackFont";
+    --libdoc-display-font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --libdoc-hand-font-family: "Caveat", "Comic Sans MS", cursive;
+    --libdoc-mono-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --libdoc-damier: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAHElEQVR4AWP4jwOcwQFoo2FUAy4JXAbRRMOoBgCE0rCfubvZNQAAAABJRU5ErkJggg==');
-    --libdoc-soft-shadow: 0px 0px 10px rgba(87, 82, 121, 0.12);
+    --libdoc-soft-shadow: 0px 0px 10px rgba(17, 17, 17, 0.12);
     --libdoc-long-shadow:
-        1px 1px 2px rgba(87, 82, 121, 0.08),
-        5px 6px 9px rgba(87, 82, 121, 0.26),
-        12px 13px 21px rgba(87, 82, 121, 0.34),
-        22px 24px 38px rgba(87, 82, 121, 0.42),
-        34px 37px 59px rgba(87, 82, 121, 0.50);
+        1px 1px 2px rgba(17, 17, 17, 0.08),
+        5px 6px 9px rgba(17, 17, 17, 0.26),
+        12px 13px 21px rgba(17, 17, 17, 0.34),
+        22px 24px 38px rgba(17, 17, 17, 0.42),
+        34px 37px 59px rgba(17, 17, 17, 0.50);
     --libdoc-long-shadow-alt:
-        1px 1px 2px rgba(144, 122, 169, 0.08),
-        5px 6px 9px rgba(144, 122, 169, 0.26),
-        12px 13px 21px rgba(144, 122, 169, 0.34),
-        22px 24px 38px rgba(144, 122, 169, 0.42),
-        34px 37px 59px rgba(144, 122, 169, 0.50);
+        1px 1px 2px rgba(181, 84, 74, 0.08),
+        5px 6px 9px rgba(181, 84, 74, 0.26),
+        12px 13px 21px rgba(181, 84, 74, 0.34),
+        22px 24px 38px rgba(181, 84, 74, 0.42),
+        34px 37px 59px rgba(181, 84, 74, 0.50);
 }
 
 /* BROWSERS DEFAULTS */
@@ -85,16 +88,17 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 body,
 input,
-code,
 button {
     font-family: var(--libdoc-font-family);
 }
+code {
+    font-family: var(--libdoc-mono-font-family);
+}
 body {
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 400;
     font-style: normal;
     font-size: var(--ita-fontSizes-5);
-    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0, "wght" 360;
     letter-spacing: -0.01em;
 }
 html,
@@ -112,7 +116,7 @@ input:focus {
     box-shadow: var(--libdoc-soft-shadow);
 }
 code {
-    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0.0, "MONO" 1, "wght" 300;
+    font-family: var(--libdoc-mono-font-family);
     line-height: 1.6em;
     font-size: var(--ita-fontSizes-4);
 }
@@ -153,34 +157,30 @@ main h6 {
     position: relative;
     scroll-margin-top: var(--ita-spacings-6);
     text-wrap-style: balance;
+    font-family: var(--libdoc-display-font-family);
+    font-weight: 400;
 }
 main h1 {
-    font-variation-settings: "wght" 800, "MONO" 0, "CASL" 0, "CRSV" 0.0;
     font-size: var(--ita-fontSizes-9);
     letter-spacing: -0.06em;
 }
 main h2 {
-    font-variation-settings: "wght" 700, "MONO" 0, "CASL" 0, "CRSV" 0.0;
     font-size: var(--ita-fontSizes-9);
     letter-spacing: -0.06em;
 }
 main h3 {
-    font-variation-settings: "wght" 800, "MONO" 0, "CASL" 0, "CRSV" 0.0;
     font-size: var(--ita-fontSizes-8);
     letter-spacing: -0.05em;
 }
 main h4 {
-    font-variation-settings: "wght" 700, "MONO" 0, "CASL" 0, "CRSV" 0.0;
     font-size: var(--ita-fontSizes-8);
     letter-spacing: -0.05em;
 }
 main h5 {
-    font-variation-settings: "wght" 800, "MONO" 0, "CASL" 0, "CRSV" 0.0;
     font-size: var(--ita-fontSizes-7);
     letter-spacing: -0.05em;
 }
 main h6 {
-    font-variation-settings: "wght" 700, "MONO" 0, "CASL" 0, "CRSV" 0.0;
     font-size: var(--ita-fontSizes-7);
     letter-spacing: -0.05em;
 }
@@ -239,14 +239,14 @@ main a {
 }
 main a:link,
 main a:visited {
-    font-variation-settings: "wght" 500, "MONO" 0;
+    font-weight: 500;
     letter-spacing: -0.03em;
     /* text-shadow: none; */
     text-underline-offset: 0.2em;
     text-decoration-thickness: 0.1em;
 }
 main a:hover {
-    font-variation-settings: "wght" 700, "MONO" 0;
+    font-weight: 700;
 }
 main a[aria-current="page"] {
     opacity: 0.5;
@@ -270,16 +270,17 @@ main a.__external-link::after {
 }
 /* EMPHASIS */
 main em {
-    font-variation-settings: "slnt" -8, "wght" 400;
+    font-style: italic;
+    font-weight: 400;
     letter-spacing: -0.02em;
 }
 main strong,
 main b {
-    font-variation-settings: "wght" 700, "MONO" 0;
+    font-weight: 700;
     letter-spacing: -0.03em;
 }
 main i {
-    font-variation-settings: "slnt" -15, "MONO" 0;
+    font-style: italic;
 }
 /* MARKING AND SPECIALS */
 main s,
@@ -291,18 +292,18 @@ main del * {
     max-width: var(--libdoc-container-width);
 }
 main samp {
-    font-family: var(--libdoc-font-family);
-    font-variation-settings: "MONO" 1, "CASL" 0, "CRSV" 0, "wght" 400;
+    font-family: var(--libdoc-mono-font-family);
     letter-spacing: -0.04em;
     border-radius: 3px;
     padding: 0em 0.3em;
 }
 main q {
-    font-variation-settings: "slnt" -15, "CRSV" 1, "CASL" 1, "wght" 400;
+    font-family: var(--libdoc-hand-font-family);
+    font-style: normal;
+    font-weight: 700;
 }
 main kbd {
-    font-variation-settings: "MONO" 1, "CASL" 0, "CRSV" 0, "wght" 300;
-    font-family: var(--libdoc-font-family);
+    font-family: var(--libdoc-mono-font-family);
     padding: 0 var(--ita-spacings-2);
     border-radius: 4px;
 }
@@ -358,7 +359,8 @@ main > ol:not(:has(ul)) li > ol > li::before {
     margin-top: 0.1em;
     font-size: var(--ita-fontSizes-2);
 
-    font-variation-settings: "wght" 500, "MONO" 1, "CASL" 1;
+    font-family: var(--libdoc-mono-font-family);
+    font-weight: 500;
     padding: 0em 0em 0em 0.5em;
     border-bottom-width: 1px;
     border-bottom-style: dashed;
@@ -445,13 +447,15 @@ main > ol:has(ul) > li:before  {
     position: absolute;
     transform: translateY(-3px) translateX(calc(-100% - var(--ita-spacings-2)));
     display: inline-block;
-    font-variation-settings: "wght" 700, "MONO" 1, "CASL" 1;
+    font-family: var(--libdoc-mono-font-family);
+    font-weight: 700;
     font-size: var(--ita-fontSizes-2);
     padding: 0.2em 1em;
     border-radius: 100px;
 }
 main > *:not(header) li::marker {
-    font-variation-settings: "wght" 500, "MONO" 1, "CASL" 1;
+    font-family: var(--libdoc-mono-font-family);
+    font-weight: 500;
     font-size: var(--ita-fontSizes-3);
 }
 
@@ -461,7 +465,7 @@ main > *:not(pre) code {
     padding-left: 0.3em;
     padding-right: 0.3em;
     border-radius: 0.3em;
-    font-variation-settings: "wght" 400, "MONO" 1, "CASL" 0, "CRSV" 0;
+    font-weight: 400;
 }
 /* language not supported in highlight js */
 main pre:not(:has(.hljs)) {
@@ -500,7 +504,7 @@ main table {
 }
 main table thead th {
     text-align: left;
-    font-variation-settings: "wght" 700, "MONO" 0;
+    font-weight: 700;
     font-size: var(--ita-fontSizes-3);
     padding: var(--ita-spacings-3);
     border-width: 1px;
@@ -511,7 +515,7 @@ main table tbody tr td {
     font-size: var(--ita-fontSizes-3);
     border-width: 1px;
     border-style: solid;
-    font-variation-settings: "wght" 400, "MONO" 0;
+    font-weight: 400;
     line-height: 1.5em;
 }
 main table td code {
@@ -523,7 +527,8 @@ main blockquote {
     margin-top: var(--ita-spacings-10);
     margin-bottom: var(--ita-spacings-10);
     padding: 2em 4em;
-    font-family: var(--libdoc-font-family);
+    font-family: var(--libdoc-display-font-family);
+    font-style: italic;
     font-size: var(--ita-fontSizes-7);
 }
 main blockquote > *:first-child {
@@ -551,18 +556,19 @@ main blockquote::before {
 }
 main blockquote * {
     position: relative;
-    font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1;
     letter-spacing: -0.01em;
 }
 main blockquote em {
-    font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1, "wght" 500;
+    font-style: italic;
+    font-weight: 400;
 }
 main blockquote strong {
-    font-variation-settings: "slnt" -15, "CASL" 1, "CRSV" 1, "wght" 700;
+    font-style: italic;
+    font-weight: 700;
 }
 /* DEFINITION LISTS */
 main dl dt {
-    font-variation-settings: "wght" 500, "MONO" 0;
+    font-weight: 500;
     margin-bottom: 0.2em;
     letter-spacing: -0.04em;
 }
@@ -577,7 +583,7 @@ main dl dd {
 /* DETAILS */
 main > details summary,
 main > *:not(header) details summary {
-    font-variation-settings: "wght" 400, "MONO" 0;
+    font-weight: 400;
     display: flex;
     align-items: center;
     gap: var(--ita-spacings-2);
@@ -657,7 +663,8 @@ main picture:has(.long-shadow) img {
 }
 main figure figcaption {
     font-size: var(--ita-fontSizes-4);
-    font-variation-settings: "slnt" -5, "CASL" 0, "CRSV" 1.0, "MONO" 0, "wght" 300;
+    font-style: italic;
+    font-weight: 400;
     line-height: 1.5em;
 }
 main figure.wide,
@@ -671,11 +678,12 @@ main video {
 }
 /* INLINE HTML */
 main time {
-    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0, "wght" 400;
+    font-weight: 400;
     letter-spacing: -0.02em;
 }
 main var {
-    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 1, "wght" 400;
+    font-family: var(--libdoc-mono-font-family);
+    font-weight: 400;
     letter-spacing: -0.04em;
 }
 main p:has(small) {
@@ -683,7 +691,7 @@ main p:has(small) {
 }
 main small {
     font-size: var(--ita-fontSizes-3);
-    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0;
+    font-weight: 400;
 }
 main u {
     text-decoration-style: wavy;
@@ -718,7 +726,7 @@ main button[type="button"].btn {
     height: 3em;
     text-transform: uppercase;
     text-decoration: none;
-    font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 0, "wght" 600;
+    font-weight: 600;
     font-size: var(--ita-fontSizes-3);
     cursor: pointer;
     transition: all 300ms;
@@ -749,7 +757,7 @@ main > aside > iframe {
 }
 /* ALERTS */
 main .alert {
-    font-variation-settings: "wght" 400, "slnt" 0, "CASL" 0, "CRSV" 0;
+    font-weight: 400;
     padding: var(--ita-spacings-3) var(--ita-spacings-5);
     border-left-style: dashed;
     border-left-width: 1px;
@@ -761,7 +769,7 @@ main .alert[data-title]::before {
     content: attr(data-title);
     display: block;
     margin-bottom: var(--ita-spacings-3);
-    font-variation-settings: "wght" 700, "slnt" 0, "CASL" 0, "CRSV" 0;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: var(--ita-fontSizes-3);
     padding-bottom: var(--ita-spacings-1);
@@ -817,7 +825,7 @@ main .__search-occurrence {
 }
 #nav_primary > ol > li > ol > li a.nav_primary__anchor,
 .nav_primary > ol > li > ol > li a.nav_primary__anchor {
-    font-variation-settings: "wght" 400, "MONO" 0, "CASL" 0, "CRSV" 0, "slnt" 0;
+    font-weight: 400;
 }
 #nav_primary > ol > li > ol > li a.nav_primary__anchor::after,
 .nav_primary > ol > li > ol > li a.nav_primary__anchor::after {
@@ -882,7 +890,7 @@ main .__search-occurrence {
     max-width: 80vw;
 }
 #floating_toc a:hover {
-    font-variation-settings: "wght" 700, "MONO" 0;
+    font-weight: 700;
 }
 #floating_toc__list_parent::before {
     content: '';
@@ -1102,7 +1110,7 @@ input[type="radio"] ~ label::before {
     main > pre > code {
         box-shadow: none;
         white-space: pre-wrap;
-        font-variation-settings: "slnt" 0, "CASL" 0, "CRSV" 0, "MONO" 1, "wght" 500;
+        font-weight: 500;
     }
     main > pre > code::before {
         margin-top: 1em;
