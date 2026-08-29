@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /orders-checkout-admin/
 title: "Orders: Cart → Checkout → Admin"
 description: Build an order system with checkout flow, order history, and admin order management.
 eleventyNavigation:

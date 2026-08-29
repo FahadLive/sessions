@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /vibecode-day-3/
 title: Day 3 - Ship Your Website
 description: Turn the AI Onam Post Generator into a real product — mobile-ready with loading and error states — then push it to GitHub and deploy it live on Vercel with people watching it fail and get fixed on production.
 eleventyNavigation:

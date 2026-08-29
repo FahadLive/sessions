@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /sample-products/
 title: Sample Product Images
 description: Download these sample product images for the Supabase tutorial
 eleventyNavigation:

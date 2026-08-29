@@ -242,14 +242,23 @@
             </header>
 
             <section class="d-flex fd-column ai-center | w-100 mt-9 mb-9 | ta-center" aria-label="Welcome">
-                <h1 class="mt-6 mb-0 | lsp-5 fvs-wght-700 tws-balance | c-neutral-900"
-                    fs-10="md"
-                    fs-9="xs,sm">
-                    {{ libdocConfig.siteTitle }}
-                </h1>
+                <div class="d-flex ai-end">
+                    <h1 class="mt-6 mb-0 | lsp-5 fvs-wght-700 tws-balance | c-neutral-900"
+                        fs-10="md"
+                        fs-9="xs,sm">
+                        {{ libdocConfig.siteTitle }}
+                    </h1>
+                    {% if libdocConfig.author != '' %}
+                    <h4 class="mt-5 mb-1 ml-3 | fvs-wght-400 tws-balance | c-neutral-700"
+                        fs-7="md"
+                        fs-6="xs,sm">
+                        by {{ libdocConfig.author }}
+                    </h4>
+                    {% endif %}
+                </div>
                 {% if libdocConfig.siteDescription != '' %}
                     <p class="mt-5 mb-0 | fvs-wght-400 tws-balance | c-neutral-700"
-                        fs-7="md"
+                        fs-7="sm"
                         fs-6="xs,sm">
                         {{ libdocConfig.siteDescription }}
                     </p>
@@ -261,16 +270,18 @@
 
             <section id="guides" class="d-flex fd-column | w-100 mb-11" aria-label="Guides">
                 <h2 class="mt-0 mb-7 | fvs-wght-700 lsp-4 | c-neutral-900" fs-9="md" fs-8="xs,sm">
-                    Guides
+                    Guide Series
                 </h2>
                 <div class="d-flex fw-wrap | rgap-7">
                     {% for series in collections.series %}
                         <div class="w-4t | w-100--xs w-100--sm">
                             <a href="{{ series.url }}" class="td-none">
                                 <div class="d-flex fd-column | p-7 h-100 | brad-3 bc-neutral-100 bwidth-1 bstyle-dashed bcolor-neutral-500 | __hover-1 __soft-shadow">
-                                    <h3 class="mt-0 mb-4 | fvs-wght-700 lsp-3 lh-5 tws-balance | c-primary-900" fs-5="md" fs-4="xs,sm">
+                                    <h1 class="mt-0 mb-4 | fvs-wght-700 lsp-3 lh-5 tws-balance | c-primary-900"
+                                        fs-8="md"
+                                        fs-6="xs,sm">
                                         {{ series.data.title }}
-                                    </h3>
+                                    </h1>
                                     {% if series.data.description %}
                                         <p class="m-0 | fvs-wght-400 fs-3 lh-5 | c-neutral-700">
                                             {{ series.data.description }}
@@ -285,10 +296,22 @@
 
             <footer class="minh-100vh">
                 <div class="pt-11 | blwidth-1 blstyle-dashed bcolor-neutral-500"></div>
-                <nav class="w-100 | pl-5 | blwidth-1 blstyle-dashed bcolor-neutral-500">
+                <nav class="d-flex ai-center rgap-7 | blwidth-1 blstyle-dashed bcolor-neutral-500"
+                    fw-wrap="xs">
+                    <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500"></div>
+                    {% if editThisPageRootUrl.size > 0 %}
+                        <a  href="{{ editThisPageUrl }}"
+                            target="_blank"
+                            class="btn btn-primary-light">
+                            <span class="icon-pencil-simple"></span>
+                            {{ libdocMessages.editThisPage[libdocConfig.lang] }}
+                        </a>
+                    {% endif %}
+                    <div class="w-100" d-none="sm,md"></div>
+                    <div class="pl-5 | bbwidth-1 bbstyle-dashed bcolor-neutral-500" w-100="sm,md"></div>
                     <a  href="https://justfahad.me"
                         target="_blank"
-                        class="d-inline-flex ai-center gap-2 | pt-5 pb-5 | fvs-wght-400 fs-2 lsp-3 lh-3 td-none ws-nowrap">
+                        class="d-flex ai-center gap-2 | pl-2 pr-2 | fvs-wght-400 fs-2 lsp-3 lh-3 td-none ws-nowrap">
                         justfahad.me
                     </a>
                 </nav>

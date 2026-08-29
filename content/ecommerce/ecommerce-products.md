@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /ecommerce-products/
 title: Product Listing with Supabase + Next.js
 description: A single page showing product cards (image, title, price) fetched from Supabase
 eleventyNavigation:

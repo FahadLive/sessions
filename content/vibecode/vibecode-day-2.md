@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /vibecode-day-2/
 title: Day 2 - Connect a Real AI
 description: Upgrade the Onam Post Generator so Generate actually calls the Gemini API — understand what an API is, customise your vibes and outputs, and debug the real problems that show up on day two.
 eleventyNavigation:

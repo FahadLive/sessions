@@ -21,15 +21,20 @@ The dev server builds the site and serves it locally with live reload, so you ca
 
 ## Structure
 
-| Path            | Purpose                                                                          |
-| --------------- | -------------------------------------------------------------------------------- |
-| `*.md`          | Series overview and page guides (front matter sets layout, title and navigation) |
-| `_data/`        | Site settings, LibDoc config and functions                                       |
-| `_includes/`    | Eleventy / LibDoc templates and layouts                                          |
-| `core/`         | LibDoc core assets                                                               |
-| `assets/`       | Site assets (favicons, opengraph image)                                          |
-| `settings.json` | Site title, description, author and custom links                                 |
-| `.eleventy.js`  | Eleventy config: plugins, filters, collections and shortcodes                    |
+| Path                        | Purpose                                                                          |
+| --------------------------- | -------------------------------------------------------------------------------- |
+| `index.md`                  | Home page                                                                        |
+| `content/ecommerce/`        | E-commerce App guides (products, cart, checkout, orders, admin auth)             |
+| `content/air-pencil/`       | Air Pencil Workshop guides (setup, day 1, day 2)                                 |
+| `content/vibecode/`         | Vibecode Your First Website guides (day 1-3)                                     |
+| `_data/`                    | Site settings, LibDoc config and functions                                       |
+| `_includes/`                | Eleventy / LibDoc templates and layouts                                          |
+| `core/`                     | LibDoc core assets                                                               |
+| `assets/`                   | Site assets (favicons, opengraph image, sample products)                         |
+| `settings.json`             | Site title, description, author and custom links                                 |
+| `.eleventy.js`              | Eleventy config: plugins, filters, collections and shortcodes                    |
+
+Content guides live under `content/<series>/`. Each page's front matter sets a `permalink` so its output URL stays at the site root (e.g. `content/ecommerce/cart-page.md` → `/cart-page/`), independent of the folder it lives in.
 
 ## Configuration
 

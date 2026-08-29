@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /opencv-day-2/
 title: Day 2 - Drawing Logic
 description: Turn the tracked fingertip into an actual air pencil with a one-rule pen-up/pen-down gesture, then run a short Draw-Off competition to close the workshop — all on top of the Day 1 Hand Landmarker code.
 eleventyNavigation:

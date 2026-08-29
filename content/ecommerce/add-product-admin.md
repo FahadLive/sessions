@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /add-product-admin/
 title: Admin Page — Add Products with Supabase
 description: A beginner-friendly admin page to add products with image upload to Supabase
 eleventyNavigation:

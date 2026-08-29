@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /opencv-overview/
 title: Air Pencil Workshop
 description: Two-session workshop where you turn your webcam into an air pencil — track your index fingertip with MediaPipe Hand Landmarker and draw on screen by pointing at it.
 eleventyNavigation:

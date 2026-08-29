@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /opencv-setup/
 title: Setup - Install uv, Python & the Model (Windows/Linux)
 description: Get uv, Python, the Air Pencil dependencies, and the hand_landmarker.task model installed before Day 1, with a Windows 10/11 and Linux path.
 eleventyNavigation:

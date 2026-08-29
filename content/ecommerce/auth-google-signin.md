@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /auth-google-signin/
 title: "Auth: Google Sign-In + Roles"
 description: Set up Google OAuth with Supabase, role-based access, and protected routes in Next.js 16.
 eleventyNavigation:

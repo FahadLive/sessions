@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /ecommerce-overview/
 title: E-commerce App
 description: A comprehensive guide series for building an e-commerce app with Supabase and Next.js — product listing, cart, checkout, orders and admin auth.
 eleventyNavigation:

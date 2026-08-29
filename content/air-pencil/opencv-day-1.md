@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /opencv-day-1/
 title: Day 1 - Hand Tracking
 description: Get a live webcam feed, a MediaPipe hand skeleton, and a dot that follows the index fingertip — the foundation for Day 2's drawing logic.
 eleventyNavigation:

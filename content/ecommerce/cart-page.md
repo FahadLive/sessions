@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /cart-page/
 title: Cart - useState and context for Cart Management
 description: Add a fully functional shopping cart to your Next.js + Supabase storefront.
 eleventyNavigation:

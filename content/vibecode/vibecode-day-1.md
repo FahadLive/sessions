@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /vibecode-day-1/
 title: Day 1 - Build the Website
 description: Build a working Onam Post Generator in 60 minutes — a description box, vibe buttons and a Generate button that picks from pre-written captions — and learn the debugging mindset behind vibe-coding.
 eleventyNavigation:

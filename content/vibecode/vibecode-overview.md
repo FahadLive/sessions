@@ -1,5 +1,6 @@
 ---
 layout: libdoc_page.liquid
+permalink: /vibecode-overview/
 title: Vibecode Your First Website
 description: A 3-day vibe-coding workshop where beginners build an Onam Post Generator with plain HTML, CSS & JavaScript, connect it to the Gemini API, and ship it live on Vercel — no React, no backend, no prior coding required.
 eleventyNavigation:
