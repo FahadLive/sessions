@@ -2,14 +2,19 @@ html {
     background-color: var(--ita-colors-primary-100);
 }
 body {
-    background: 0px 0px / 20px 20px radial-gradient(var(--ita-colors-primary-300) 0.5px,var(--ita-colors-primary-100) 1px);
+    background: 0px 0px / 20px 20px
+        radial-gradient(
+            color-mix(in srgb, var(--ita-colors-primary-500) 50%, transparent)
+                0.5px,
+            var(--ita-colors-primary-100) 1px
+        );
 }
 html,
 .o-auto {
     scrollbar-color: var(--ita-colors-primary-500) transparent;
 }
 input {
-  caret-color: var(--ita-colors-primary-500);
+    caret-color: var(--ita-colors-primary-500);
 }
 input:focus {
     outline-color: var(--ita-colors-primary-500);
@@ -124,7 +129,7 @@ main > ol ul > li::after {
 main > ol:has(ul) > li {
     border-left-color: var(--ita-colors-primary-500);
 }
-main > ol:has(ul) > li:before  {
+main > ol:has(ul) > li:before {
     background-color: var(--ita-colors-primary-500);
     color: var(--ita-colors-neutral-100);
 }
@@ -220,7 +225,10 @@ main video {
 }
 /* INLINE HTML */
 main rt {
-    background: linear-gradient(transparent calc(100% - 0.5px), var(--ita-colors-neutral-500) 0.5px);
+    background: linear-gradient(
+        transparent calc(100% - 0.5px),
+        var(--ita-colors-neutral-500) 0.5px
+    );
 }
 main small {
     color: var(--ita-colors-neutral-700);
@@ -342,8 +350,12 @@ main .alert.alert-danger::before {
 
 /* SEARCH OCCURRENCES */
 @keyframes flash {
-    50% { background-color: #BF0 }
-    100% { background-color: inherit }
+    50% {
+        background-color: #bf0;
+    }
+    100% {
+        background-color: inherit;
+    }
 }
 main .__search-occurrence {
     outline-color: var(--ita-colors-success-500) !important;
@@ -408,7 +420,12 @@ input[type="radio"] ~ label::before {
     background: var(--ita-colors-neutral-100);
 }
 input[type="radio"]:checked ~ label::before {
-    background: radial-gradient(var(--ita-colors-neutral-100), var(--ita-colors-neutral-100) 30%, var(--ita-colors-primary-500) 33%, var(--ita-colors-primary-500) 100%);
+    background: radial-gradient(
+        var(--ita-colors-neutral-100),
+        var(--ita-colors-neutral-100) 30%,
+        var(--ita-colors-primary-500) 33%,
+        var(--ita-colors-primary-500) 100%
+    );
 }
 
 /* SANDBOX */

@@ -1,23 +1,25 @@
 :root {
     --libdoc-container-width: var(--ita-widths-content);
     --libdoc-font-family: "Satoshi", "fallbackFont";
-    --libdoc-display-font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --libdoc-display-font-family:
+        "Instrument Serif", Georgia, "Times New Roman", serif;
     --libdoc-hand-font-family: "Caveat", "Comic Sans MS", cursive;
-    --libdoc-mono-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --libdoc-damier: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAHElEQVR4AWP4jwOcwQFoo2FUAy4JXAbRRMOoBgCE0rCfubvZNQAAAABJRU5ErkJggg==');
+    --libdoc-mono-font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    --libdoc-damier: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAHElEQVR4AWP4jwOcwQFoo2FUAy4JXAbRRMOoBgCE0rCfubvZNQAAAABJRU5ErkJggg==");
     --libdoc-soft-shadow: 0px 0px 10px rgba(17, 17, 17, 0.12);
     --libdoc-long-shadow:
-        1px 1px 2px rgba(17, 17, 17, 0.08),
-        5px 6px 9px rgba(17, 17, 17, 0.26),
+        1px 1px 2px rgba(17, 17, 17, 0.08), 5px 6px 9px rgba(17, 17, 17, 0.26),
         12px 13px 21px rgba(17, 17, 17, 0.34),
         22px 24px 38px rgba(17, 17, 17, 0.42),
-        34px 37px 59px rgba(17, 17, 17, 0.50);
+        34px 37px 59px rgba(17, 17, 17, 0.5);
     --libdoc-long-shadow-alt:
         1px 1px 2px rgba(181, 84, 74, 0.08),
         5px 6px 9px rgba(181, 84, 74, 0.26),
         12px 13px 21px rgba(181, 84, 74, 0.34),
         22px 24px 38px rgba(181, 84, 74, 0.42),
-        34px 37px 59px rgba(181, 84, 74, 0.50);
+        34px 37px 59px rgba(181, 84, 74, 0.5);
 }
 
 /* BROWSERS DEFAULTS */
@@ -32,8 +34,9 @@ details[open] > summary .icons span[class*="icon-"]:nth-child(1) {
     display: none;
 }
 /* <button> and <select> default style on iOS */
-select, button {
-    color: black
+select,
+button {
+    color: black;
 }
 /* Opacity disabled input on iOS */
 input:disabled {
@@ -47,7 +50,7 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance:none;
+    -webkit-appearance: none;
 }
 
 /* MENU TOGGLE */
@@ -55,7 +58,7 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex !important;
 }
 #nav_primary_checkbox:checked ~ label [class*="icon-"]::before {
-    content: '\e910';
+    content: "\e910";
 }
 
 /* MOBILE SIDEBAR OVERLAY */
@@ -63,7 +66,8 @@ input[type="search"]::-webkit-search-results-decoration {
     body:has(#nav_primary_checkbox:checked) {
         overflow: hidden;
     }
-    #nav_small_devices:has(#nav_primary_checkbox:checked) ~ #nav_primary_container {
+    #nav_small_devices:has(#nav_primary_checkbox:checked)
+        ~ #nav_primary_container {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
@@ -254,9 +258,9 @@ main a[aria-current="page"] {
 }
 main a[href^="https://"]:not([href^="https://eleventy-libdoc"])::after,
 main a.__external-link::after {
-    content: '';
+    content: "";
     background-color: currentColor;
-    mask-image: url('/core/assets/icons/arrow-square-out.svg');
+    mask-image: url("/core/assets/icons/arrow-square-out.svg");
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -345,12 +349,12 @@ main > ul li > p:last-child,
 main > ol li > p:last-child {
     margin-bottom: 0;
 }
-/* 
+/*
 https://www.joshwcomeau.com/css/styling-ordered-lists-with-css-counters/
 */
 main > ol:not(:has(ul)) > li::before,
 main > ol:not(:has(ul)) li > ol > li::before {
-    content: counters(listItem, '.') '.';
+    content: counters(listItem, ".") ".";
     position: absolute;
     transform: translateX(calc(-100% - var(--ita-spacings-4)));
     display: inline-block;
@@ -393,7 +397,7 @@ main > ol ul > li {
 main > ul > li::before,
 main > ul ul > li::before,
 main > ol ul > li::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 1.3em;
     left: 0;
@@ -404,7 +408,7 @@ main > ol ul > li::before {
 main > ul > li::after,
 main > ul ul > li::after,
 main > ol ul > li::after {
-    content: '';
+    content: "";
     position: absolute;
     top: calc(1.3em - var(--ita-spacings-2) / 2);
     left: var(--ita-spacings-4);
@@ -442,8 +446,8 @@ main > ol:has(ul) > li {
     border-left-width: 1px;
     border-left-style: dashed;
 }
-main > ol:has(ul) > li:before  {
-    content: counter(mixedItem) '.';
+main > ol:has(ul) > li:before {
+    content: counter(mixedItem) ".";
     position: absolute;
     transform: translateY(-3px) translateX(calc(-100% - var(--ita-spacings-2)));
     display: inline-block;
@@ -593,9 +597,9 @@ main > *:not(header) details summary {
 }
 main > details summary::before,
 main > *:not(header) details summary::before {
-    content: '';
+    content: "";
     background-color: currentColor;
-    mask-image: url('/core/assets/icons/plus-circle.svg');
+    mask-image: url("/core/assets/icons/plus-circle.svg");
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -607,7 +611,7 @@ main > *:not(header) details summary::before {
 }
 main > details[open] summary::before,
 main > *:not(header) details[open] summary::before {
-    mask-image: url('/core/assets/icons/minus-circle.svg');
+    mask-image: url("/core/assets/icons/minus-circle.svg");
 }
 main > details:has(+ details) summary,
 main > details + details summary,
@@ -778,8 +782,12 @@ main .alert[data-title]::before {
 }
 /* SEARCH OCCURRENCES */
 @keyframes flash {
-    50% { background-color: #BF0 }
-    100% { background-color: inherit }
+    50% {
+        background-color: #bf0;
+    }
+    100% {
+        background-color: inherit;
+    }
 }
 main .__search-occurrence {
     outline-width: 2px;
@@ -792,7 +800,7 @@ main .__search-occurrence {
 #nav_primary .nav_primary__anchor::before,
 .nav_primary .nav_primary__anchor::before,
 #nav_primary_blog_link::before {
-    content: '';
+    content: "";
     display: flex;
     border-top-width: 1px;
     border-top-style: dashed;
@@ -803,7 +811,7 @@ main .__search-occurrence {
 #nav_primary .nav_primary__anchor::after,
 .nav_primary .nav_primary__anchor::after,
 #nav_primary_blog_link::after {
-    content: '';
+    content: "";
     display: flex;
     width: var(--ita-spacings-2);
     min-width: var(--ita-spacings-2);
@@ -883,7 +891,7 @@ main .__search-occurrence {
 
 /* FLOATING TABLE OF CONTENT */
 #floating_toc[open] summary [class*="icon-"]::before {
-    content: '\e910'
+    content: "\e910";
 }
 #floating_toc a {
     transition: all 300ms;
@@ -893,7 +901,7 @@ main .__search-occurrence {
     font-weight: 700;
 }
 #floating_toc__list_parent::before {
-    content: '';
+    content: "";
     display: flex;
     width: 50%;
     height: 35px;
@@ -909,7 +917,11 @@ main .__search-occurrence {
 
 /* GTT / Go to top button */
 #gtt_btn {
-    right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - var(--ita-widths-content) / 2));
+    right: clamp(
+        var(--ita-spacings-5),
+        100%,
+        calc(50% - var(--ita-widths-content) - var(--ita-widths-content) / 2)
+    );
 }
 
 /* WIDGETS */
@@ -919,7 +931,7 @@ main .widget + .widget {
 
 /* INPUT RADIOS */
 input[type="radio"] ~ label::before {
-    content: '';
+    content: "";
     min-width: 1em;
     max-width: 1em;
     min-height: 1em;
@@ -931,19 +943,25 @@ input[type="radio"] ~ label::before {
 
 /* USER PREFERENCES */
 #user_preferences[open] > summary::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  height: var(--ita-spacings-3);
-  border-left: 1px dashed var(--ita-colors-neutral-500);
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: var(--ita-spacings-3);
+    border-left: 1px dashed var(--ita-colors-neutral-500);
 }
 
 /* RESPONSIVE MD */
 @media (min-width: 960px) {
     #floating_toc_container {
         /* Limit floating TOC left position */
-        right: clamp(var(--ita-spacings-5), 100%, calc(50% - var(--ita-widths-content) - var(--ita-widths-content) / 2));
+        right: clamp(
+            var(--ita-spacings-5),
+            100%,
+            calc(
+                50% - var(--ita-widths-content) - var(--ita-widths-content) / 2
+            )
+        );
     }
     #floating_toc__list {
         width: 200px;
@@ -960,7 +978,9 @@ input[type="radio"] ~ label::before {
         font-size: var(--ita-fontSizes-2);
     }
     main > * {
-        max-width: calc(var(--libdoc-container-width) + 2 * var(--ita-spacings-5));
+        max-width: calc(
+            var(--libdoc-container-width) + 2 * var(--ita-spacings-5)
+        );
         padding-left: var(--ita-spacings-5);
         padding-right: var(--ita-spacings-5);
     }
@@ -1025,7 +1045,9 @@ input[type="radio"] ~ label::before {
     main figure.wide,
     main picture:has(.wide) {
         padding: var(--ita-spacings-5);
-        max-width: calc(calc(var(--ita-widths-content) + 2 * var(--ita-spacings-5)));
+        max-width: calc(
+            calc(var(--ita-widths-content) + 2 * var(--ita-spacings-5))
+        );
     }
     main blockquote {
         padding: 2em 3em;

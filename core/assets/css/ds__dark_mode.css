@@ -28,10 +28,17 @@
         --ita-colors-danger-900: #f5c6c4;
         --ita-colors-danger-500: #d3605e;
         --ita-colors-danger-100: #2b1d1d;
-        --libdoc-image-background-color: var(--libdoc-image-background-color-dark-mode) !important;
-        --libdoc-soft-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-        --libdoc-long-shadow: 0px 0px 10px 0px var(--ita-colors-neutral-100), 5px 5px 10px 0px var(--ita-colors-primary-100), -5px 5px 10px 0px var(--ita-colors-primary-100), -5px -5px 10px 0px var(--ita-colors-primary-100), 5px -5px 10px 0px var(--ita-colors-primary-100);
-        --libdoc-long-shadow-alt: 
+        --libdoc-image-background-color: var(
+            --libdoc-image-background-color-dark-mode
+        ) !important;
+        --libdoc-soft-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        --libdoc-long-shadow:
+            0px 0px 10px 0px var(--ita-colors-neutral-100),
+            5px 5px 10px 0px var(--ita-colors-primary-100),
+            -5px 5px 10px 0px var(--ita-colors-primary-100),
+            -5px -5px 10px 0px var(--ita-colors-primary-100),
+            5px -5px 10px 0px var(--ita-colors-primary-100);
+        --libdoc-long-shadow-alt:
             5px 5px 10px 0px var(--ita-colors-primary-100),
             10px 10px 40px 0px var(--ita-colors-primary-500),
             20px 20px 40px 0px var(--ita-colors-primary-300),
@@ -41,60 +48,67 @@
             5px 5px 10px 0px var(--ita-colors-primary-100),
             -5px 5px 10px 0px var(--ita-colors-primary-100),
             -5px -5px 10px 0px var(--ita-colors-primary-100),
-            5px -5px 10px 0px var(--ita-colors-primary-100)
+            5px -5px 10px 0px var(--ita-colors-primary-100);
     }
     html {
         background-color: var(--ita-colors-neutral-200);
     }
     body {
-        background: 0px 0px / 20px 20px radial-gradient(var(--ita-colors-neutral-500) 0.5px,var(--ita-colors-neutral-200) 1px);
+        background: 0px 0px / 20px 20px
+            radial-gradient(
+                var(--ita-colors-neutral-500) 0.5px,
+                var(--ita-colors-neutral-200) 1px
+            );
     }
     html,
     .o-auto {
         scrollbar-color: var(--ita-colors-neutral-700) transparent;
     }
     main > :not(pre) code {
-    background-color: var(--ita-colors-primary-300);
+        background-color: var(--ita-colors-primary-300);
     }
     /* ALERTS */
     main .alert {
-    color: var(--ita-colors-neutral-900);
-    background-color: var(--ita-colors-neutral-200);
+        color: var(--ita-colors-neutral-900);
+        background-color: var(--ita-colors-neutral-200);
     }
     main .alert.alert-info {
-    background-color: var(--ita-colors-primary-200);
+        background-color: var(--ita-colors-primary-200);
     }
     /* TABLES */
     main table td code {
-    color: var(--ita-colors-primary-900);
+        color: var(--ita-colors-primary-900);
     }
     /* INLINE HTML */
     main del {
-    background-color: var(--ita-colors-danger-500);
-    color: var(--ita-colors-danger-900);
-    text-decoration-color: var(--ita-colors-danger-100);
+        background-color: var(--ita-colors-danger-500);
+        color: var(--ita-colors-danger-900);
+        text-decoration-color: var(--ita-colors-danger-100);
     }
     main s,
     main strike {
-    text-decoration-color: var(--ita-colors-danger-500);
-    color: var(--ita-colors-neutral-700);
+        text-decoration-color: var(--ita-colors-danger-500);
+        color: var(--ita-colors-neutral-700);
     }
     main kbd {
-    background-color: var(--ita-colors-primary-300);
+        background-color: var(--ita-colors-primary-300);
     }
     main mark {
-    background-color: var(--ita-colors-success-500);
-    color: var(--ita-colors-success-100);
+        background-color: var(--ita-colors-success-500);
+        color: var(--ita-colors-success-100);
     }
     main small {
-    color: var(--ita-colors-neutral-900);
+        color: var(--ita-colors-neutral-900);
     }
     main figure {
         background-color: var(--ita-colors-neutral-200);
     }
     main figure.long-shadow img,
     main picture:has(.long-shadow) img {
-        box-shadow: 0em 0em 60px var(--ita-colors-neutral-100), 0em 0em 10px var(--ita-colors-neutral-300), 1em 1em 40px var(--ita-colors-neutral-100);
+        box-shadow:
+            0em 0em 60px var(--ita-colors-neutral-100),
+            0em 0em 10px var(--ita-colors-neutral-300),
+            1em 1em 40px var(--ita-colors-neutral-100);
     }
     main > pre {
         background-color: var(--ita-colors-primary-100);
@@ -167,7 +181,6 @@
         background-color: var(--ita-colors-primary-100);
     }
 }
-
 
 /* PRINT */
 @media print {
