@@ -39,21 +39,20 @@ The AI does the edits; you review each one before accepting it.
 
 ## 15–30 min — GitHub
 
-Time to get it out of your laptop. Git tracks changes, GitHub stores them online. Plain version:
+Time to get it out of your laptop. Git tracks changes, GitHub stores them online:
 
 ```text
 My laptop
-    ↓  git
-    ↓  (commit + push)
+    ↓  git (commit + push)
 GitHub
 ```
 
-In VS Code, using the Source Control panel:
+1. Go to github.com → **+** → **New repository**. Name it `onam-post`, leave it empty, click **Create repository**.
+2. On the next screen, GitHub shows ready-made commands. Copy-paste them into your terminal.
 
-1. **Commit** — "save this snapshot" with a message like `Initial AI Onam Post Generator`.
-2. **Push** — "send my snapshots to GitHub".
+Or just ask opencode: *"commit my code and push it to my new GitHub repo."*
 
-Don't worry about Git theory. Two buttons, two words: **commit**, **push**.
+Don't worry about Git theory. Two words: **commit**, **push**.
 
 ## 30–45 min — Deploy
 

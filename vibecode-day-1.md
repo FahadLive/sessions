@@ -31,9 +31,16 @@ The app we're aiming for:
 └────────────────────────────────────────────┘
 ```
 
+## Your tools, in 30 seconds
+
+- **opencode** (terminal) — type what you want, it writes the code into your files.
+- **ChatGPT / Claude** (browser) — a second brain for ideas and plain-English error explanations.
+
+One rule: **opencode edits the files. ChatGPT/Claude only talks.** To see your site, open `index.html` in your browser (or ask opencode to start a local server).
+
 ## Starting point
 
-Everyone starts with the same tiny folder — already created and opened in VS Code:
+Everyone starts with the same tiny folder — already created in the `onam-post/` folder on your machine:
 
 ```text
 onam-post/
@@ -48,11 +55,11 @@ Each file is just a few lines of a placeholder. Three files, three jobs:
 - `style.css` — the look and feel (colors, spacing, fonts, Onam vibes)
 - `script.js` — the behavior (what happens when you click Generate)
 
-Don't memorize that. Just know: **HTML is the skeleton, CSS is the clothes, JavaScript is the behavior.**
+Simple version: **HTML is the skeleton, CSS is the clothes, JavaScript is the behavior.**
 
 ## 0–10 min — Build the first version together
 
-We live-code with the AI assistant. Prompt it to create:
+We build together, live. Prompt opencode to create:
 
 - An Onam-themed landing page
 - A description input ("What's in the photo?")
@@ -115,7 +122,7 @@ Describe the exact symptom to the AI:
 - What did you click?
 - What did you expect?
 - What actually happened?
-- Can you open the browser's developer console (right-click → **Inspect** → **Console**) and paste the red error text?
+- Can you open the browser's developer console (right-click → **Inspect** → **Console**) and paste the red error text? Not sure what it means? Paste it into ChatGPT or Claude for a plain-English explanation.
 
 This is where the actual vibe-coding skill lives: the AI writes fast, but **you** decide whether what it wrote is right, and you point it at the exact spot it got wrong.
 

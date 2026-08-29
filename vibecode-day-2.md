@@ -34,7 +34,7 @@ Your website doesn't understand "write me a funny Onam caption" any better than 
 
 ## 10–20 min — The Day 2 reveal
 
-Open Monday's app. Type:
+Open Day 1's app. Type:
 
 > "Me and my friends standing next to a huge pookkalam."
 
@@ -80,7 +80,7 @@ Adding a real AI means real errors. Some you'll hit today:
 - **Unexpected text** — the AI went off-script and returned nonsense.
 - **CORS / security errors** — the browser refuses to talk to the endpoint.
 
-Same rule as Day 1: **diagnose, don't regenerate.** Copy the exact error into the AI and describe what you clicked.
+Same rule as Day 1: **diagnose, don't regenerate.** Copy the exact error into ChatGPT or Claude and describe what you clicked.
 
 ## 55–60 min — Day 2 checklist
 
