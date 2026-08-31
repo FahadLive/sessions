@@ -33,6 +33,17 @@ OUR WEBSITE
 
 Your website doesn't understand "write me a funny Onam caption" any better than you'd expect a toaster to. **Gemini does.** An API is the doorway your website knocks on to hand the question over.
 
+## Get your API key + choose your model
+
+Before Gemini will answer, Google needs a way to know it's you. That's the **API key** — a secret password for your project. Here's the complete setup:
+
+1. Sign into [Google AI Studio](https://aistudio.google.com/) with your Google account — the one you'll use all day.
+2. Create an API key at **[AI Studio → API keys](https://aistudio.google.com/api-keys)**: click **Create API key**, pick or create a project, then copy the key that appears. (Full written guide: [Gemini API key docs](https://ai.google.dev/gemini-api/docs/api-key)).
+3. **Pick the model.** We use **`gemini-3.1-flash-lite`**. It has a huge **1M-token context window** and a very high tokens-per-minute limit on the free tier — so when a whole room presses **GENERATE** at the same time, you're far less likely to hit a `429 rate limit` error.
+4. Give the key to your app as an **environment variable** (see *The key architecture decision* below) — **never** paste it directly into `script.js`.
+
+> Keep the key private. Treat it like your password — anyone who reads it can use your free quota (or your money).
+
 ## 10–20 min — The Day 2 reveal
 
 Open Day 1's app. Type:
@@ -45,7 +56,7 @@ Before the change, it returns something from our fixed list. After connecting th
 
 > "Pookkalam ready. Squad also ready. 🌼"
 
-That's the visible shift: it read *your* words and answered them. You demonstrate the code change, and everyone follows along. One new extra: a serverless function in the starter repo under `/api/generate` — your frontend calls that, and *that* calls Gemini. You don't need to understand it, just call it.
+That's the visible shift: it read *your* words and answered them. You demonstrate the code change, and everyone follows along. One new extra: a serverless function in the starter repo under `/api/generate` — your frontend calls that, and *that* calls Gemini. It's already set to use `gemini-3.1-flash-lite`. You don't need to understand it, just call it.
 
 ## 20–45 min — Make it yours
 
@@ -76,7 +87,7 @@ Adding a real AI means real errors. Some you'll hit today:
 
 - **API key issues** — the key is wrong, missing, or not loaded.
 - **Wrong request format** — Gemini expects a specific JSON shape and says no.
-- **Quota / rate limits** — too many free requests in a few minutes.
+- **Quota / rate limits** — too many free requests in a few minutes. `gemini-3.1-flash-lite`'s large token budget makes this rarer, but if you see `429 RESOURCE_EXHAUSTED`, wait a minute and try again.
 - **Malformed JSON** — Gemini replies with something your code can't read.
 - **Unexpected text** — the AI went off-script and returned nonsense.
 - **CORS / security errors** — the browser refuses to talk to the endpoint.
@@ -88,6 +99,7 @@ Same rule as Day 1: **diagnose, don't regenerate.** Copy the exact error into Ch
 - [ ] Generate actually returns a caption written *for your description*
 - [ ] Your chosen vibe changes the caption's tone
 - [ ] At least one extra output (hashtags, short, Malayalam) works
+- [ ] The app uses `gemini-3.1-flash-lite`
 - [ ] The API key is **not** visible anywhere in the browser code
 
 ## The key architecture decision
@@ -106,7 +118,12 @@ Your frontend
 Gemini
 ```
 
-Your site calls `/api/generate`; that tiny function holds the secret and calls Gemini for you. You don't have to build it — it's in the starter. You just learn that **frontend talks to an address, server holds the secrets** — and in Day 3 that ends up on Vercel.
+Your site calls `/api/generate`; that tiny function holds the secret and calls Gemini for you. Concretely, that means two things:
+
+1. Your API key goes into an **environment variable** on the server (call it `GEMINI_API_KEY`) — not into any browser file. The function reads it from there.
+2. The function is configured to call **`gemini-3.1-flash-lite`**.
+
+You don't have to build any of it — it's in the starter. You just learn that **frontend talks to an address, server holds the secrets** — and in Day 3 that ends up on Vercel.
 
 ## Finish
 

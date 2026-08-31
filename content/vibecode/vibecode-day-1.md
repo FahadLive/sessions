@@ -70,6 +70,10 @@ We build together, live. Prompt opencode to create:
 
 **Within ten minutes you have a website.** That's the whole point of this day — not to explain everything, but to feel the momentum.
 
+**Prompt to copy** — paste this into opencode (the folder should be `onam-post/` with `index.html`, `style.css`, `script.js`):
+
+> "Create a website that generates a caption for my Onam photos. I provide the details/context of the photo, and I pick a genre from a list of set moods. As output I expect an Instagram-ready caption. Prepare a comprehensive plan first. The site should be delightful, colorful, and Kerala Onam themed. Just simple HTML, CSS and JS files."
+
 ## 10–35 min — Build your own
 
 Now you steer. The team prompt:
@@ -92,6 +96,12 @@ Now you steer. The team prompt:
 - Dark mode
 
 The AI does almost all the typing. Your job is to **steer** — decide what feature to ask for next, in English, and keep the requests small and specific. One feature per prompt.
+
+**Follow-up prompts to copy**, one at a time:
+
+> "Add a list of mood/genre buttons (Aesthetic, Chaos, Romantic, Sadya, Family, College Onam) that change the caption's tone."
+
+> "Add a COPY caption button and a TRY AGAIN button to the result card."
 
 ## 35–50 min — The important part: debugging
 
@@ -127,6 +137,10 @@ Describe the exact symptom to the AI:
 
 This is where the actual vibe-coding skill lives: the AI writes fast, but **you** decide whether what it wrote is right, and you point it at the exact spot it got wrong.
 
+**Debug prompt to copy** — don't restart, point it at the problem:
+
+> "When I click [button] I expect [result] but get [actual]. Console error: [paste the text]. Fix just this one thing."
+
 ## 50–60 min — Day 1 checkpoint
 
 Everyone should have a **working Onam Post Generator**. It isn't AI-powered yet — "Generate" just picks a random caption from a list we typed into `script.js`. That's OK. Day 1 is:
@@ -150,6 +164,10 @@ The result card looks like this:
 ```
 
 **Stretch challenge:** change the pre-written captions so one of them is about *you* — your friend group, your hometown festival, your family's sadya.
+
+**Stretch prompt to copy:**
+
+> "Change the pre-written captions so one is about me: [my details]. Keep everything else the same."
 
 Day 1 done. Tomorrow the computer stops pretending.
 
