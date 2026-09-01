@@ -7,6 +7,7 @@
 - **Vibecode Your First Website** — A 3-day vibe-coding workshop for beginners. Build an Onam Post Generator with plain HTML, CSS and JavaScript, connect it to the Gemini API, and ship it live on Vercel — no React, no backend, no prior coding required.
 - **Air Pencil Workshop** — A two-session Python workshop that turns your webcam into an air pencil. Track your index fingertip with MediaPipe Hand Landmarker and draw on screen by pointing at it.
 - **E-commerce App** — A comprehensive guide series for building an e-commerce app with Supabase and Next.js: product listing, cart, checkout, orders and admin auth.
+- **Proprietary vs Open-Source AI Models** — A beginner-friendly, reference-style guide series (with FOSS links) explaining what an AI model is, how open vs proprietary models differ, and how to try open-source AI on Hugging Face and Ollama.
 
 ## Getting started
 
@@ -27,6 +28,7 @@ The dev server builds the site and serves it locally with live reload, so you ca
 | `content/ecommerce/`        | E-commerce App guides (products, cart, checkout, orders, admin auth)             |
 | `content/air-pencil/`       | Air Pencil Workshop guides (setup, day 1, day 2)                                 |
 | `content/vibecode/`         | Vibecode Your First Website guides (day 1-3)                                     |
+| `content/open-vs-closed/`   | Proprietary vs Open-Source AI Models reference guides                            |
 | `_data/`                    | Site settings, LibDoc config and functions                                       |
 | `_includes/`                | Eleventy / LibDoc templates and layouts                                          |
 | `core/`                     | LibDoc core assets                                                               |
