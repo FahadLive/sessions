@@ -48,21 +48,128 @@ My laptop
 GitHub
 ```
 
-1. Go to github.com → **+** → **New repository**. Name it `onam-post`, leave it empty, click **Create repository**.
-2. On the next screen, GitHub shows ready-made commands. Copy-paste them into your terminal.
+### Step 1 — Open terminal and go to your project
 
-Or just ask opencode: *"commit my code and push it to my new GitHub repo."*
+Open your terminal (Terminal on Mac/Linux, Command Prompt or PowerShell on Windows) and navigate to your project folder:
 
-Don't worry about Git theory. Two words: **commit**, **push**.
+**Linux / Mac:**
+```bash
+cd ~/path/to/onam-post
+```
+
+**Windows:**
+```cmd
+cd C:\Users\YourName\path\to\onam-post
+```
+
+### Step 2 — Make sure you're in the right place
+
+Check that you're inside your project folder by looking at the path and listing the files:
+
+**Linux / Mac:**
+```bash
+pwd          # shows your current path
+ls           # lists files — you should see index.html, app.js, etc.
+```
+
+**Windows:**
+```cmd
+cd           # shows your current path
+dir          # lists files — you should see index.html, app.js, etc.
+```
+
+If the files are there, you're in the right spot.
+
+### Step 3 — Initialize Git (one-time only)
+
+```bash
+git init
+```
+
+This creates a hidden `.git` folder in your project. That folder stores every commit, every version, everything Git needs to track your code. **You only run this once** — if you run it again in the same folder, nothing bad happens (Git just says "already a Git repo"), but there's never a reason to.
+
+### Step 4 — Stage all your files
+
+```bash
+git add .
+```
+
+The `.` means "everything in this folder."
+
+### Step 5 — Commit
+
+```bash
+git commit -m "first commit"
+```
+
+This saves a snapshot. Think of it as hitting "save" — but only when you tell it to.
+
+### Step 6 — Create a GitHub repo
+
+1. Go to [github.com](https://github.com) → click the **+** icon (top-right) → **New repository**
+2. Name it `onam-post`
+3. Leave it **empty** — no README, no `.gitignore`, nothing
+4. Click **Create repository**
+
+### Step 7 — Copy the repo link
+
+After creating the repo, GitHub shows a "Quick setup" page. Look for the section that says **"…or push an existing repository from the command line"** — copy the URL shown there. It looks like:
+
+```text
+https://github.com/yourusername/onam-post.git
+```
+
+### Step 8 — Link your local project to GitHub
+
+```bash
+git remote add origin https://github.com/yourusername/onam-post.git
+```
+
+Replace the URL with your actual repo link. This tells Git: "this is where I want to push."
+
+### Step 9 — Push
+
+```bash
+git push -u origin main
+```
+
+GitHub may ask you to sign in — follow the prompts. After that, your code is on GitHub.
+
+---
+
+**Shortcut:** Or just ask opencode: *"commit my code and push it to my new GitHub repo."*
 
 ## 30–45 min — Deploy
 
 Connect GitHub → Vercel:
 
-1. On [vercel.com](https://vercel.com), **Create New Project**.
-2. Import the GitHub repo you just pushed.
-3. Add the API key as an environment variable (Vercel calls it env).
-4. **Deploy.**
+### Step 1 — Create a Vercel project
+
+1. Go to [vercel.com](https://vercel.com) and sign in with your GitHub account
+2. Click **Create New Project**
+3. **Import** the GitHub repo you just pushed
+4. Vercel auto-detects your framework — leave the defaults, click **Deploy**
+
+You'll see a build log. Wait for the green "Congratulations!" — but you're not done yet.
+
+### Step 2 — Add environment variables
+
+Your app has an API key (in your `.env` file) that Vercel doesn't know about yet. If you skip this step, the deployed site will break.
+
+1. In your Vercel project dashboard, go to **Settings**
+2. Click **Environment Variables**
+3. For each variable in your `.env` file, add a new entry:
+   - **Key:** the variable name (e.g., `AI_API_KEY`)
+   - **Value:** the variable value (paste the same key from your `.env` file)
+4. Click **Save**
+
+**Why can't we just hardcode the API key in the code?** Because if you push that key to GitHub, anyone can see it and use it — and you'll get charged. API keys are like passwords: keep them out of your code. [Read more](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-secrets).
+
+### Step 3 — Redeploy
+
+After adding env vars, Vercel doesn't automatically redeploy. Go to the **Deployments** tab and click **Redeploy** on your latest deployment. This forces Vercel to rebuild with your environment variables included.
+
+### Step 4 — Open your live site
 
 A minute later:
 
@@ -97,28 +204,3 @@ Everyone absorbs the same lesson:
 
 > **Deployment isn't the end of coding.**
 
-## 55–60 min — Hackathon handoff
-
-You've spent three days building one very specific app. But the hackathon isn't asking for another Onam caption generator. You've learned a **pattern**, and patterns transfer:
-
-```text
-INPUT
-  ↓
-PROCESS
-  ↓
-OUTPUT
-  ↓
-SHIP
-```
-
-> **For the hackathon, replace the Onam idea with whatever useless idea you can come up with.**
-
-Same pattern, new idea. Maybe "weird sandwich judge". Maybe "cracked excuse generator". The engine — HTML/CSS/JS, one AI API, GitHub, Vercel — is already in your hands.
-
-|                | Day 1                    | Day 2                    | Day 3            |
-| -------------- | ------------------------ | ------------------------ | ---------------- |
-| **New thing**  | JavaScript               | API + AI                 | Deployment       |
-| **Core skill** | Build                    | Integrate                | Ship              |
-| **Feeling**    | "I built a website."     | "I connected an AI."     | "I shipped an app." |
-
-You built a website, connected it to AI, and shipped it. That's the entire vibe-coding workshop. Go build something useless.
