@@ -41,6 +41,7 @@ export default {
         "plaintext",
         "shell",
         "typescript",
+        "gdscript",
     ],
     roundedImagesCorners: userConfig.roundedImagesCorners ?? true,
     editThisPageRootUrl: userConfig.editThisPageRootUrl ?? false,
