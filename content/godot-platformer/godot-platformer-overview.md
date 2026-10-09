@@ -36,7 +36,7 @@ No coding experience needed. You will not write a game's worth of code. You will
 - **A death pit** that sends you back to the start
 - **Sound effects** and a **score counter** on screen
 
-That's the whole game. It is a *real* game — it's the same shape as Flappy Bird, VVVVVV, or Celeste, minus the hard parts.
+That's the whole game. It is a _real_ game — it's the same shape as Flappy Bird, VVVVVV, or Celeste, minus the hard parts.
 
 ## The honest truth about 4 hours
 
@@ -44,34 +44,34 @@ The famous Brackeys Godot tutorial is a ~2 hour video covering a lot: animations
 
 So this workshop is deliberately smaller. Here's exactly what's in and what's out:
 
-| ✅ In the workshop | ❌ Cut (try them at home) |
-| ------------------- | ------------------------ |
-| Walk left/right, jump | Running & jump animations |
-| One TileMapLayer level | Slopes, multiple levels |
-| Coins that add score | Spinning coin animation |
-| A death pit that resets | Enemy AI / patrolling slimes |
-| A score label + sound | Moving platforms, double jump |
-| | Main menu, pause menu |
+| ✅ In the workshop      | ❌ Cut (try them at home)     |
+| ----------------------- | ----------------------------- |
+| Walk left/right, jump   | Running & jump animations     |
+| One TileMapLayer level  | Slopes, multiple levels       |
+| Coins that add score    | Spinning coin animation       |
+| A death pit that resets | Enemy AI / patrolling slimes  |
+| A score label + sound   | Moving platforms, double jump |
+|                         | Main menu, pause menu         |
 
 > **Note:** the starter project you download already has the tiles, the sounds, the pixel-art settings and the collision shapes all set up. So there's **zero** setup to fail. You start by drawing, not by configuring.
 
 ## The plan
 
-| Time | Phase | You build |
-| ---- | ----- | --------- |
-| 0:00 – 0:30 | [Phase 1](/godot-phase-1-level/) | The level — paint tiles |
-| 0:30 – 1:25 | [Phase 2](/godot-phase-2-player/) | The character — move & jump |
-| 1:25 – 1:40 | ☕ **Break** | |
-| 1:40 – 2:25 | [Phase 3](/godot-phase-3-coins/) | Coins |
-| 2:25 – 3:00 | [Phase 4](/godot-phase-4-hazards/) | The death pit |
-| 3:00 – 3:15 | ☕ **Break** | |
-| 3:15 – 4:00 | [Phase 5](/godot-phase-5-score-audio/) | Score counter & sound |
+| Time        | Phase                                  | You build                   |
+| ----------- | -------------------------------------- | --------------------------- |
+| 0:00 – 0:30 | [Phase 1](/godot-phase-1-level/)       | The level — paint tiles     |
+| 0:30 – 1:25 | [Phase 2](/godot-phase-2-player/)      | The character — move & jump |
+| 1:25 – 1:40 | ☕ **Break**                           |                             |
+| 1:40 – 2:25 | [Phase 3](/godot-phase-3-coins/)       | Coins                       |
+| 2:25 – 3:00 | [Phase 4](/godot-phase-4-hazards/)     | The death pit               |
+| 3:00 – 3:15 | ☕ **Break**                           |                             |
+| 3:15 – 4:00 | [Phase 5](/godot-phase-5-score-audio/) | Score counter & sound       |
 
 Each phase is its own page, so if you fall behind you can open just the phase you're on. **If you get lost, raise your hand** — that's what the helpers are for.
 
 ## What you need
 
-- **Godot 4.6** — the free game engine. Get it on the [download page](https://godotengine.org/download) before you arrive.
+- **Godot 4.6** — the free game engine. Get it on the [download page](https://godotengine.org/download/archive/4.6.3-stable/) before you arrive.
 - **The starter project** — a small zip, ~1 MB. Grab it on [Setup](/godot-setup/).
 - **That's it.** No code editor, no terminal, no version control, no accounts.
 
@@ -79,13 +79,13 @@ Each phase is its own page, so if you fall behind you can open just the phase yo
 
 ## The controls you'll use
 
-| Action | Keys |
-| ------ | ---- |
-| Move left | `←` or `A` |
-| Move right | `→` or `D` |
-| Jump | `Space` |
-| Run your game | `F5` |
-| Stop your game | `F8` |
+| Action         | Keys       |
+| -------------- | ---------- |
+| Move left      | `←` or `A` |
+| Move right     | `→` or `D` |
+| Jump           | `Space`    |
+| Run your game  | `F5`       |
+| Stop your game | `F8`       |
 
 Both key sets are already wired up for you. Nothing to configure.
 

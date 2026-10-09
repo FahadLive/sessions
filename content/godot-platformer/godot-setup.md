@@ -15,7 +15,7 @@ Do this **before the workshop starts**, ideally on your own wifi. It's five minu
 
 ## Step 1 — Install Godot 4.6
 
-Go to [godotengine.org/download](https://godotengine.org/download) and get the standard build for your operating system.
+Go to [godotengine.org/download](https://godotengine.org/download/archive/4.6.3-stable/) and get the standard build for your operating system.
 
 - **Windows** — download the `.zip`, extract it anywhere, double-click `Godot_v4.6-stable_win64.exe`.
 - **macOS** — download the `.zip`, extract it, and drag `Godot.app` into your **Applications** folder, then open it. macOS may ask you to confirm it's from a developer — click **Open** → **Open** in the dialog that appears.
@@ -39,7 +39,7 @@ The starter project is a single zip. It already contains the sprites, the sounds
 
 Then **rename** that folder to something you'll recognise later, like `my-platformer`. This is optional but saves confusion when you have three Godot projects in your Project Manager.
 
-> **Key insight:** rename the *folder* `starter-project`, but do **not** rename or move things *inside* it. Godot stores paths inside its project files, and moving files around inside a project is a good way to break it for no reason. If Godot ever complains that a file is missing, it's almost always because you moved something.
+> **Key insight:** rename the _folder_ `starter-project`, but do **not** rename or move things _inside_ it. Godot stores paths inside its project files, and moving files around inside a project is a good way to break it for no reason. If Godot ever complains that a file is missing, it's almost always because you moved something.
 
 ## Step 3 — Import it into Godot
 
@@ -55,7 +55,7 @@ You should see a game window: a black screen, nothing in it.
 
 That black screen is **correct**. Your `game.tscn` has one empty node called `Level` in it, and nothing painted on it yet. If you see a window at all, you're set.
 
-If Godot asks *"Select a main scene to run"* — pick `game.tscn` and tick **Set as Main Scene**.
+If Godot asks _"Select a main scene to run"_ — pick `game.tscn` and tick **Set as Main Scene**.
 
 ## Quick sanity check
 
@@ -81,7 +81,7 @@ That's it. You're ready.
 The file "res://assets/sprites/knight.png" does not exist.
 ```
 
-> **Note:** you almost certainly renamed or moved files *inside* the project. Delete the folder and unzip the starter again.
+> **Note:** you almost certainly renamed or moved files _inside_ the project. Delete the folder and unzip the starter again.
 
 ```text
 A window titled "Godot Engine" appears and closes instantly.
