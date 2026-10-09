@@ -49,6 +49,7 @@ export default function(eleventyConfig) {
     eleventyConfig.addShortcode("alert", libdocFunctions.shortcodes.alert);
     eleventyConfig.addPairedShortcode("alertAlt", libdocFunctions.shortcodes.alert);
     eleventyConfig.addShortcode("embed", libdocFunctions.shortcodes.embed);
+    eleventyConfig.addShortcode("gameEmbed", libdocFunctions.shortcodes.gameEmbed);
     eleventyConfig.addShortcode("icons", libdocFunctions.shortcodes.icons);
     eleventyConfig.addShortcode("icon", libdocFunctions.shortcodes.icon);
     eleventyConfig.addShortcode("iconCard", libdocFunctions.shortcodes.iconCard);

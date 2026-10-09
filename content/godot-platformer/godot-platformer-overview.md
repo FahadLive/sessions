@@ -14,21 +14,15 @@ In four hours you go from **an empty Godot project** to a **playable platformer*
 
 No coding experience needed. You will not write a game's worth of code. You will write about **30 lines**, and you will paste them from this guide.
 
+## Play the finished game
+
+Here is the game you are about to build. On a desktop, press play and try it right here — the game only loads when you click, so the page stays fast. On a phone or tablet there are no touch controls, so open it on a desktop instead.
+
+{% gameEmbed "https://try.justfahad.me/", "", "Play the finished platformer" %}
+
 ## What you'll build
 
-```text
-    ┌──────────────────────────────────────────────┐
-    │  You collected 3 coins.                      │
-    │                                              │
-    │   ☀                                        ⬤ │
-    │  ▓▓▓▓▓▓            ▓▓▓▓▓▓▓                   │
-    │  ▓▓▓▓▓▓     ☀      ▓▓▓▓▓▓▓      ☀           │
-    │  ▓▓▓▓▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓▓▓▓▓▓                 │
-    │  ▓▓▓▓▓▓▓▓▓▓▓▓      ▓▓▓▓▓▓▓▓▓▓▓      ╲         │
-    │  🗡️→  ▓▓▓▓▓▓▓      ▓▓▓▓▓▓▓▓▓▓▓       ╲___     │
-    └──────────────────────────────────────────────┘
-        walk →  jump →  grab coins →  don't fall
-```
+Platformer game with:
 
 - **A level** you paint tile by tile
 - **A character** that runs left/right and jumps

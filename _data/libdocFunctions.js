@@ -3,36 +3,36 @@
 // https://github.com/11ty/eleventy/issues/3128#issuecomment-1878745864
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const childProcess = require('child_process');
+const childProcess = require("child_process");
 // END IMPORT REQUIRE WORKAROUND
 
 // START JSON IMPORT WORKAROUND
 // import libdocMessages   from "./libdocMessages.json" with { "type": "json" };
 // import libdocSystem     from "./libdocSystem.json" with { "type": "json" };
-const libdocSystem =        require("./libdocSystem.json");
-const libdocMessages =      require("./libdocMessages.json");
+const libdocSystem = require("./libdocSystem.json");
+const libdocMessages = require("./libdocMessages.json");
 // END JSON IMPORT WORKAROUND
 
-import libdocUtils          from    "./libdocUtils.js";
-import libdocConfig         from    "./libdocConfig.js";
+import libdocUtils from "./libdocUtils.js";
+import libdocConfig from "./libdocConfig.js";
+
+// Rendered once per build, even if the gameEmbed shortcode is used several times
+let gameEmbedAssetsRendered = false;
 
 export default {
     pluginsParameters: {
-        eleventyImageTransform: function() {
+        eleventyImageTransform: function () {
             // https://www.11ty.dev/docs/plugins/image/#more-configuration-options
-            const   params = libdocSystem.pluginsParameters.eleventyImageTransform,
-                    w = libdocSystem.widthContent;
+            const params =
+                    libdocSystem.pluginsParameters.eleventyImageTransform,
+                w = libdocSystem.widthContent;
             return {
                 // output image formats
                 formats: params.formats,
                 useCache: params.useCache,
                 svgShortCircuit: params.svgShortCircuit,
                 // output image widths
-                widths: [
-                    w + 30,
-                    w * 2,
-                    w * 4
-                ],
+                widths: [w + 30, w * 2, w * 4],
                 filenameFormat: function (id, src, width, format, options) {
                     // Define custom filenames for generated images
                     // id: hash of the original image
@@ -40,43 +40,57 @@ export default {
                     // width: current width in px
                     // format: current file format
                     // options: set of options passed to the Image call
-                    const filename = src.split('/').slice(-1)[0].split('.')[0];
+                    const filename = src.split("/").slice(-1)[0].split(".")[0];
                     return `${libdocUtils.slugify(filename)}-${id}-__${width}__.${format}`;
                 },
                 sharpOptions: {
-                    animated: true
+                    animated: true,
                 },
                 // transform: (sharp) => {
                 //     sharp.trim();
                 // },
                 // optional, attributes assigned on <img> nodes override these values
-                htmlOptions: params.htmlOptions
-            }
-        }
+                htmlOptions: params.htmlOptions,
+            };
+        },
     },
     filters: {
-        sanitizeJson: async function(value) {
+        sanitizeJson: async function (value) {
             // Remove back slashes
-            value = value.replaceAll('\\', '');
+            value = value.replaceAll("\\", "");
             // Remove extra spaces
-            value = value.replace(/\s+/g, ' ').trim();
+            value = value.replace(/\s+/g, " ").trim();
             return value;
         },
-        autoids: async function(content) {
+        autoids: async function (content) {
             let i = 0;
             const anchorsIds = [];
-            content = content.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, function(m,m1,m2){
-                let newM = m;
-                if (libdocConfig.tocHtmlTags.includes(m1)) {
-                    // Add id to the specified html tags
-                    let slugifiedId = libdocUtils.slugify(m2);
-                    if (anchorsIds.includes(slugifiedId)) {
-                        slugifiedId += `-${i}`;
-                    }
-                    anchorsIds.push(slugifiedId);
-                    const invalidFirstCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-                    if (invalidFirstCharacters.includes(slugifiedId[0])) slugifiedId = 'a_' + slugifiedId;
-                    const markup = `
+            content = content.replace(
+                /<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g,
+                function (m, m1, m2) {
+                    let newM = m;
+                    if (libdocConfig.tocHtmlTags.includes(m1)) {
+                        // Add id to the specified html tags
+                        let slugifiedId = libdocUtils.slugify(m2);
+                        if (anchorsIds.includes(slugifiedId)) {
+                            slugifiedId += `-${i}`;
+                        }
+                        anchorsIds.push(slugifiedId);
+                        const invalidFirstCharacters = [
+                            "0",
+                            "1",
+                            "2",
+                            "3",
+                            "4",
+                            "5",
+                            "6",
+                            "7",
+                            "8",
+                            "9",
+                        ];
+                        if (invalidFirstCharacters.includes(slugifiedId[0]))
+                            slugifiedId = "a_" + slugifiedId;
+                        const markup = `
                         <${m1} id="${slugifiedId}" pl-9="xs,sm">
                             <a  href="#${slugifiedId}"
                                 title="${m2}"
@@ -85,14 +99,15 @@ export default {
                                 <span class="icon-link-simple | pos-absolute top-50 left-50 t-tY-50 t-tX-50 | fs-4"></span>
                             </a>
                     `;
-                    newM = m.replace(`<${m1}>`, markup);
-                    i++;
-                }
-                return newM;
-            });
+                        newM = m.replace(`<${m1}>`, markup);
+                        i++;
+                    }
+                    return newM;
+                },
+            );
             return content;
         },
-        embed: async function(src) {
+        embed: async function (src) {
             try {
                 const url = new URL(src);
                 const content = `
@@ -106,11 +121,14 @@ export default {
                 return content;
             } catch (e) {
                 console.log(`${src} is not a valid URL`);
-                return '';
+                return "";
             }
         },
-        cleanup: async function(content) {
-            content = content.replaceAll(`<table`, `<div class="o-auto w-100 table-wrapper"><table`);
+        cleanup: async function (content) {
+            content = content.replaceAll(
+                `<table`,
+                `<div class="o-auto w-100 table-wrapper"><table`,
+            );
             content = content.replaceAll(`</table>`, `</table></div>`);
             content = content.replaceAll(`<p><div`, `<div`);
             content = content.replaceAll(`</div></p>`, `</div>`);
@@ -118,14 +136,14 @@ export default {
             content = content.replaceAll(`</aside></p>`, `</aside>`);
             return content;
         },
-        datePrefixText: async function(date) {
-            let text = '';
-            if (typeof date == 'string') {
+        datePrefixText: async function (date) {
+            let text = "";
+            if (typeof date == "string") {
                 text = libdocMessages.lastModified[libdocConfig.lang];
             }
             return text;
         },
-        dateString: async function(content) {
+        dateString: async function (content) {
             let theDay = content.getDate().toString();
             if (theDay.length == 1) theDay = `0${theDay}`;
             let theMonth = (content.getMonth() + 1).toString();
@@ -133,9 +151,12 @@ export default {
             const theYear = content.getFullYear().toString();
             return `${theYear}-${theMonth}-${theDay}`;
         },
-        toc: async function(content) {
-            const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(content, libdocConfig.tocHtmlTags);
-            let tocMarkup = '';
+        toc: async function (content) {
+            const htmlTagsFound = libdocUtils.extractHtmlTagsFromString(
+                content,
+                libdocConfig.tocHtmlTags,
+            );
+            let tocMarkup = "";
             if (htmlTagsFound.length > libdocConfig.tocMinTags) {
                 tocMarkup = `
                     <ol class="cgap-3em | m-0 pl-0 pb-5 o-auto | lh-1 | ls-none bwidth-1 bstyle-dashed bcolor-neutral-500 btwidth-0 brwidth-0"
@@ -148,14 +169,26 @@ export default {
                         maxh-200px="xs">`;
                 // Displaying the results
                 const anchorsIds = [];
-                htmlTagsFound.forEach(function(htmlTag, tagIndex) {
+                htmlTagsFound.forEach(function (htmlTag, tagIndex) {
                     let slugifiedId = libdocUtils.slugify(htmlTag.value);
                     if (anchorsIds.includes(slugifiedId)) {
                         slugifiedId += `-${tagIndex}`;
                     }
                     anchorsIds.push(slugifiedId);
-                    const invalidFirstCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-                    if (invalidFirstCharacters.includes(slugifiedId[0])) slugifiedId = 'a_' + slugifiedId;
+                    const invalidFirstCharacters = [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                    ];
+                    if (invalidFirstCharacters.includes(slugifiedId[0]))
+                        slugifiedId = "a_" + slugifiedId;
                     tocMarkup += `
                         <li class="d-flex">
                             <a  href="#${slugifiedId}"
@@ -164,11 +197,11 @@ export default {
                             </a>
                         </li>`;
                 });
-                tocMarkup += '</ol>';
+                tocMarkup += "</ol>";
             }
             return tocMarkup;
         },
-        gitLastModifiedDate: async function(filePath) {
+        gitLastModifiedDate: async function (filePath) {
             // Run the git log command
             // https://jamesdoc.com/blog/2023/git-changelog-in-11ty/
             let fileHistory = childProcess
@@ -177,23 +210,24 @@ export default {
                 .trim();
 
             // If the file isn't committed to git then ignore
-            if (fileHistory == "") { return false }
+            if (fileHistory == "") {
+                return false;
+            }
 
             return fileHistory.split(/\r?\n/)[0];
-        }
+        },
     },
-    collections: {
-    },
+    collections: {},
     shortcodes: {
-        alert: async function(content, type, title) {
-            const validTypes = ['info', 'warning', 'success', 'danger'];
-            let markup = '',
+        alert: async function (content, type, title) {
+            const validTypes = ["info", "warning", "success", "danger"];
+            let markup = "",
                 titleAttribute = ``,
                 typeClass = ``;
-            if (typeof title == 'string') {
+            if (typeof title == "string") {
                 titleAttribute = `data-title="${title}"`;
             }
-            if (typeof type == 'string') {
+            if (typeof type == "string") {
                 if (validTypes.includes(type)) typeClass = `alert-${type}`;
             }
             markup = `
@@ -205,11 +239,11 @@ export default {
             `;
             return markup;
         },
-        icon: async function(iconName, iconSize) {
-            let markup = '';
+        icon: async function (iconName, iconSize) {
+            let markup = "";
             const fontSizeParse = parseInt(iconSize);
             const isSystemIcon = libdocSystem.icons.includes(iconName);
-            let dsFontSize = '';
+            let dsFontSize = "";
             if (!isNaN(fontSizeParse)) {
                 if (fontSizeParse < 11 && fontSizeParse > 0) {
                     dsFontSize = fontSizeParse;
@@ -222,9 +256,9 @@ export default {
             }
             return markup;
         },
-        iconCard: async function(mainText, description, iconName) {
-            let markup = '';
-            if (typeof mainText == 'string' && typeof description == 'string') {
+        iconCard: async function (mainText, description, iconName) {
+            let markup = "";
+            if (typeof mainText == "string" && typeof description == "string") {
                 const isSystemIcon = libdocSystem.icons.includes(iconName);
                 let iconMarkup = ``;
                 if (isSystemIcon) {
@@ -245,11 +279,13 @@ export default {
                         </p>
                     </aside>`;
             } else {
-                console.log(`iconCard shortcode content: "${content}" wrong format, must specify at least main text and description string fields.`);
+                console.log(
+                    `iconCard shortcode content: "${content}" wrong format, must specify at least main text and description string fields.`,
+                );
             }
             return markup;
         },
-        embed: async function(src, height) {
+        embed: async function (src, height) {
             try {
                 const url = new URL(src);
                 const content = `
@@ -264,24 +300,161 @@ export default {
                 return content;
             } catch (e) {
                 console.log(`${src} is not a valid URL`);
-                return '';
+                return "";
             }
         },
-        icons: async function() {
+        gameEmbed: async function (src, poster, title) {
+            try {
+                const url = new URL(src);
+                const gameSrc = url.href;
+                const posterSrc = poster || new URL("/index.png", url).href;
+                const gameTitle = title || "Play the game";
+
+                // Heavy WebGL/WASM games must not load on page load. We render a
+                // facade and only inject the iframe once the visitor clicks play.
+                const assets = gameEmbedAssetsRendered
+                    ? ""
+                    : `
+                    <style>
+                        .widget-game__frame {
+                            position: relative;
+                            aspect-ratio: 16 / 9;
+                            border-radius: 9px;
+                            overflow: hidden;
+                            background: #000;
+                        }
+                        .widget-game__poster {
+                            position: absolute;
+                            inset: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            margin: 0;
+                        }
+                        .widget-game__play {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            z-index: 2;
+                        }
+                        .widget-game__hint {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            margin: 0;
+                            padding: 0.5rem 0.75rem;
+                            text-align: center;
+                            font-size: 0.8rem;
+                            color: #fff;
+                            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+                        }
+                        .widget-game__mount:empty {
+                            display: none;
+                        }
+                        .widget-game__mount iframe {
+                            display: block;
+                            width: 100%;
+                            aspect-ratio: 16 / 9;
+                            border: 0;
+                            border-radius: 9px;
+                            background: #000;
+                        }
+                        .widget-game__open {
+                            display: inline-flex;
+                            margin-top: var(--ita-spacings-3);
+                        }
+                        .widget-game__fallback {
+                            display: none;
+                            margin: 0;
+                        }
+                        .widget-game--playing .widget-game__frame {
+                            display: none;
+                        }
+                        @media (max-width: 959px) {
+                            .widget-game__frame,
+                            .widget-game__open {
+                                display: none;
+                            }
+                            .widget-game__fallback {
+                                display: block;
+                            }
+                        }
+                    </style>
+                    <script>
+                        (function () {
+                            function loadGame(widget) {
+                                const mount = widget.querySelector(".widget-game__mount");
+                                if (!mount || mount.dataset.loaded) return;
+                                const frame = document.createElement("iframe");
+                                frame.src = mount.getAttribute("data-game-src");
+                                frame.loading = "lazy";
+                                frame.setAttribute("allowfullscreen", "");
+                                frame.setAttribute("allow", "autoplay; fullscreen; gamepad");
+                                mount.appendChild(frame);
+                                mount.dataset.loaded = "true";
+                                widget.classList.add("widget-game--playing");
+                            }
+                            document.addEventListener("click", function (event) {
+                                const playBtn = event.target.closest(".widget-game__play");
+                                if (!playBtn) return;
+                                loadGame(playBtn.closest(".widget-game"));
+                            });
+                        })();
+                    </script>`;
+                gameEmbedAssetsRendered = true;
+
+                const html = `${assets}
+                    <aside class="widget widget-game">
+                        <div class="widget-game__frame">
+                            <img class="widget-game__poster"
+                                src="${posterSrc}"
+                                alt="${gameTitle}"
+                                loading="lazy"
+                                decoding="async"
+                                eleventy:ignore
+                                width="960"
+                                height="540">
+                            <p class="widget-game__hint">Keyboard required — best played on a desktop.</p>
+                        </div>
+                        <div class="widget-game__mount" data-game-src="${gameSrc}"></div>
+                        <a  class="widget-game__open btn btn-primary-light"
+                            href="${gameSrc}"
+                            target="_blank"
+                            rel="noopener">
+                            <span class="icon-arrow-square-out"></span>
+                            Open in a new tab
+                        </a>
+                        <p class="widget-game__fallback">
+                            This game needs a keyboard and has no touch controls.
+                            <a href="${gameSrc}" target="_blank" rel="noopener">Open it on a desktop</a> to play.
+                        </p>
+                    </aside>`;
+
+                // Flush markup to the left so markdown treats it as raw HTML
+                // blocks instead of wrapping it in a paragraph.
+                return html.replace(/^[ \t]+/gm, "");
+            } catch (e) {
+                console.log(`${src} is not a valid URL`);
+                return "";
+            }
+        },
+        icons: async function () {
             let markup = `
                 <aside class="widget widget-icons | mt-10 mb-10"
                     mt-7="xs"
                     mb-7="xs">
                     <ul class="d-flex fw-wrap gap-7 | p-0 | ls-none" rgap-10="sm,md">`;
-            libdocSystem.icons.forEach(function(iconName) {
+            libdocSystem.icons.forEach(function (iconName) {
                 markup += `
                     <li class="d-flex fd-column ai-center gap-3" style="width: 20%">
                         <span class="icon-${iconName} fs-10"></span>
                         <code class="fs-2 tws-balance ta-center" fs-1="xs">${iconName}</code>
                     </li>`;
             });
-            markup += '</ul></aside>';
+            markup += "</ul></aside>";
             return markup;
         },
-    }
-}
+    },
+};
