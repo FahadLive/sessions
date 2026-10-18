@@ -2,7 +2,7 @@
 layout: libdoc_page.liquid
 permalink: /game-jam-overview/
 title: Game Jam Speed Kit
-description: "A 3-hour handbook for complete beginners — go from an empty Godot 4 project to a game that's exported, uploaded to itch.io, and playable by link. Pick any style: 2D, UI-only puzzle, or low-poly 3D."
+description: "A 3-hour guided handbook for complete beginners: build Coin Rush in Godot 4, give it real art and sound from free libraries, export it for the web, and upload it to itch.io, so you finish with a link you can send to a friend."
 eleventyNavigation:
     key: Game Jam Speed Kit
     order: 2
@@ -10,78 +10,82 @@ eleventyNavigation:
 
 # Your game, uploaded, in 3 hours
 
-In three hours you go from **an empty project** to **a link you can send someone** — a real game, playing in their browser, that you made.
+In three hours you go from **a ready-made starter project** to **a link you can send someone**: a real game, playing in their browser, that you finished.
 
-No coding background needed. No art skills needed. You will write about **30 lines of code**, and you'll understand every one of them.
+No coding background needed. No art skills needed. You will paste about **40 lines of code** from this guide, and you'll understand what each one does.
 
 ## What "done" looks like
 
-- A game with **a goal**, **a way to lose**, and **a restart button**
-- Running in a browser at an **itch.io link** you can text to a friend
-- Built in **Godot 4**, the free game engine that studios ship commercial games with
+- A game with **a goal** (collect 5 coins), **a way to lose** (touch the hazard) and **a restart** (press Space)
+- Real pixel art, real sound effects and music, all free to use, with a `CREDITS.txt` to prove it
+- Running in a browser at an **itch.io link**
+- Built in **Godot 4.6**, the free game engine
 
-## The honest truth about 3 hours
+![A mock-up of the finished game: a sandy arena with brick walls, a knight at the bottom, silver coins and a bat.](/assets/game-jam-speed-kit/previews/style-2d-pixel.png)
 
-Three hours is not enough to make the game in your head. It is exactly enough to make a **small, complete game** — the kind that wins "best tiny game" at a jam, not the kind that lives on a hard drive forever.
+_The game you'll build (mock-up). Your real screenshot replaces this on the itch.io page._
 
-So there are two rules:
+{% comment %}
+EMBED PLACEHOLDER: once the finished game is hosted, replace this comment with:
+{% gameEmbed "https://YOUR-GAME-URL", "", "Play the finished Coin Rush" %}
+and delete the image below.
+{% endcomment %}
 
-1. **One core loop, repeated.** Move, collect, avoid, win or lose. That's the whole game. Different art, different speed, same loop.
-2. **The cut list is sacred.** Every jam game dies from additions, not from limits. You'll write down what you will *not* build in [Step 2](/game-jam-step-2-pick-game/), and when a shiny idea appears at minute 90, it goes on a list for *next* time.
+![Placeholder: the finished game embedded and playable on this page.](/assets/game-jam-speed-kit/previews/finished-game.svg)
+
+## This is one guided path, not a blank page
+
+Everyone builds the **same game, in the same order**. That is on purpose. A blank page is where beginners get stuck; a guided path is where they finish. After you finish, the _look_ of the game is yours to change, and the [Step 6](/game-jam-step-6-next/) page lists what to try.
+
+The same loop works in any style. Here's what the same "collect and avoid" idea looks like in three styles:
+
+| Pixel 2D (**you build this**) | UI-only | Low-poly 3D ([showcase](/game-jam-3d-showcase/)) |
+| ----------------------------- | ------- | ------------------------------------------------ |
+| ![A mock-up of the pixel 2D style.](/assets/game-jam-speed-kit/previews/style-2d-pixel.png) | ![Placeholder: a UI-only game made of buttons and text.](/assets/game-jam-speed-kit/previews/style-ui-only.svg) | ![Placeholder: a low-poly 3D arena.](/assets/game-jam-speed-kit/previews/style-3d-lowpoly.svg) |
+
+> **Key insight:** the style changes the _paint_, not the engine. A coin is an `Area2D` in 2D and an `Area3D` in 3D. The signal, the score script and the export are identical. In the [3D showcase](/game-jam-3d-showcase/) you'll see that for yourself.
+
+## The Jam Mindset
+
+Three rules. They run through every step.
+
+1. **Placeholder first, polish last.** Your game starts as coloured boxes. You swap in art only when the game works. If a box game isn't fun, a pretty one won't be either.
+2. **Reuse, don't reinvent.** About 90% of a jam game is art, sound and parts that other people made and shared. Your job is to **assemble and tune**, not to draw everything.
+3. **Three passes, in this order:** **playable** (you can move and collect) → **finishable** (you can win, lose and restart) → **pretty** (art, sound, juice). Never start pass 3 before pass 2 works.
+
+> **Note:** "Juice" is the little extras that make a game feel good: a sound when you grab a coin, a screen shake when you get hit, a number that pops. You add it in pass 3.
 
 ## The plan
 
-| Time         | Step                                                       | You walk out with                          |
-| ------------ | ---------------------------------------------------------- | ------------------------------------------ |
-| 0:00 – 0:10  | [Step 0: Setup](/game-jam-step-0-setup/)                   | Godot running, project ready               |
-| 0:10 – 0:35  | [Step 1: The mental model](/game-jam-step-1-mental-model/)  | A moving player and a working score        |
-| 0:35 – 0:50  | [Step 2: Pick your game](/game-jam-step-2-pick-game/)       | One-sentence core loop + cut list          |
-| 0:50 – 1:10  | [Step 3: Get assets fast](/game-jam-step-3-assets/)         | 5–10 files, downloaded                     |
-| 1:10 – 1:30  | [Step 4: Import into Godot](/game-jam-step-4-import/)       | Your game, wearing real art and sound      |
-| 1:30 – 2:10  | [Step 5: Build your game](/game-jam-step-5-build/)          | A complete core loop                       |
-| 2:10 – 2:30  | [Step 6: Polish pass](/game-jam-step-6-polish/)             | Sound, shake, a title — friend-ready       |
-| 2:30 – 2:50  | [Step 7: Export and deploy](/game-jam-step-7-export/)       | A public itch.io URL                       |
-| 2:50 – 3:00  | [Step 8: Where to go next](/game-jam-step-8-next/)          | Your next jam, booked                      |
+| Time          | Step                                                  | You walk out with                           |
+| ------------- | ----------------------------------------------------- | ------------------------------------------- |
+| 0:00 – 0:10   | [Step 0: Setup](/game-jam-step-0-setup/)              | Godot running, starter project open         |
+| 0:10 – 0:45   | [Step 1: Build the core](/game-jam-step-1-build-core/) | **Pass 1 and 2:** playable and finishable   |
+| 0:45 – 1:10   | [Step 2: Find assets](/game-jam-step-2-assets/)       | An asset pack and a `CREDITS.txt`           |
+| 1:10 – 1:25   | ☕ **Break**                                          |                                             |
+| 1:25 – 1:55   | [Step 3: Import assets](/game-jam-step-3-import/)     | **Pass 3 begins:** real art, sound, music   |
+| 1:55 – 2:20   | [Step 4: Polish](/game-jam-step-4-polish/)            | Your own sound effect and 4 bits of juice   |
+| 2:20 – 2:40   | [Step 5: Export and deploy](/game-jam-step-5-export/) | A public itch.io link                       |
+| 2:40 – 2:55   | [3D showcase](/game-jam-3d-showcase/)                 | The same game in 3D, so you know it's open  |
+| 2:55 – 3:00   | [Step 6: Next](/game-jam-step-6-next/)                | Your next jam, planned                      |
 
-## Three tracks — same toolkit
-
-You pick a track in Step 2. All three use the same engine, the same ideas, and the same export process:
-
-| Track | What you build | Best if you… |
-| ----- | -------------- | ------------ |
-| **A: 2D mover** | Top-down collector or platformer, with sprites | Want the classic "game feel" and love pixel art |
-| **B: UI puzzle / clicker** | Buttons, timers and text — no character at all | Hate movement code, love numbers and reactions |
-| **C: 3D collect-and-avoid** | "Coin Rush" — walk an arena, grab coins, dodge a swinging hazard | Want to prove 3D is not scary (it isn't) |
-
-> **Key insight:** tracks change the *paint*, not the *engine*. A coin in track A is an `Area2D`; in track C it's an `Area3D`. The signal is the same, the script is four lines, and the export is identical. That's the whole secret of this handbook.
+Each step is its own page. If you fall behind, open the step you're on. **If you get lost, raise your hand.**
 
 ## What you need
 
-- **Godot 4.6** — free, one download, no installer. Get it in [Step 0](/game-jam-step-0-setup/).
-- **A browser** — for assets and for itch.io.
-- **Nothing else.** No code editor, no terminal, no accounts except the free itch.io one you'll make in Step 0.
+- A laptop (Windows, macOS or Linux), a mouse, and a **free itch.io account**
+- **Godot 4.6**, free, no installer. Get it in [Step 0](/game-jam-step-0-setup/)
+- The **starter project** and **asset pack** (two small downloads, in Step 0 and Step 2)
+- Nothing else. No code editor, no terminal, no Git.
 
-## What you'll actually learn
+> **Key insight:** the fastest way to get unstuck in Godot is to press **F5** and look at the screen. If something isn't working, something you expected to see isn't there.
 
-Five ideas carry the entire session, and they carry every future game you make too:
+## Reference pages (open any time)
 
-| Idea | In plain words |
-| ---- | -------------- |
-| **Nodes & scenes** | Games are built from small parts stacked in a tree |
-| **Signals** | "When something happens, run this function" |
-| **Variables** | Named boxes that remember numbers |
-| **Functions** | Named chunks of code you can call anytime |
-| **`if`** | Making the game react differently to different situations |
+- [One-page cheat sheet](/game-jam-cheat-sheet/): asset sites, import steps and tools, printable
+- [Toolbox](/game-jam-toolbox/): free tools for art, sound, music and planning, plus "I need X → use Y"
+- [Troubleshooting](/game-jam-troubleshooting/): the 10 asset and import problems that actually happen
+- [AI tutor rules](/game-jam-ai-tutor-rules/): how to use an AI chat without it writing your game for you
+- [Before I start a jam](/game-jam-before-you-start/): the checklist for your _next_ jam
 
-Everything else today is variation on these five.
-
-> **One structural extra:** covers not one of the five, but you'll meet it in [Step 1](/game-jam-step-1-mental-model/) because a game needs it — the **singleton** (Godot calls it an **autoload**). A script that always exists while the game runs, which is how the score can be seen by every scene. It's not a new kind of code; it's *where* a global number lives.
-
-## Two extras
-
-- **Running out of time?** The [cheat sheet](/game-jam-cheat-sheet/) is one page: all 8 steps, every website, every export click.
-- **Something broke?** The [troubleshooting table](/game-jam-troubleshooting/) has the 10 most common problems and their one-line fixes.
-
-Facilitators: read the [pre-session checklist](/game-jam-facilitator/) the day before, not the morning of.
-
-Start with **[Step 0](/game-jam-step-0-setup/)** — ten minutes, and it makes sure nobody loses the session to a download bar.
+Start with **[Step 0: Setup](/game-jam-step-0-setup/)**.

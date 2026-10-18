@@ -2,86 +2,98 @@
 layout: libdoc_page.liquid
 permalink: /game-jam-step-0-setup/
 title: Step 0 - Setup (10 min)
-description: Install Godot 4.6 with no installer, download export templates up front, create a free itch.io account, and make a project with art/audio/scenes/scripts folders.
+description: "Install Godot 4.6, download the export templates and the Coin Rush starter project, make an itch.io account, and press F5, in ten minutes, before anyone has to wait on a download."
 eleventyNavigation:
     key: Step 0 - Setup
     parent: Game Jam Speed Kit
-    order: 2
+    order: 3
 ---
 
 # Step 0 (10 min): Setup
 
-Everything in this step exists to protect the other 170 minutes. Four moves: get Godot, get the export templates, get an itch.io account, make the project.
+Do this **before the session if you can**, on a good connection. Everything here protects the other 170 minutes.
 
-## 1. Get Godot 4.6 (3 min)
+> **Note:** no install possible on your machine? You can try Godot in a browser tab at the [Godot web editor](https://editor.godotengine.org/releases/latest/). It's fine for poking around, but use the desktop app for the session: it's what this guide and the facilitator expect, and it's the one that can export your game.
 
-Go to the [Godot download page](https://godotengine.org/download/archive/4.6.3-stable/) and get the **standard** build for your computer.
+## 1. Get Godot 4.6
 
-- **Windows** — download the `.zip`, extract it anywhere, double-click `Godot_v4.6-stable_win64.exe`.
-- **macOS** — download the `.zip`, extract it, drag `Godot.app` into **Applications**, open it. If macOS asks, click **Open** → **Open**.
-- **Linux** — download, make executable, run it.
+**Do this:** open the [Godot 4.6 download page](https://godotengine.org/download/archive/4.6.3-stable/) and download the **standard** build for your computer (not the .NET one).
 
-> **Note:** pick the **standard** build, not .NET (C#). We're using GDScript, which is Godot's built-in language.
+| Your computer | Do this                                                                                                            |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Windows**   | Download the `.zip`, right-click → **Extract All**, double-click `Godot_v4.6-stable_win64.exe`                     |
+| **macOS**     | Download the `.zip`, double-click it, drag `Godot.app` into **Applications**, open it (**Open** if macOS asks)    |
+| **Linux**     | Download the `.zip`, extract it, make the file executable, run it                                                  |
 
-The first window you see is the **Project Manager** — Godot's home screen. You'll pass through it every session.
+**You should see:** a window called the **Project Manager**, Godot's home screen, with an **Import** button at the top right.
 
-## 2. Download the export templates NOW (3 min)
+![The Godot Project Manager: an empty project list with Create, Import and other buttons on the right.](/assets/game-jam-speed-kit/previews/shot-project-manager.svg)
 
-Export templates are the pre-built engine bits Godot needs to turn your project into a browser download. If you skip this, Step 7 stops dead — and downloading them at minute 150 is a sad way to end a jam.
+> **Note:** there is no installer. Godot is one program you can run from anywhere, even a USB stick. That's why it's such a good jam engine.
 
-1. In the Project Manager, go to **Editor → Manage Export Templates…**
-2. Click **Download and Install**.
-3. Wait for the progress bar. It's a few hundred MB — this is exactly why we're doing it now.
+## 2. Get the export templates
 
-> **Key insight:** the Godot editor you run games in is *not* the same as the files a browser needs. Templates bridge that gap. Ten minutes of download now buys a stress-free export later.
+Export templates are the pre-built engine pieces Godot needs to turn your project into a web game. Downloading them in Step 5 is a sad way to spend minute 140, so do it now.
 
-## 3. Make a free itch.io account (2 min)
+**Do this:** in the Project Manager, open the **Editor** menu → **Manage Export Templates…** → **Download and Install**.
 
-1. Go to [itch.io](https://itch.io) and click **Join**.
-2. Username, email, password. Nothing else.
+**You should see:** a progress bar, then a message that the templates are installed. (It's a few hundred MB, which is why we do it now.)
 
-This is the site your game will live on. An account takes two minutes now and saves ten later when you're tired and typing at minute 165.
+> **Note:** no internet at the venue? Ask the facilitator. There should be a copy to install with **Install from File**.
 
-> **Note:** while you're there, have a look around — itch.io is where most of the world's jam games are published. Yours joins them today.
+## 3. Make a free itch.io account
 
-## 4. Create the project (2 min)
+**Do this:** go to [itch.io](https://itch.io) → **Register**, and pick a username. Check your email if it asks you to confirm.
 
-1. In the Project Manager, click **New Project**.
-2. **Project name:** something lowercase with no spaces, like `my-jam-game`. Spaces and capitals cause real, boring problems later.
-3. **Project path:** anywhere you'll find it again. Make a new folder called `game-jam` inside Documents or Desktop and put it there.
-4. **Renderer:** choose **Compatibility**. (It's the middle option.)
-5. Click **Create & Edit**.
+**You should see:** your itch.io dashboard. This is where your game will live in Step 5.
 
-> **Key insight:** **Compatibility** is the renderer that runs everywhere — old laptops, school machines, and browsers. The fancier renderer looks slightly nicer on strong machines but complicates the web export in Step 7. Choosing it now means Step 7 has one less thing that can go wrong.
+## 4. Get the starter project
 
-Now make the folders. In the **FileSystem** panel (bottom-left):
+<div class="d-flex fw-wrap gap-3" rgap-3="xs">
+  <a href="/assets/game-jam-speed-kit/coin-rush-starter.zip" download class="btn btn-primary">⬇ Download the Coin Rush starter (8 KB)</a>
+</div>
 
-1. Right-click the top item (your project name) → **New Folder** → type `art` → OK.
-2. Repeat for `audio`, `scenes`, `scripts`.
+**Do this:** unzip it. **Windows:** right-click → **Extract All**. **macOS:** double-click.
 
-```text
-my-jam-game/
-├── art/        ← images and models go here
-├── audio/      ← sounds and music go here
-├── scenes/     ← the rooms of your game go here
-└── scripts/    ← your code goes here
-```
+**You should see:** a folder called `coin-rush-starter`. Move it somewhere you'll find again (Documents is fine).
+
+> **Key insight:** don't rename or move files _inside_ the project. Godot stores file paths in its project files, and moving things behind its back is the easiest way to break a project.
+
+## 5. Open it and press F5
+
+**Do this:**
+
+1. In the Project Manager, click **Import**.
+2. **Browse** to `coin-rush-starter/project.godot` → **Open** → **Import & Edit**.
+3. Wait for the import bar in the bottom-right corner to finish.
+4. Press **F5** (Run Project).
+
+**You should see:** a game window with a dark arena, a **blue box** near the bottom, a red box in the middle, five yellow diamonds and a **Coins: 0** label. The blue box won't move yet. That is correct. You fix it in Step 1.
+
+![The running starter: a dark arena with a blue box at the bottom, a red box in the middle and yellow diamonds.](/assets/game-jam-speed-kit/previews/shot-first-run.svg)
+
+Press **F8** (or close the window) to stop the game.
+
+## Your first look at the editor
+
+You don't need to learn it all. Find these four things:
+
+| Where                | What it is                                                       |
+| -------------------- | ---------------------------------------------------------------- |
+| **Scene** (top-left) | The tree of **nodes**: the building blocks of your game          |
+| **FileSystem** (bottom-left) | Every file in your project: scenes, scripts, art, sound  |
+| **Inspector** (right) | The settings of whichever node you've selected                  |
+| **Output** (bottom)  | Where Godot prints errors and messages. Red text goes here       |
+
+> **Note:** a **node** is one building block (a sprite, a sound player, a collision shape). A **scene** is a saved group of nodes, like a LEGO model you can reuse. Your whole game is scenes made of nodes.
 
 ## Checkpoint
 
-Press **F5** (Run Project). Godot asks: *"Select a main scene to run"* — you don't have one yet, so click **Cancel**. A tiny game window opens showing the Godot logo on a grey background.
-
-That grey window **is** a running game. Your project works.
-
-Close it (the X, or **F8** in the editor) and press **Ctrl+S** / **Cmd+S** to save.
-
-## You should see
-
-- The editor with your project name in the title bar
-- Four empty folders in the FileSystem panel: `art`, `audio`, `scenes`, `scripts`
-- A game window that opens and closes on F5
-
-If all four are true, you're done. This is the last time setup costs you anything.
+- [ ] Godot 4.6 opens
+- [ ] Export templates installed
+- [ ] itch.io account created
+- [ ] The starter opens, and **F5** shows the arena
+- [ ] You pressed **Ctrl+S** (**Cmd+S** on Mac) at least once
 
 ## If something goes wrong
 
@@ -89,18 +101,24 @@ If all four are true, you're done. This is the last time setup costs you anythin
 "Export templates" download fails or hangs.
 ```
 
-> **Note:** try again on a different network, or grab the templates from the Godot website's download section manually and install via **Manage Export Templates → Install from File**. If it still fails, tell your facilitator — there's a shared copy on the workshop machine.
+> **Note:** try a different network, or use **Install from File** with a copy from the facilitator.
 
 ```text
 Godot won't open on macOS: "unidentified developer".
 ```
 
-> **Note:** right-click the Godot app → **Open** → **Open**. One-time permission.
+> **Note:** right-click the Godot app → **Open** → **Open**. It's a one-time permission.
 
 ```text
-The Compatibility renderer option isn't there.
+The project says it was saved with a different 4.x version.
 ```
 
-> **Note:** you're on an older Godot. Close the project, and make sure you downloaded **4.6 standard**, not 3.x or .NET.
+> **Note:** harmless. Click **OK** or **Fix** and carry on.
 
-Next: **[Step 1](/game-jam-step-1-mental-model/)** — the five ideas that run every game ever made.
+```text
+F5 asks me to select a main scene.
+```
+
+> **Note:** pick `scenes/main.tscn` and click **Select Current**. That's the scene the game starts from.
+
+Next: **[Step 1: Build the core](/game-jam-step-1-build-core/)**.

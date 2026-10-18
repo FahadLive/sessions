@@ -1,41 +1,50 @@
 ---
 layout: libdoc_page.liquid
 permalink: /game-jam-troubleshooting/
-title: Troubleshooting - Top 10 Problems
-description: The 10 most common Godot import, runtime and web-export problems during a game jam — what each one means and the exact one-line fix, from magenta squares to blank pages on itch.io.
+title: Troubleshooting - the 10 Asset and Import Problems
+description: "A symptom-to-fix table for the ten asset and import problems that actually happen in Godot 4, including blurry pixel art, wrong size, music that won't loop, invisible sprites, silent sounds and blank itch.io pages."
 eleventyNavigation:
     key: Troubleshooting
     parent: Game Jam Speed Kit
-    order: 12
+    order: 14
 ---
 
 # Troubleshooting: the 10 that actually happen
 
-Find your symptom, apply the fix, get back to building. (In-editor errors first, export horrors last.)
+Find your symptom, apply the fix, get back to building.
 
 | # | You see | It means | Fix |
 | - | ------- | -------- | --- |
-| 1 | **Magenta/pink square** instead of art | The texture failed to import — usually you ran the game before the import bar finished | Wait for the bottom-right import bar → click the file → **Import dock → Reimport**. If still pink: open in Photopea, re-save as PNG, re-drag |
-| 2 | **Blurry pixel art** | Godot is smoothly scaling your pixels | Project → Project Settings → Rendering → Textures → **Default Texture Filter → Nearest** |
-| 3 | **Whole sprite strip showing** (12 coins in a row) | `Sprite2D` is displaying the entire sheet | Tick **Region → Enabled** → Rect `0, 0, W, H` for one frame — or set **H frames** to the frame count to animate them |
-| 4 | **Music plays once, then silence** | Looping wasn't set on import | Select the audio file → **Import dock** → **Loop → On** → **Reimport** |
-| 5 | **Nothing scores when I touch the coin** | The signal isn't connected, or the mask/layer pair is wrong | Inspector → Node → **Signals → body_entered** must show connected; coin **Mask** = 2, player **Layer** = 2 |
-| 6 | **Parse Error / Unexpected identifier** | A typo, or tabs vs spaces | GDScript is indentation-sensitive: re-paste the code block from the guide, replacing everything, and keep **Tab** indents |
-| 7 | **3D model invisible or fills the whole screen** | Scale mismatch between the model's units and your world | Select the model → **Scale** → `0.01` / `0.1` / `1` until it fits; confirm a `Camera3D` exists and is pointed at it |
-| 8 | **Export button missing/greyed, "templates not found"** | Export templates were never installed | **Editor → Manage Export Templates → Download and Install** (or Install from File from a USB copy) |
-| 9 | **itch.io page is blank / console screams SharedArrayBuffer** | Your export used threads; itch.io doesn't send the headers threads need | **Project → Export → Web → uncheck "Thread Support Available"** → Export Project again → re-zip → re-upload. (Game slightly slower; works everywhere) |
-| 10 | **No sound until I click on the page** | Browser autoplay policy — not a bug | Nothing to fix. Clicking inside the game frame unlocks audio. Say "click the game first" in your description |
+| 1 | **A pink or missing image**, or a question-mark icon | The import hadn't finished, or the file path changed | Wait for the import bar (bottom-right). Click the file → **Import** tab → **Reimport**. If you moved the file outside Godot, move it back |
+| 2 | **Blurry pixel art** | Godot smooths pictures when it scales them | Project Settings → Rendering → Textures → Canvas Textures → **Default Texture Filter = Nearest** |
+| 3 | **The whole sprite sheet shows** (130 tiles at once) | The Sprite2D is displaying the full image | Sprite2D → **Animation**: set **Hframes** and **Vframes**, then pick a **Frame** |
+| 4 | **Wrong size**: tiny, huge or off-screen | The picture's pixel size doesn't match your world | Select the node → set **Scale** (`2, 2`, `0.5, 0.5`…). For pixel art, keep whole numbers. In 3D, models come in any size: try `0.01`, `0.1`, `10` |
+| 5 | **File shows in FileSystem, but nothing appears** | A file isn't a node. Or the node is hidden behind another, or outside the screen | Drag it into the scene or a **Texture** field. Check the draw order (**TileMapLayer first** in the list). Check **Position** and that **Visible** is on. In 3D, check there's a **Camera3D** |
+| 6 | **Wrong node type**: image won't go into the slot, or an audio file won't play | A Sprite2D needs a **Texture**, an AudioStreamPlayer needs a **Stream**, an AnimatedSprite2D needs **SpriteFrames** | Match the file to the right field: pictures → `Texture`, sounds → `Stream` |
+| 7 | **Music plays once, then silence** | Looping is set in the file's import, and it's off | Click the audio file → **Import** tab → tick **Loop** → **Reimport** |
+| 8 | **No sound at all** | The **Stream** box is empty, **Autoplay** is off (for music), the volume is too low, or you never call `.play()` | Check **Stream** is filled, tick **Autoplay** for music, check **Volume dB**, and your laptop volume. Check `.play()` is in the code. A sound on a node you `queue_free()` is cut off, so keep it on `Main` |
+| 9 | **Export button greyed out, "templates not found"** | Export templates were never installed | **Editor → Manage Export Templates → Download and Install** (or **Install from File**) |
+| 10 | **itch.io page blank**, or the console mentions SharedArrayBuffer | The export used threads, or the zip has a folder around `index.html` | **Project → Export → Web → untick Thread Support** → re-export → zip the **contents** → re-upload |
 
 ## Two more that earn their keep
 
-- **"F5 says no main scene"** — right-click your main scene → **Run Scene**, or set it: Project → Project Settings → **Run → Main Scene**.
-- **The game runs but looks empty** — check the obvious trio: is the node actually in the scene tree? Is its position on-screen? Is there a camera?
+```text
+Parse Error: Unexpected "Indent" / Expected end of statement
+```
 
-## The debugging ritual (for everything not in the table)
+> **Note:** GDScript cares about indentation. Replace the whole script with the code block from the guide, and keep each line's indent.
 
-1. **Read the red text** — Output panel, the full message, out loud. It names the file, the line, and usually the crime.
-2. **Print the suspect value** — `print(score)` beats staring at the screen every time.
+```text
+Touching the coin does nothing.
+```
+
+> **Note:** the node needs a **CollisionShape2D** child with a shape, and **Node → Signals → `body_entered`** must show a connection to a function that exists, spelled exactly right.
+
+## The debugging ritual (for everything else)
+
+1. **Read the red text.** The **Output** panel names the file and the line number.
+2. **Print the suspect value.** `print(score)` beats staring at the screen.
 3. **Change one thing, press F5.** One. Not three.
-4. **Still stuck after two tries?** `F1` docs for the node involved — then a human (facilitator, Discord, r/godot) with the error message attached.
+4. **Still stuck after two tries?** Press **F1** for the docs on the node involved, then ask a human, with the error message attached.
 
-> **Key insight:** nobody — not one person in this room or on the internet — writes jam code that works first time. The skill isn't avoiding errors; it's **turning an error into a line number** in under a minute. That's 90% of what "being good at this" means.
+> **Key insight:** nobody writes jam code that works first time. The skill isn't avoiding errors. It's turning an error into a line number in under a minute.
