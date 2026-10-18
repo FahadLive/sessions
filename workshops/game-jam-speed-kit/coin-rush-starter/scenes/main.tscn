@@ -1,0 +1,171 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="2_coin"]
+[ext_resource type="PackedScene" path="res://scenes/hazard.tscn" id="3_haz"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_pl"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="5_hud"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="sky_1"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env_1"]
+background_mode = 2
+sky = SubResource("sky_1")
+ambient_light_source = 2
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="mat_ground"]
+albedo_color = Color(0.35, 0.55, 0.35, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="mesh_ground"]
+material = SubResource("mat_ground")
+size = Vector3(24, 1, 24)
+
+[sub_resource type="BoxShape3D" id="shape_ground"]
+size = Vector3(24, 1, 24)
+
+[sub_resource type="StandardMaterial3D" id="mat_wall"]
+albedo_color = Color(0.45, 0.32, 0.22, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="mesh_wall_ns"]
+material = SubResource("mat_wall")
+size = Vector3(24, 1.5, 1)
+
+[sub_resource type="BoxMesh" id="mesh_wall_ew"]
+material = SubResource("mat_wall")
+size = Vector3(1, 1.5, 24)
+
+[sub_resource type="BoxShape3D" id="shape_wall_ns"]
+size = Vector3(24, 1.5, 1)
+
+[sub_resource type="BoxShape3D" id="shape_wall_ew"]
+size = Vector3(1, 1.5, 24)
+
+[sub_resource type="StandardMaterial3D" id="mat_player"]
+albedo_color = Color(0.25, 0.45, 0.9, 1)
+roughness = 0.5
+
+[sub_resource type="CapsuleMesh" id="mesh_player"]
+material = SubResource("mat_player")
+radius = 0.4
+height = 1.2
+
+[sub_resource type="CapsuleShape3D" id="shape_player"]
+radius = 0.4
+height = 1.2
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_hud")
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 24
+text = "Coins: 0"
+
+[node name="TimeLabel" type="Label" parent="HUD"]
+offset_left = 8.0
+offset_top = 38.0
+offset_right = 300.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 24
+text = "Time: 30"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-50, -30, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("shape_ground")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("mesh_ground")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+position = Vector3(0, 1.25, -12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("shape_wall_ns")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallNorth"]
+mesh = SubResource("mesh_wall_ns")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+position = Vector3(0, 1.25, 12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("shape_wall_ns")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallSouth"]
+mesh = SubResource("mesh_wall_ns")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+position = Vector3(12, 1.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("shape_wall_ew")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallEast"]
+mesh = SubResource("mesh_wall_ew")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+position = Vector3(-12, 1.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("shape_wall_ew")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallWest"]
+mesh = SubResource("mesh_wall_ew")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+position = Vector3(0, 2, 8)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("4_pl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("shape_player")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("mesh_player")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+position = Vector3(0, 8, 10)
+rotation_degrees = Vector3(-38, 0, 0)
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector3(4, 1.2, 4)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector3(-4, 1.2, 4)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector3(4, 1.2, -4)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector3(-4, 1.2, -4)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("2_coin")]
+position = Vector3(0, 1.2, -8)
+
+[node name="Hazard" parent="." instance=ExtResource("3_haz")]
+position = Vector3(0, 1.2, 0)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_c"]
+
+[sub_resource type="StandardMaterial3D" id="mat_coin"]
+albedo_color = Color(1, 0.84, 0.1, 1)
+metallic = 0.4
+roughness = 0.3
+
+[sub_resource type="SphereMesh" id="mesh_coin"]
+material = SubResource("mat_coin")
+radius = 0.35
+height = 0.7
+
+[sub_resource type="SphereShape3D" id="shape_coin"]
+radius = 0.35
+
+[node name="Coin" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("shape_coin")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("mesh_coin")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
