@@ -33,7 +33,7 @@ This turns your project into a **link**. Do it in this order, and every step has
 
 **You should see** a **Web** entry in the preset list. If a red warning mentions missing export templates, go to **Editor → Manage Export Templates → Download and Install** (that was Step 0).
 
-![The Export dialog with a Web preset selected and an Export Project button at the bottom.](/assets/game-jam-speed-kit/previews/shot-export-dialog.svg)
+![The Export dialog with a Web preset selected and an Export Project button at the bottom.](/assets/game-jam-speed-kit/previews/shot-export-dialog.webp)
 
 > **Note:** **Thread Support** off means the game runs on every site and device, a little slower in theory, not noticeable for a game like this.
 
@@ -76,7 +76,7 @@ This turns your project into a **link**. Do it in this order, and every step has
 
 **You should see** your game, embedded and playable, right on your itch.io page.
 
-![The itch.io project form with Kind of project set to HTML and the played-in-the-browser box ticked.](/assets/game-jam-speed-kit/previews/shot-itch-upload.svg)
+![The itch.io project form with Kind of project set to HTML and the played-in-the-browser box ticked.](/assets/game-jam-speed-kit/previews/shot-itch-upload.webp)
 
 > **Note:** the first load takes a few seconds while the engine downloads. A blank frame for a moment is normal.
 

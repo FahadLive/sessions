@@ -31,7 +31,7 @@ EMBED PLACEHOLDER: once the finished game is hosted, replace this comment with:
 and delete the image below.
 {% endcomment %}
 
-![Placeholder: the finished game embedded and playable on this page.](/assets/game-jam-speed-kit/previews/finished-game.svg)
+![Placeholder: the finished game embedded and playable on this page.](/assets/game-jam-speed-kit/previews/finished-game.webp)
 
 ## This is one guided path, not a blank page
 
@@ -39,9 +39,9 @@ Everyone builds the **same game, in the same order**. That is on purpose. A blan
 
 The same loop works in any style. Here's what the same "collect and avoid" idea looks like in three styles:
 
-| Pixel 2D (**you build this**) | UI-only | Low-poly 3D ([showcase](/game-jam-3d-showcase/)) |
-| ----------------------------- | ------- | ------------------------------------------------ |
-| ![A mock-up of the pixel 2D style.](/assets/game-jam-speed-kit/previews/style-2d-pixel.png) | ![Placeholder: a UI-only game made of buttons and text.](/assets/game-jam-speed-kit/previews/style-ui-only.svg) | ![Placeholder: a low-poly 3D arena.](/assets/game-jam-speed-kit/previews/style-3d-lowpoly.svg) |
+| Pixel 2D (**you build this**)                                                               | UI-only                                                                                                          | Low-poly 3D ([showcase](/game-jam-3d-showcase/))                                                |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| ![A mock-up of the pixel 2D style.](/assets/game-jam-speed-kit/previews/style-2d-pixel.png) | ![Placeholder: a UI-only game made of buttons and text.](/assets/game-jam-speed-kit/previews/finished-game.webp) | ![Placeholder: a low-poly 3D arena.](/assets/game-jam-speed-kit/previews/shot-3d-showcase.webp) |
 
 > **Key insight:** the style changes the _paint_, not the engine. A coin is an `Area2D` in 2D and an `Area3D` in 3D. The signal, the score script and the export are identical. In the [3D showcase](/game-jam-3d-showcase/) you'll see that for yourself.
 
@@ -57,17 +57,17 @@ Three rules. They run through every step.
 
 ## The plan
 
-| Time          | Step                                                  | You walk out with                           |
-| ------------- | ----------------------------------------------------- | ------------------------------------------- |
-| 0:00 – 0:10   | [Step 0: Setup](/game-jam-step-0-setup/)              | Godot running, starter project open         |
-| 0:10 – 0:45   | [Step 1: Build the core](/game-jam-step-1-build-core/) | **Pass 1 and 2:** playable and finishable   |
-| 0:45 – 1:10   | [Step 2: Find assets](/game-jam-step-2-assets/)       | An asset pack and a `CREDITS.txt`           |
-| 1:10 – 1:25   | ☕ **Break**                                          |                                             |
-| 1:25 – 1:55   | [Step 3: Import assets](/game-jam-step-3-import/)     | **Pass 3 begins:** real art, sound, music   |
-| 1:55 – 2:20   | [Step 4: Polish](/game-jam-step-4-polish/)            | Your own sound effect and 4 bits of juice   |
-| 2:20 – 2:40   | [Step 5: Export and deploy](/game-jam-step-5-export/) | A public itch.io link                       |
-| 2:40 – 2:55   | [3D showcase](/game-jam-3d-showcase/)                 | The same game in 3D, so you know it's open  |
-| 2:55 – 3:00   | [Step 6: Next](/game-jam-step-6-next/)                | Your next jam, planned                      |
+| Time        | Step                                                   | You walk out with                          |
+| ----------- | ------------------------------------------------------ | ------------------------------------------ |
+| 0:00 – 0:10 | [Step 0: Setup](/game-jam-step-0-setup/)               | Godot running, starter project open        |
+| 0:10 – 0:45 | [Step 1: Build the core](/game-jam-step-1-build-core/) | **Pass 1 and 2:** playable and finishable  |
+| 0:45 – 1:10 | [Step 2: Find assets](/game-jam-step-2-assets/)        | An asset pack and a `CREDITS.txt`          |
+| 1:10 – 1:25 | ☕ **Break**                                           |                                            |
+| 1:25 – 1:55 | [Step 3: Import assets](/game-jam-step-3-import/)      | **Pass 3 begins:** real art, sound, music  |
+| 1:55 – 2:20 | [Step 4: Polish](/game-jam-step-4-polish/)             | Your own sound effect and 4 bits of juice  |
+| 2:20 – 2:40 | [Step 5: Export and deploy](/game-jam-step-5-export/)  | A public itch.io link                      |
+| 2:40 – 2:55 | [3D showcase](/game-jam-3d-showcase/)                  | The same game in 3D, so you know it's open |
+| 2:55 – 3:00 | [Step 6: Next](/game-jam-step-6-next/)                 | Your next jam, planned                     |
 
 Each step is its own page. If you fall behind, open the step you're on. **If you get lost, raise your hand.**
 

@@ -23,17 +23,17 @@ eleventyNavigation:
 
 ## Timeline
 
-| Time | Step | Watch for |
-| ---- | ---- | --------- |
-| 0:00 | [Step 0](/game-jam-step-0-setup/) | Nobody has templates or an account. Fix now |
+| Time | Step                                   | Watch for                                                                                       |
+| ---- | -------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| 0:00 | [Step 0](/game-jam-step-0-setup/)      | Nobody has templates or an account. Fix now                                                     |
 | 0:10 | [Step 1](/game-jam-step-1-build-core/) | Paste errors (indentation). Slow typists. Make sure everyone has **win, lose, restart** by 0:45 |
-| 0:45 | [Step 2](/game-jam-step-2-assets/) | Wifi. Fall back to `coin-rush-assets.zip` |
-| 1:10 | Break (15 min) | Anyone behind? Catch them up now |
-| 1:25 | [Step 3](/game-jam-step-3-import/) | Blurry sprites, **TileMapLayer covering the player**, music not looping |
-| 1:55 | [Step 4](/game-jam-step-4-polish/) | Typos in node names. Tell fast finishers to do the stretch menu |
-| 2:20 | [Step 5](/game-jam-step-5-export/) | Zip with a folder inside, Thread Support, missing templates |
-| 2:40 | [3D showcase](/game-jam-3d-showcase/) | Demo 2 minutes on screen, then let them explore |
-| 2:55 | [Step 6](/game-jam-step-6-next/) | Make sure everyone has their link |
+| 0:45 | [Step 2](/game-jam-step-2-assets/)     | Wifi. Fall back to `coin-rush-assets.zip`                                                       |
+| 1:10 | Break (15 min)                         | Anyone behind? Catch them up now                                                                |
+| 1:25 | [Step 3](/game-jam-step-3-import/)     | Blurry sprites, **TileMapLayer covering the player**, music not looping                         |
+| 1:55 | [Step 4](/game-jam-step-4-polish/)     | Typos in node names. Tell fast finishers to do the stretch menu                                 |
+| 2:20 | [Step 5](/game-jam-step-5-export/)     | Zip with a folder inside, Thread Support, missing templates                                     |
+| 2:40 | [3D showcase](/game-jam-3d-showcase/)  | Demo 2 minutes on screen, then let them explore                                                 |
+| 2:55 | [Step 6](/game-jam-step-6-next/)       | Make sure everyone has their link                                                               |
 
 ## How to help
 
@@ -44,32 +44,32 @@ eleventyNavigation:
 
 ## If time runs short
 
-| Cut | Keep |
-| --- | ---- |
+| Cut                                                        | Keep                               |
+| ---------------------------------------------------------- | ---------------------------------- |
 | The AnimatedSprite2D bonus and Exercise 5 (font) in Step 3 | Sprite, TileMapLayer, sound, music |
-| Everything after 4.3 in Step 4 | Sounds and the score pop |
-| The 3D showcase to a demo only | **Step 5. Never cut the export** |
+| Everything after 4.3 in Step 4                             | Sounds and the score pop           |
+| The 3D showcase to a demo only                             | **Step 5. Never cut the export**   |
 
 ## Placeholders to replace
 
-| Where | File (in `assets/game-jam-speed-kit/previews/`) | Replace with |
-| ----- | ----- | ------------ |
-| Overview | `finished-game.svg` and the commented `gameEmbed` | A hosted build, or a real screenshot |
-| Overview | `style-ui-only.svg`, `style-3d-lowpoly.svg` | Screenshots of a UI-only game and the 3D showcase |
-| Overview, Step 2 | `style-2d-pixel.png` is a **mock-up**, not a screenshot | A real screenshot of the finished game |
-| Step 0 | `shot-project-manager.svg`, `shot-first-run.svg` | Real screenshots |
-| Step 3 | `shot-sprite-imported.svg` | A real screenshot |
-| Step 5 | `shot-export-dialog.svg`, `shot-itch-upload.svg` | Real screenshots |
-| 3D showcase | `shot-3d-showcase.svg` and the commented `gameEmbed` | A screenshot, or a hosted 3D build |
+| Where            | File (in `assets/game-jam-speed-kit/previews/`)         | Replace with                                      |
+| ---------------- | ------------------------------------------------------- | ------------------------------------------------- |
+| Overview         | `finished-game.webp` and the commented `gameEmbed`      | A hosted build, or a real screenshot              |
+| Overview         | `finished-game.webp`, `shot-3d-showcase.webp`           | Screenshots of a UI-only game and the 3D showcase |
+| Overview, Step 2 | `style-2d-pixel.png` is a **mock-up**, not a screenshot | A real screenshot of the finished game            |
+| Step 0           | `shot-project-manager.webp`, `shot-first-run.webp`      | Real screenshots                                  |
+| Step 3           | `shot-sprite-imported.webp`                             | A real screenshot                                 |
+| Step 5           | `shot-export-dialog.webp`, `shot-itch-upload.webp`      | Real screenshots                                  |
+| 3D showcase      | `shot-3d-showcase.webp` and the commented `gameEmbed`   | A screenshot, or a hosted 3D build                |
 
 Keep the same file names (and extension, or update the page) so no page edits are needed.
 
 ## What's in the files
 
-| File | What it is |
-| ---- | ---------- |
-| `coin-rush-starter.zip` | The 2D project: placeholder shapes, scenes wired up, 4 empty scripts to fill |
-| `coin-rush-assets.zip` | CC0 art, sounds, music and a font, plus `CREDITS-lines.txt` and the license texts |
-| `coin-rush-3d-starter.zip` | The finished 3D showcase project |
+| File                       | What it is                                                                        |
+| -------------------------- | --------------------------------------------------------------------------------- |
+| `coin-rush-starter.zip`    | The 2D project: placeholder shapes, scenes wired up, 4 empty scripts to fill      |
+| `coin-rush-assets.zip`     | CC0 art, sounds, music and a font, plus `CREDITS-lines.txt` and the license texts |
+| `coin-rush-3d-starter.zip` | The finished 3D showcase project                                                  |
 
 Back to the [overview](/game-jam-overview/).

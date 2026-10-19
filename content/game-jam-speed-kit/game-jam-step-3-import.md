@@ -70,15 +70,15 @@ A **sprite** is a picture that's a game object. The node for it is **Sprite2D**.
 
 **Now slice it.** In the Inspector, open **Animation** and set:
 
-| Setting      | Value | Why                                 |
-| ------------ | ----- | ----------------------------------- |
-| **Hframes**  | `12`  | The sheet is 12 tiles wide          |
-| **Vframes**  | `11`  | …and 11 tiles tall                  |
-| **Frame**    | `85`  | Which tile to show: row 7, column 1 (7 × 12 + 1) |
+| Setting     | Value | Why                                              |
+| ----------- | ----- | ------------------------------------------------ |
+| **Hframes** | `12`  | The sheet is 12 tiles wide                       |
+| **Vframes** | `11`  | …and 11 tiles tall                               |
+| **Frame**   | `85`  | Which tile to show: row 7, column 1 (7 × 12 + 1) |
 
 **You should see** one tiny knight, with crisp edges.
 
-![The player scene with a Sprite2D showing a single knight sprite with sharp pixels.](/assets/game-jam-speed-kit/previews/shot-sprite-imported.svg)
+![The player scene with a Sprite2D showing a single knight sprite with sharp pixels.](/assets/game-jam-speed-kit/previews/shot-sprite-imported.webp)
 
 Press **F5** and walk around. **You should see** your knight moving through the arena.
 
@@ -87,9 +87,9 @@ Press **F5** and walk around. **You should see** your knight moving through the 
 **Do the same for the other two:**
 
 | Scene                | Delete the `Visual` polygon and add a `Sprite2D` named `Visual` with the same texture, Hframes 12, Vframes 11, and… |
-| -------------------- | -------------------------------------------------------------------------------------------- |
-| `scenes/hazard.tscn` | **Frame** `120` (a bat)                                                                      |
-| `scenes/coin.tscn`   | **Frame** `102` (a silver token). _The optional bonus below animates it_                    |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `scenes/hazard.tscn` | **Frame** `120` (a bat)                                                                                             |
+| `scenes/coin.tscn`   | **Frame** `102` (a silver token). _The optional bonus below animates it_                                            |
 
 Press **F5**. **You should see** a knight, a bat swinging across the arena and five silver tokens.
 

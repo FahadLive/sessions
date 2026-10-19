@@ -19,15 +19,15 @@ Do this **before the session if you can**, on a good connection. Everything here
 
 **Do this:** open the [Godot 4.6 download page](https://godotengine.org/download/archive/4.6.3-stable/) and download the **standard** build for your computer (not the .NET one).
 
-| Your computer | Do this                                                                                                            |
-| ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **Windows**   | Download the `.zip`, right-click → **Extract All**, double-click `Godot_v4.6-stable_win64.exe`                     |
-| **macOS**     | Download the `.zip`, double-click it, drag `Godot.app` into **Applications**, open it (**Open** if macOS asks)    |
-| **Linux**     | Download the `.zip`, extract it, make the file executable, run it                                                  |
+| Your computer | Do this                                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Windows**   | Download the `.zip`, right-click → **Extract All**, double-click `Godot_v4.6-stable_win64.exe`                 |
+| **macOS**     | Download the `.zip`, double-click it, drag `Godot.app` into **Applications**, open it (**Open** if macOS asks) |
+| **Linux**     | Download the `.zip`, extract it, make the file executable, run it                                              |
 
 **You should see:** a window called the **Project Manager**, Godot's home screen, with an **Import** button at the top right.
 
-![The Godot Project Manager: an empty project list with Create, Import and other buttons on the right.](/assets/game-jam-speed-kit/previews/shot-project-manager.svg)
+![The Godot Project Manager: an empty project list with Create, Import and other buttons on the right.](/assets/game-jam-speed-kit/previews/shot-project-manager.webp)
 
 > **Note:** there is no installer. Godot is one program you can run from anywhere, even a USB stick. That's why it's such a good jam engine.
 
@@ -70,7 +70,7 @@ Export templates are the pre-built engine pieces Godot needs to turn your projec
 
 **You should see:** a game window with a dark arena, a **blue box** near the bottom, a red box in the middle, five yellow diamonds and a **Coins: 0** label. The blue box won't move yet. That is correct. You fix it in Step 1.
 
-![The running starter: a dark arena with a blue box at the bottom, a red box in the middle and yellow diamonds.](/assets/game-jam-speed-kit/previews/shot-first-run.svg)
+![The running starter: a dark arena with a blue box at the bottom, a red box in the middle and yellow diamonds.](/assets/game-jam-speed-kit/previews/shot-first-run.webp)
 
 Press **F8** (or close the window) to stop the game.
 
@@ -78,12 +78,12 @@ Press **F8** (or close the window) to stop the game.
 
 You don't need to learn it all. Find these four things:
 
-| Where                | What it is                                                       |
-| -------------------- | ---------------------------------------------------------------- |
-| **Scene** (top-left) | The tree of **nodes**: the building blocks of your game          |
-| **FileSystem** (bottom-left) | Every file in your project: scenes, scripts, art, sound  |
-| **Inspector** (right) | The settings of whichever node you've selected                  |
-| **Output** (bottom)  | Where Godot prints errors and messages. Red text goes here       |
+| Where                        | What it is                                                 |
+| ---------------------------- | ---------------------------------------------------------- |
+| **Scene** (top-left)         | The tree of **nodes**: the building blocks of your game    |
+| **FileSystem** (bottom-left) | Every file in your project: scenes, scripts, art, sound    |
+| **Inspector** (right)        | The settings of whichever node you've selected             |
+| **Output** (bottom)          | Where Godot prints errors and messages. Red text goes here |
 
 > **Note:** a **node** is one building block (a sprite, a sound player, a collision shape). A **scene** is a saved group of nodes, like a LEGO model you can reuse. Your whole game is scenes made of nodes.
 

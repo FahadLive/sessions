@@ -15,7 +15,7 @@ You built Coin Rush in 2D. This 15 minutes proves that **3D is not scary**, and 
 
 > **Note:** the facilitator demos the first two minutes on the big screen. You then do the rest on your own machine. Your 2D game and your itch.io link stay untouched.
 
-![Placeholder: the 3D Coin Rush arena, a blue capsule, gold spheres and a red ball in a green walled arena.](/assets/game-jam-speed-kit/previews/shot-3d-showcase.svg)
+![Placeholder: the 3D Coin Rush arena, a blue capsule, gold spheres and a red ball in a green walled arena.](/assets/game-jam-speed-kit/previews/shot-3d-showcase.webp)
 
 {% comment %}
 EMBED PLACEHOLDER: once the 3D build is hosted, replace this comment with:
@@ -38,15 +38,15 @@ EMBED PLACEHOLDER: once the 3D build is hosted, replace this comment with:
 
 You'll recognise almost everything:
 
-| In your 2D game | In the 3D version | Different? |
-| --------------- | ----------------- | ---------- |
-| `Player`: `CharacterBody2D` | `Player`: `CharacterBody3D` | Same idea, one more axis |
-| `Coin`: `Area2D` | `Coin`: `Area3D` | Same signal: `body_entered` |
-| Coin script: `GameState.add_point()` then `queue_free()` | Same lines (plus `rotate_y`, so it spins) | **Identical** |
-| `Sprite2D` (a picture) | `MeshInstance3D` (a shape) | Picture vs shape |
-| `Camera2D` | `Camera3D`, attached to the player | Follows the player |
-| `GameState` autoload | `GameState` autoload | **Identical** |
-| Export to the web | Export to the web | **Identical** |
+| In your 2D game                                          | In the 3D version                         | Different?                  |
+| -------------------------------------------------------- | ----------------------------------------- | --------------------------- |
+| `Player`: `CharacterBody2D`                              | `Player`: `CharacterBody3D`               | Same idea, one more axis    |
+| `Coin`: `Area2D`                                         | `Coin`: `Area3D`                          | Same signal: `body_entered` |
+| Coin script: `GameState.add_point()` then `queue_free()` | Same lines (plus `rotate_y`, so it spins) | **Identical**               |
+| `Sprite2D` (a picture)                                   | `MeshInstance3D` (a shape)                | Picture vs shape            |
+| `Camera2D`                                               | `Camera3D`, attached to the player        | Follows the player          |
+| `GameState` autoload                                     | `GameState` autoload                      | **Identical**               |
+| Export to the web                                        | Export to the web                         | **Identical**               |
 
 > **Key insight:** a different dimension changes the **nodes**, not the **ideas**. The signal, the autoload, the export and the Inspector tuning are the same. A 3D jam game is a 2D jam game with `3D` on the end of the node names.
 
