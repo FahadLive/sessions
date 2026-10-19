@@ -5,7 +5,7 @@ title: Proprietary vs Open-Source AI Models
 description: A beginner-friendly, link-heavy reference for a talk session — what an AI model is, how proprietary and open-source models differ, and how to actually try open-source AI (Hugging Face, Ollama) for free.
 eleventyNavigation:
     key: Proprietary vs Open-Source AI Models
-    order: 1
+    order: 5
 ---
 
 # Proprietary vs Open-Source AI Models
@@ -20,12 +20,12 @@ By the end, you'll understand the difference between **proprietary** (closed) an
 
 ## The pages
 
-| Page                                          | What it covers                                                          |
-| --------------------------------------------- | ----------------------------------------------------------------------- |
-| [How AI Models Work](/open-ai-how-models-work/) | The basics in plain English — models, Transformers, "attention", how LLMs generate text |
-| [Open vs Proprietary](/open-ai-open-vs-proprietary/) | The core comparison — players, pros/cons, and a quick-reference matrix |
-| [Try Open-Source AI](/open-ai-hugging-face/)    | Hands-on, for free — Hugging Face, Ollama, running models locally       |
-| [Resources & Glossary](/open-ai-resources/)   | The bigger picture, next steps, and a curated FOSS link list            |
+| Page                                                 | What it covers                                                                          |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [How AI Models Work](/open-ai-how-models-work/)      | The basics in plain English — models, Transformers, "attention", how LLMs generate text |
+| [Open vs Proprietary](/open-ai-open-vs-proprietary/) | The core comparison — players, pros/cons, and a quick-reference matrix                  |
+| [Try Open-Source AI](/open-ai-hugging-face/)         | Hands-on, for free — Hugging Face, Ollama, running models locally                       |
+| [Resources & Glossary](/open-ai-resources/)          | The bigger picture, next steps, and a curated FOSS link list                            |
 
 ## The one-line takeaway
 

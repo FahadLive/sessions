@@ -5,7 +5,7 @@ title: Vibecode Your First Website
 description: A 3-day vibe-coding workshop where beginners build an Onam Post Generator with plain HTML, CSS & JavaScript, connect it to the Gemini API, and ship it live on Vercel — no React, no backend, no prior coding required.
 eleventyNavigation:
     key: Vibecode Your First Website
-    order: 1
+    order: 3
 ---
 
 # Vibecode Your First Website
@@ -18,7 +18,7 @@ Every Malayali is posting Onam content right now — outfits, pookkalam, sadya, 
 
 You won't write most of the code yourself. You'll **steer an AI assistant** to write it for you. Two tools:
 
-1. **[opencode](https://opencode.ai)** — runs in your terminal and writes the code *into your files*. Your builder.
+1. **[opencode](https://opencode.ai)** — runs in your terminal and writes the code _into your files_. Your builder.
 2. **[ChatGPT](https://chatgpt.com/) / [Claude](https://claude.ai/)** (free tier) — a second brain in your browser, for ideas and plain-English error explanations.
 
 That's vibe-coding: tell the computer what you want, check what it gives you, fix what breaks.
@@ -35,13 +35,13 @@ The **Onam Post Generator** — a small web app. You type what's in your photo, 
 
 ## How it works
 
-|                 | Day 1                    | Day 2                    | Day 3            |
-| --------------- | ------------------------ | ------------------------ | ---------------- |
-| **Project**     | Onam Post Generator      | AI Onam Post Generator   | Live AI App      |
-| **New thing**   | JavaScript               | API + AI                 | Deployment      |
-| **Core skill**  | Build                    | Integrate                | Ship             |
-| **Output**      | Working website          | Real AI product          | Public URL       |
-| **Stack**       | HTML / CSS / JS          | + Gemini                 | + GitHub/Vercel |
+|                | Day 1               | Day 2                  | Day 3           |
+| -------------- | ------------------- | ---------------------- | --------------- |
+| **Project**    | Onam Post Generator | AI Onam Post Generator | Live AI App     |
+| **New thing**  | JavaScript          | API + AI               | Deployment      |
+| **Core skill** | Build               | Integrate              | Ship            |
+| **Output**     | Working website     | Real AI product        | Public URL      |
+| **Stack**      | HTML / CSS / JS     | + Gemini               | + GitHub/Vercel |
 
 And how each day should feel:
 
@@ -67,14 +67,14 @@ onam-post/
 
 ## The plan
 
-| Page                        | What it covers                        |
-| --------------------------- | ------------------------------------- |
-| [Day 1](/vibecode-day-1/)    | Build the website (UI + JavaScript)  |
-| [Day 2](/vibecode-day-2/)    | Connect it to a real AI (Gemini API) |
-| [Day 3](/vibecode-day-3/)    | Ship it live (GitHub + Vercel)       |
+| Page                      | What it covers                       |
+| ------------------------- | ------------------------------------ |
+| [Day 1](/vibecode-day-1/) | Build the website (UI + JavaScript)  |
+| [Day 2](/vibecode-day-2/) | Connect it to a real AI (Gemini API) |
+| [Day 3](/vibecode-day-3/) | Ship it live (GitHub + Vercel)       |
 
 ## Why Onam?
 
-Because it's what everyone is posting this week — kasavu outfits, pookkalam, sadya everywhere on Reels. Building something people are *actually* doing makes it feel real.
+Because it's what everyone is posting this week — kasavu outfits, pookkalam, sadya everywhere on Reels. Building something people are _actually_ doing makes it feel real.
 
 Start with **[Day 1](/vibecode-day-1/)** — this is the "wow" day, where you see a website appear in the first ten minutes.

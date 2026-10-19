@@ -5,7 +5,7 @@ title: Game Jam Speed Kit
 description: "A 3-hour guided handbook for complete beginners: build Coin Rush in Godot 4, give it real art and sound from free libraries, export it for the web, and upload it to itch.io, so you finish with a link you can send to a friend."
 eleventyNavigation:
     key: Game Jam Speed Kit
-    order: 2
+    order: 7
 ---
 
 # Your game, uploaded, in 3 hours

@@ -5,7 +5,7 @@ title: Godot Platformer Workshop
 description: A 4-hour hands-on workshop where absolute beginners build a complete 2D platformer in Godot 4.6 — a level, a jumping character, coins, a score counter and a death pit — with no prior coding required.
 eleventyNavigation:
     key: Godot Platformer Workshop
-    order: 1
+    order: 6
 ---
 
 # Build your first game in Godot — a 2D platformer

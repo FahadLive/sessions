@@ -1,0 +1,48 @@
+<style>
+.widget-game__frame { position: relative; aspect-ratio: 16 / 9; border-radius: 9px; overflow: hidden; background: #000; background-size: cover; background-position: center; border: 0; padding: 0; cursor: pointer; width: 100%; display: block; font: inherit; color: inherit; text-align: left; }
+.widget-game__frame:focus-visible { outline: 3px solid #4a90e2; outline-offset: 2px; }
+.widget-game__play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.6rem; border-radius: 999px; font-weight: 700; background: #fff; color: #111; box-shadow: 0 6px 24px rgba(0,0,0,.45); pointer-events: none; }
+.widget-game__hint { position: absolute; right: 0; bottom: 0; left: 0; margin: 0; padding: 0.5rem 0.75rem; text-align: center; font-size: 0.8rem; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.75)); pointer-events: none; }
+.widget-game__mount:empty { display: none; }
+.widget-game__mount iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 9px; background: #000; }
+.widget-game__open { display: inline-flex; margin-top: var(--ita-spacings-3); }
+.widget-game__fallback { display: none; margin: 0; }
+.widget-game--playing .widget-game__frame { display: none; }
+@media (max-width: 959px) {
+  .widget-game__frame, .widget-game__open { display: none; }
+  .widget-game__fallback { display: block; }
+}
+</style>
+<script>
+(function () {
+  if (window.__itaGameEmbedInit) return;
+  window.__itaGameEmbedInit = true;
+  function loadGame(frame) {
+    const widget = frame.closest(".widget-game");
+    if (!widget) return;
+    const mount = widget.querySelector(".widget-game__mount");
+    if (!mount || mount.dataset.loaded) return;
+    const iframe = document.createElement("iframe");
+    iframe.src = mount.getAttribute("data-game-src");
+    iframe.loading = "lazy";
+    iframe.setAttribute("allowfullscreen", "");
+    iframe.setAttribute("allow", "autoplay; fullscreen; gamepad");
+    mount.appendChild(iframe);
+    mount.dataset.loaded = "true";
+    widget.classList.add("widget-game--playing");
+  }
+  document.addEventListener("click", function (event) {
+    const frame = event.target.closest(".widget-game__frame");
+    if (!frame) return;
+    event.preventDefault();
+    loadGame(frame);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const frame = event.target.closest(".widget-game__frame");
+    if (!frame) return;
+    event.preventDefault();
+    loadGame(frame);
+  });
+})();
+</script>

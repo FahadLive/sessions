@@ -16,9 +16,6 @@ const libdocMessages = require("./libdocMessages.json");
 import libdocUtils from "./libdocUtils.js";
 import libdocConfig from "./libdocConfig.js";
 
-// Rendered once per build, even if the gameEmbed shortcode is used several times
-let gameEmbedAssetsRendered = false;
-
 export default {
     pluginsParameters: {
         eleventyImageTransform: function () {
@@ -134,8 +131,14 @@ export default {
             content = content.replaceAll(`</div></p>`, `</div>`);
             content = content.replaceAll(`<p><aside`, `<aside`);
             content = content.replaceAll(`</aside></p>`, `</aside>`);
+            // NEW — protect inline style/script blocks:
+            content = content.replaceAll(`<p><style`, `<style`);
+            content = content.replaceAll(`</style></p>`, `</style>`);
+            content = content.replaceAll(`<p><script`, `<script`);
+            content = content.replaceAll(`</script></p>`, `</script>`);
             return content;
         },
+
         datePrefixText: async function (date) {
             let text = "";
             if (typeof date == "string") {
@@ -310,114 +313,15 @@ export default {
                 const posterSrc = poster || new URL("/index.png", url).href;
                 const gameTitle = title || "Play the game";
 
-                // Heavy WebGL/WASM games must not load on page load. We render a
-                // facade and only inject the iframe once the visitor clicks play.
-                const assets = gameEmbedAssetsRendered
-                    ? ""
-                    : `
-                    <style>
-                        .widget-game__frame {
-                            position: relative;
-                            aspect-ratio: 16 / 9;
-                            border-radius: 9px;
-                            overflow: hidden;
-                            background: #000;
-                        }
-                        .widget-game__poster {
-                            position: absolute;
-                            inset: 0;
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            margin: 0;
-                        }
-                        .widget-game__play {
-                            position: absolute;
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            z-index: 2;
-                        }
-                        .widget-game__hint {
-                            position: absolute;
-                            right: 0;
-                            bottom: 0;
-                            left: 0;
-                            margin: 0;
-                            padding: 0.5rem 0.75rem;
-                            text-align: center;
-                            font-size: 0.8rem;
-                            color: #fff;
-                            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
-                        }
-                        .widget-game__mount:empty {
-                            display: none;
-                        }
-                        .widget-game__mount iframe {
-                            display: block;
-                            width: 100%;
-                            aspect-ratio: 16 / 9;
-                            border: 0;
-                            border-radius: 9px;
-                            background: #000;
-                        }
-                        .widget-game__open {
-                            display: inline-flex;
-                            margin-top: var(--ita-spacings-3);
-                        }
-                        .widget-game__fallback {
-                            display: none;
-                            margin: 0;
-                        }
-                        .widget-game--playing .widget-game__frame {
-                            display: none;
-                        }
-                        @media (max-width: 959px) {
-                            .widget-game__frame,
-                            .widget-game__open {
-                                display: none;
-                            }
-                            .widget-game__fallback {
-                                display: block;
-                            }
-                        }
-                    </style>
-                    <script>
-                        (function () {
-                            function loadGame(widget) {
-                                const mount = widget.querySelector(".widget-game__mount");
-                                if (!mount || mount.dataset.loaded) return;
-                                const frame = document.createElement("iframe");
-                                frame.src = mount.getAttribute("data-game-src");
-                                frame.loading = "lazy";
-                                frame.setAttribute("allowfullscreen", "");
-                                frame.setAttribute("allow", "autoplay; fullscreen; gamepad");
-                                mount.appendChild(frame);
-                                mount.dataset.loaded = "true";
-                                widget.classList.add("widget-game--playing");
-                            }
-                            document.addEventListener("click", function (event) {
-                                const playBtn = event.target.closest(".widget-game__play");
-                                if (!playBtn) return;
-                                loadGame(playBtn.closest(".widget-game"));
-                            });
-                        })();
-                    </script>`;
-                gameEmbedAssetsRendered = true;
-
-                const html = `${assets}
+                const html = `
                     <aside class="widget widget-game">
-                        <div class="widget-game__frame">
-                            <img class="widget-game__poster"
-                                src="${posterSrc}"
-                                alt="${gameTitle}"
-                                loading="lazy"
-                                decoding="async"
-                                eleventy:ignore
-                                width="960"
-                                height="540">
+                        <button type="button"
+                            class="widget-game__frame"
+                            aria-label="${gameTitle}"
+                            style="background-image: url('${posterSrc}')">
+                            <span class="widget-game__play">▶ ${gameTitle}</span>
                             <p class="widget-game__hint">Keyboard required — best played on a desktop.</p>
-                        </div>
+                        </button>
                         <div class="widget-game__mount" data-game-src="${gameSrc}"></div>
                         <a  class="widget-game__open btn btn-primary-light"
                             href="${gameSrc}"
@@ -432,8 +336,6 @@ export default {
                         </p>
                     </aside>`;
 
-                // Flush markup to the left so markdown treats it as raw HTML
-                // blocks instead of wrapping it in a paragraph.
                 return html.replace(/^[ \t]+/gm, "");
             } catch (e) {
                 console.log(`${src} is not a valid URL`);

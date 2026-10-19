@@ -58,12 +58,8 @@ export default function (eleventyConfig) {
             .sort(function (a, b) {
                 const aOrder = a.data.eleventyNavigation.order ?? 0;
                 const bOrder = b.data.eleventyNavigation.order ?? 0;
-                return aOrder - bOrder;
+                return bOrder - aOrder;
             });
-    });
-
-    eleventyConfig.addCollection("allSortedByDate", function (collectionApi) {
-        return collectionApi.getAll().sort((a, b) => b.date - a.date);
     });
     // END COLLECTIONS
 

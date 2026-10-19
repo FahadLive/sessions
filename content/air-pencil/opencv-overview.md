@@ -5,7 +5,7 @@ title: Air Pencil Workshop
 description: Two-session workshop where you turn your webcam into an air pencil — track your index fingertip with MediaPipe Hand Landmarker and draw on screen by pointing at it.
 eleventyNavigation:
     key: Air Pencil Workshop
-    order: 1
+    order: 0
 ---
 
 # Air Pencil Workshop: Draw in the Air
@@ -32,10 +32,10 @@ The code uses MediaPipe's modern **Tasks API** — a `HandLandmarker` object loa
 
 ## The plan
 
-| Page                              | What it covers                               |
-| --------------------------------- | -------------------------------------------- |
-| [Setup](/opencv-setup/)           | Install uv, Python, libraries & the model    |
-| [Day 1](/opencv-day-1/)           | Webcam feed + hand tracking                  |
-| [Day 2](/opencv-day-2/)           | Drawing logic + class competition            |
+| Page                    | What it covers                            |
+| ----------------------- | ----------------------------------------- |
+| [Setup](/opencv-setup/) | Install uv, Python, libraries & the model |
+| [Day 1](/opencv-day-1/) | Webcam feed + hand tracking               |
+| [Day 2](/opencv-day-2/) | Drawing logic + class competition         |
 
 Start with **[Setup](/opencv-setup/)** — it takes a few minutes and everything else builds on it.

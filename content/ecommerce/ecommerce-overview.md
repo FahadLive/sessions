@@ -5,7 +5,7 @@ title: E-commerce App
 description: A comprehensive guide series for building an e-commerce app with Supabase and Next.js — product listing, cart, checkout, orders and admin auth.
 eleventyNavigation:
     key: E-commerce App
-    order: 1
+    order: 4
 ---
 
 # E-commerce App: Building with Supabase + Next.js
@@ -24,10 +24,10 @@ You'll copy small, working code blocks step by step. No framework magic, no blac
 
 ## How it works
 
-|                    | Listing   | Admin     | Cart      | Checkout  | Auth          |
-| ------------------ | --------- | --------- | --------- | --------- | ------------- |
-| **New thing**      | Database  | Storage   | Context   | Transactions | OAuth + RLS   |
-| **Core skill**     | Fetch     | Upload    | State     | Mutations | Access control |
+|                | Listing  | Admin   | Cart    | Checkout     | Auth           |
+| -------------- | -------- | ------- | ------- | ------------ | -------------- |
+| **New thing**  | Database | Storage | Context | Transactions | OAuth + RLS    |
+| **Core skill** | Fetch    | Upload  | State   | Mutations    | Access control |
 
 ## What you need
 
@@ -37,12 +37,12 @@ You'll copy small, working code blocks step by step. No framework magic, no blac
 
 ## The plan
 
-| Page                                        | What it covers                         |
-| ------------------------------------------- | -------------------------------------- |
-| [Product Listing](/ecommerce-products/)     | Product cards fetched from Supabase    |
-| [Add Product (Admin)](/add-product-admin/)  | Add products with image upload         |
-| [Build Cart](/cart-page/)                   | Cart with `useState` and context       |
-| [Orders (Checkout)](/orders-checkout-admin/)| Cart → checkout → order history        |
-| [Auth (Google Sign-In)](/auth-google-signin/)| Google OAuth + roles + protected routes|
+| Page                                          | What it covers                          |
+| --------------------------------------------- | --------------------------------------- |
+| [Product Listing](/ecommerce-products/)       | Product cards fetched from Supabase     |
+| [Add Product (Admin)](/add-product-admin/)    | Add products with image upload          |
+| [Build Cart](/cart-page/)                     | Cart with `useState` and context        |
+| [Orders (Checkout)](/orders-checkout-admin/)  | Cart → checkout → order history         |
+| [Auth (Google Sign-In)](/auth-google-signin/) | Google OAuth + roles + protected routes |
 
 Start with **[Product Listing](/ecommerce-products/)** — the first page where you see products appear on screen.
